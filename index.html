@@ -304,18 +304,52 @@
             padding-bottom: 0.5rem;
         }
         
+        .story-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
         .story-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent-lang);
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
-            padding-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            margin: 0;
+        }
+        
+        .theme-phonics .story-title { color: var(--accent-phonics); }
+        .theme-science .story-title { color: var(--accent-sci); }
+        .theme-socialStudies .story-title { color: var(--accent-soc); }
+        .theme-mathematics .story-title { color: var(--accent-math); }
+        .theme-healthEducation .story-title { color: var(--accent-he); }
+
+        /* Play Flashcards Button */
+        .play-fc-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s var(--spring-easing);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .theme-phonics .story-title { color: var(--accent-phonics); }
+        .play-fc-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
         /* Question Cards Styling */
         .qa-card {
@@ -601,6 +635,113 @@
 
         .video-container video { background: #000; }
 
+        /* --- FLASHCARD STYLES --- */
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 400px;
+            perspective: 1000px;
+            margin: 1rem 0;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s var(--spring-easing);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .flip-card-front .word {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-back .def {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-back .sent {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .fc-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 99px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s var(--spring-easing);
+        }
+
+        .fc-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .fc-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .fc-counter {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
         /* Companion Pet Styles */
         #companion-pet {
             position: fixed; 
@@ -684,7 +825,7 @@
 
     <header>
         <div class="title-row">
-            <h1>Final Exam Prep Guide <span class="version-badge">v3.2</span></h1>
+            <h1>Final Exam Prep Guide <span class="version-badge">v3.3</span></h1>
             <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
         </div>
         <div class="warning-text">⚠️ If website stops, reload the website!</div>
@@ -726,11 +867,48 @@
                 <button class="close-modal" onclick="closeModal('changelog-modal')">&times;</button>
             </div>
             <ul class="changelog-list">
-                <li><span class="changelog-version">v3.2</span> Added three real study videos with a working, self-hosted video player (play, pause, seek, volume, fullscreen).</li>
+                <li><span class="changelog-version">v3.3</span> Added "Flashcards Mode" with interactive 3D flipping cards inside of every topic!</li>
+                <li><span class="changelog-version">v3.2</span> Added three real study videos with a working, self-hosted video player.</li>
                 <li><span class="changelog-version">v3.1</span> Added "VIDEOS" feature with an interactive video player modal!</li>
-                <li><span class="changelog-version">v3.0</span> MAJOR UPDATE: Shifted to Final Exam! Timetable, Syllabus, Language, and Phonics Vocab completely updated for Semester 1 Finals.</li>
+                <li><span class="changelog-version">v3.0</span> MAJOR UPDATE: Shifted to Final Exam! Timetable, Syllabus, Language, and Phonics Vocab completely updated.</li>
                 <li><span class="changelog-version">v2.5</span> Shifted content to match initial provided code and cleared old midterm data.</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcard-modal" class="modal-overlay">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <div>
+                    <h2 id="fc-modal-title">Flashcards</h2>
+                    <p class="subtext">Tap the card to flip it over. Use arrows to navigate.</p>
+                </div>
+                <button class="close-modal" onclick="closeModal('flashcard-modal'); stopSpecificAudio();">&times;</button>
+            </div>
+            
+            <div class="flashcard-container">
+                <div class="flip-card" id="fc-card" onclick="this.classList.toggle('is-flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="word" id="fc-word">Word</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="def" id="fc-def">Definition</div>
+                            <div class="sent" id="fc-sent">Sentence</div>
+                            <button class="audio-btn" style="margin-top: 1.5rem; width: 45px; height: 45px;" onclick="event.stopPropagation(); playFlashcardAudio()">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button class="fc-btn" id="fc-prev" onclick="prevCard()">&#8592; Previous</button>
+                    <div class="fc-counter" id="fc-counter">1 / 10</div>
+                    <button class="fc-btn" id="fc-next" onclick="nextCard()">Next &#8594;</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1014,18 +1192,22 @@
 
     <script>
         // --- VIDEO DATA ARRAY ---
-        // type: "file" for locally hosted mp4/webm files (rendered with a native <video> player)
-        // type: "embed" for YouTube/Vimeo embed links (rendered with an <iframe>)
         const videoData = [
             {
-                title: "Cognitive Pacing: The Engineering of an Exam Schedule",
-                description: "How the exam timetable is structured to pace your studying and reduce overload.",
+                title: "Sarasas Witaed Exams",
+                description: "A breakdown of the Semester 1 final exams, including the core subjects, languages, and the four-day battle plan.",
+                url: "Sarasas_Witaed_Exams.mp4",
+                type: "file"
+            },
+            {
+                title: "Cognitive Pacing: Exam Schedule",
+                description: "Explains how schools use cognitive load scheduling and strategic review blocks to keep student stamina high.",
                 url: "Cognitive_Pacing__The_Engineering_of_an_Exam_Schedule.mp4",
                 type: "file"
             },
             {
-                title: "Inside a 4th Grade International Curriculum",
-                description: "An overview of what's covered across subjects in the 4th grade IEP curriculum.",
+                title: "Inside a 4th Grade Curriculum",
+                description: "Details the advanced STEM requirements, extreme language load, and the logistical marathon of the tests.",
                 url: "Inside_a_4th_Grade_International_Curriculum.mp4",
                 type: "file"
             }
@@ -1177,7 +1359,11 @@
                         { word: "Play", definition: "Rhymes with 'Day'. Engage in activity for enjoyment and recreation rather than a serious or practical purpose.", sentence: "The children went outside to play tag in the backyard." }
                     ]
                 }
-            ]
+            ],
+            science: [],
+            socialStudies: [],
+            mathematics: [],
+            healthEducation: []
         };
 
         const grid = document.getElementById('words-grid');
@@ -1203,6 +1389,10 @@
         let roamInterval;
         let isSleeping = false;
 
+        // Flashcard specific variables
+        let currentFlashcards = [];
+        let currentFcIndex = 0;
+
         // Modal Logic
         function openModal(id) {
             document.getElementById(id).classList.add('active');
@@ -1218,6 +1408,9 @@
                     modal.classList.remove('active');
                     if (modal.id === 'videos-modal') {
                         stopVideos();
+                    }
+                    if (modal.id === 'flashcard-modal') {
+                        stopSpecificAudio();
                     }
                 }
             });
@@ -1256,8 +1449,6 @@
         
         // Stop playing videos when modal closes
         function stopVideos() {
-            // Explicitly pause + unload any playing <video> elements before wiping them out,
-            // so audio/video doesn't keep running in the background on some browsers.
             document.querySelectorAll('#video-list video').forEach(v => {
                 v.pause();
                 v.removeAttribute('src');
@@ -1298,6 +1489,76 @@
 
             card.addEventListener('click', () => card.classList.toggle('expanded'));
             return card;
+        }
+
+        // --- FLASHCARD LOGIC ---
+        function startFlashcards(tabName, groupIndex) {
+            const group = vocabularyData[tabName][groupIndex];
+            currentFlashcards = group.words;
+            currentFcIndex = 0;
+            
+            const title = group.groupTitle || group.story || "Flashcards";
+            document.getElementById('fc-modal-title').innerText = title;
+            
+            updateFlashcardUI();
+            openModal('flashcard-modal');
+        }
+
+        function updateFlashcardUI() {
+            const cardEl = document.getElementById('fc-card');
+            cardEl.classList.remove('is-flipped');
+            
+            if (currentFlashcards.length === 0) return;
+            
+            const item = currentFlashcards[currentFcIndex];
+            
+            // Set slight delay so text changes while card is "face up" again if user clicks fast
+            setTimeout(() => {
+                document.getElementById('fc-word').innerText = item.word;
+                document.getElementById('fc-def').innerText = item.definition;
+                document.getElementById('fc-sent').innerText = `"${item.sentence}"`;
+                
+                document.getElementById('fc-counter').innerText = `${currentFcIndex + 1} / ${currentFlashcards.length}`;
+                
+                document.getElementById('fc-prev').disabled = currentFcIndex === 0;
+                document.getElementById('fc-next').disabled = currentFcIndex === currentFlashcards.length - 1;
+            }, 150);
+        }
+
+        function prevCard() {
+            if (currentFcIndex > 0) {
+                stopSpecificAudio();
+                currentFcIndex--;
+                updateFlashcardUI();
+            }
+        }
+
+        function nextCard() {
+            if (currentFcIndex < currentFlashcards.length - 1) {
+                stopSpecificAudio();
+                currentFcIndex++;
+                updateFlashcardUI();
+            }
+        }
+
+        function playFlashcardAudio() {
+            stopSpecificAudio();
+            const item = currentFlashcards[currentFcIndex];
+            const fullText = item.sentence !== '' 
+                ? `${item.word}. ${item.definition}. Example: ${item.sentence}` 
+                : `${item.word}. Answer: ${item.definition}`;
+                
+            currentUtterance = new SpeechSynthesisUtterance(fullText);
+            
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(v => v.lang.includes('en-US') && v.name.includes('Natural')) 
+                                || voices.find(v => v.lang.startsWith('en'));
+
+            if (preferredVoice) currentUtterance.voice = preferredVoice;
+            currentUtterance.rate = 0.95;
+            currentUtterance.pitch = 1.0;
+
+            window.speechSynthesis.speak(currentUtterance);
         }
 
         // Render Tabs Function
@@ -1351,11 +1612,21 @@
                 // If the data is grouped
                 if (vocabularyData[tabName].length > 0 && (vocabularyData[tabName][0].groupTitle || vocabularyData[tabName][0].story)) {
                     let globalCardIndex = 0;
-                    vocabularyData[tabName].forEach(group => {
+                    vocabularyData[tabName].forEach((group, groupIndex) => {
                         const titleText = group.groupTitle || group.story;
+                        
                         const groupTitleEl = document.createElement('div');
                         groupTitleEl.className = 'section-header-wrapper';
-                        groupTitleEl.innerHTML = `<h3 class="story-title">📖 ${titleText}</h3>`;
+                        
+                        // Modified to include Flashcards button inside the title row
+                        groupTitleEl.innerHTML = `
+                            <div class="story-title-container">
+                                <h3 class="story-title">📖 ${titleText}</h3>
+                                <button class="play-fc-btn" onclick="startFlashcards('${tabName}', ${groupIndex})">
+                                    🗂️ Flashcards
+                                </button>
+                            </div>
+                        `;
                         grid.appendChild(groupTitleEl);
 
                         group.words.forEach((item) => {
