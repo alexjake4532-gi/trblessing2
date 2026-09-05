@@ -633,15 +633,13 @@
             border: none;
         }
 
-        .video-container video { background: #000; }
-
         /* --- FLASHCARD STYLES --- */
         .flashcard-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            height: 400px;
+            height: 420px;
             perspective: 1000px;
             margin: 1rem 0;
         }
@@ -667,6 +665,21 @@
             transform: rotateY(180deg);
         }
 
+        /* Flashcard Animation Classes */
+        .flash-success .flip-card-front, 
+        .flash-success .flip-card-back {
+            border-color: var(--accent-sci) !important;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5) !important;
+            background: rgba(16, 185, 129, 0.15) !important;
+        }
+
+        .flash-error .flip-card-front, 
+        .flash-error .flip-card-back {
+            border-color: var(--accent-danger) !important;
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.5) !important;
+            background: rgba(239, 68, 68, 0.15) !important;
+        }
+
         .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
@@ -683,6 +696,7 @@
             align-items: center;
             padding: 2rem;
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease; 
         }
 
         .flip-card-front .word {
@@ -707,12 +721,65 @@
             font-style: italic;
         }
 
+        /* Audio buttons inside flashcard */
+        .fc-audio-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Tick / Cross Evaluation Controls */
+        .fc-assessment-controls {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .fc-eval-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--spring-easing);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .fc-eval-btn svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .fc-eval-btn.cross-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--accent-danger);
+            color: var(--accent-danger);
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .fc-eval-btn.tick-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--accent-sci);
+            color: var(--accent-sci);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Bottom Flashcard Navigation Controls */
         .flashcard-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .fc-btn {
@@ -740,6 +807,87 @@
             color: var(--text-muted);
             font-weight: 600;
             font-size: 1.1rem;
+        }
+
+        /* Flashcard Stats Screen */
+        .flashcard-stats {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 420px;
+            margin: 1rem 0;
+            color: #fff;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .fc-score-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fc-stats-content {
+            flex-grow: 1;
+            width: 100%;
+            overflow-y: auto;
+            margin: 1rem 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .fc-stats-content::-webkit-scrollbar { width: 6px; }
+        .fc-stats-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .fc-stats-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        
+        .fc-stats-content h4 {
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .fc-wrong-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .fc-wrong-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+        
+        .fc-wrong-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .fc-wrong-word {
+            font-weight: 700;
+            color: var(--accent-danger);
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .fc-wrong-def {
+            font-size: 0.95rem;
+            color: #d4d4d8;
+            line-height: 1.5;
+        }
+        
+        .fc-stats-actions {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            justify-content: center;
         }
 
         /* Companion Pet Styles */
@@ -804,6 +952,10 @@
             #companion-pet { width: 60px; height: 60px; }
             .motivation-bubble { font-size: 0.8rem; padding: 0.5rem 1rem; }
             .z1 { left: 40px; } .z2 { left: 55px; } .z3 { left: 65px; }
+            
+            /* Make flashcard buttons smaller on mobile */
+            .fc-eval-btn { width: 50px; height: 50px; }
+            .fc-eval-btn svg { width: 24px; height: 24px; }
         }
 
         /* Keyframes refined for smoothness */
@@ -825,7 +977,7 @@
 
     <header>
         <div class="title-row">
-            <h1>Final Exam Prep Guide <span class="version-badge">v3.3</span></h1>
+            <h1>Final Exam Prep Guide <span class="version-badge">v3.5</span></h1>
             <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
         </div>
         <div class="warning-text">⚠️ If website stops, reload the website!</div>
@@ -867,6 +1019,8 @@
                 <button class="close-modal" onclick="closeModal('changelog-modal')">&times;</button>
             </div>
             <ul class="changelog-list">
+                <li><span class="changelog-version">v3.5</span> Added Stats screen at the end of Flashcard decks (Score, Words to Review, Redo, and Quit).</li>
+                <li><span class="changelog-version">v3.4</span> Updated Flashcard Mode with Tick/Cross assessment buttons, smooth color animations, and dedicated Audio Stop button.</li>
                 <li><span class="changelog-version">v3.3</span> Added "Flashcards Mode" with interactive 3D flipping cards inside of every topic!</li>
                 <li><span class="changelog-version">v3.2</span> Added three real study videos with a working, self-hosted video player.</li>
                 <li><span class="changelog-version">v3.1</span> Added "VIDEOS" feature with an interactive video player modal!</li>
@@ -882,32 +1036,70 @@
             <div class="modal-header">
                 <div>
                     <h2 id="fc-modal-title">Flashcards</h2>
-                    <p class="subtext">Tap the card to flip it over. Use arrows to navigate.</p>
+                    <p class="subtext">Tap the card to flip it over. Assess your knowledge below!</p>
                 </div>
                 <button class="close-modal" onclick="closeModal('flashcard-modal'); stopSpecificAudio();">&times;</button>
             </div>
             
-            <div class="flashcard-container">
-                <div class="flip-card" id="fc-card" onclick="this.classList.toggle('is-flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="word" id="fc-word">Word</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="def" id="fc-def">Definition</div>
-                            <div class="sent" id="fc-sent">Sentence</div>
-                            <button class="audio-btn" style="margin-top: 1.5rem; width: 45px; height: 45px;" onclick="event.stopPropagation(); playFlashcardAudio()">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                            </button>
+            <div class="flashcard-wrapper" id="fc-wrapper">
+                
+                <!-- Main Flashcard View -->
+                <div class="flashcard-container" id="fc-container">
+                    <div class="flip-card" id="fc-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="flip-card-inner" id="fc-inner">
+                            <div class="flip-card-front">
+                                <div class="word" id="fc-word">Word</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="def" id="fc-def">Definition</div>
+                                <div class="sent" id="fc-sent">Sentence</div>
+                                
+                                <!-- Flashcard Audio Controls -->
+                                <div class="fc-audio-controls">
+                                    <button class="audio-btn" id="fc-play-btn" style="width: 45px; height: 45px;" onclick="event.stopPropagation(); playFlashcardAudio()">
+                                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                                    </button>
+                                    <button class="audio-btn stop-btn" id="fc-stop-btn" style="width: 45px; height: 45px; background: var(--accent-danger);" onclick="event.stopPropagation(); stopSpecificAudio()">
+                                        <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z" fill="currentColor"/></svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Tick & Cross Assessment Controls -->
+                    <div class="fc-assessment-controls">
+                        <button class="fc-eval-btn cross-btn" onclick="markFlashcard(false)" title="I don't know this">
+                            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                        </button>
+                        <button class="fc-eval-btn tick-btn" onclick="markFlashcard(true)" title="I know this">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Bottom Navigation -->
+                    <div class="flashcard-controls">
+                        <button class="fc-btn" id="fc-prev" onclick="prevCard()">&#8592; Previous</button>
+                        <div class="fc-counter" id="fc-counter">1 / 10</div>
+                        <button class="fc-btn" id="fc-next" onclick="nextCard()">Next &#8594;</button>
+                    </div>
                 </div>
-                
-                <div class="flashcard-controls">
-                    <button class="fc-btn" id="fc-prev" onclick="prevCard()">&#8592; Previous</button>
-                    <div class="fc-counter" id="fc-counter">1 / 10</div>
-                    <button class="fc-btn" id="fc-next" onclick="nextCard()">Next &#8594;</button>
+
+                <!-- Stats View (Hidden by default) -->
+                <div class="flashcard-stats" id="fc-stats">
+                    <h3 class="fc-score-title" id="fc-score-title">You scored X / Y!</h3>
+                    <div class="fc-stats-content">
+                        <h4>Words to review:</h4>
+                        <ul id="fc-wrong-list" class="fc-wrong-list">
+                            <!-- Incorrect words injected here -->
+                        </ul>
+                    </div>
+                    <div class="fc-stats-actions">
+                        <button class="fc-btn" onclick="redoFlashcards()">Redo Deck</button>
+                        <button class="fc-btn" style="background: var(--accent-danger);" onclick="quitFlashcards()">Quit</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -1029,11 +1221,11 @@
                     <div class="topic-section">
                         <h3>Language</h3>
                         <ul>
-                            <li><strong>Unit 5:</strong> Where Does Our Food Come From? The World Around Us. (Pg. 48-55)</li>
-                            <li><strong>Unit 6:</strong> Food and Farming (Pg. 56-63)</li>
-                            <li><strong>Unit 7:</strong> Why Do We Make Art; Art and Artists (Pg. 68-75)</li>
-                            <li><strong>Unit 8:</strong> Vocabulary: Art (Pg. 76-83)</li>
-                            <li><strong>Unit 9:</strong> City (Pg. 88-95)</li>
+                            <li><strong>Unit 5:</strong> Where Does Our Food Come From? The World Around Us. (Pg. 48-55)[cite: 1]</li>
+                            <li><strong>Unit 6:</strong> Food and Farming (Pg. 56-63)[cite: 1]</li>
+                            <li><strong>Unit 7:</strong> Why Do We Make Art; Art and Artists (Pg. 68-75)[cite: 1]</li>
+                            <li><strong>Unit 8:</strong> Vocabulary: Art (Pg. 76-83)[cite: 1]</li>
+                            <li><strong>Unit 9:</strong> City (Pg. 88-95)[cite: 1]</li>
                         </ul>
                     </div>
 
@@ -1392,6 +1584,7 @@
         // Flashcard specific variables
         let currentFlashcards = [];
         let currentFcIndex = 0;
+        let flashcardResults = []; // Store results { item, knewIt }
 
         // Modal Logic
         function openModal(id) {
@@ -1496,9 +1689,14 @@
             const group = vocabularyData[tabName][groupIndex];
             currentFlashcards = group.words;
             currentFcIndex = 0;
+            flashcardResults = [];
             
             const title = group.groupTitle || group.story || "Flashcards";
             document.getElementById('fc-modal-title').innerText = title;
+            
+            // Ensure flashcard container is visible, hide stats
+            document.getElementById('fc-container').style.display = 'flex';
+            document.getElementById('fc-stats').style.display = 'none';
             
             updateFlashcardUI();
             openModal('flashcard-modal');
@@ -1506,17 +1704,22 @@
 
         function updateFlashcardUI() {
             const cardEl = document.getElementById('fc-card');
+            const cardInner = document.getElementById('fc-inner');
+            
             cardEl.classList.remove('is-flipped');
+            cardInner.classList.remove('flash-success', 'flash-error');
             
             if (currentFlashcards.length === 0) return;
             
             const item = currentFlashcards[currentFcIndex];
             
-            // Set slight delay so text changes while card is "face up" again if user clicks fast
+            // Stop audio if it was playing for the previous card
+            stopSpecificAudio();
+            
             setTimeout(() => {
                 document.getElementById('fc-word').innerText = item.word;
                 document.getElementById('fc-def').innerText = item.definition;
-                document.getElementById('fc-sent').innerText = `"${item.sentence}"`;
+                document.getElementById('fc-sent').innerText = item.sentence ? `"${item.sentence}"` : "";
                 
                 document.getElementById('fc-counter').innerText = `${currentFcIndex + 1} / ${currentFlashcards.length}`;
                 
@@ -1540,6 +1743,72 @@
                 updateFlashcardUI();
             }
         }
+        
+        function markFlashcard(knewIt) {
+            const cardInner = document.getElementById('fc-inner');
+            
+            // Record result
+            flashcardResults[currentFcIndex] = { item: currentFlashcards[currentFcIndex], knewIt: knewIt };
+
+            // Add appropriate animation class
+            if (knewIt) {
+                cardInner.classList.add('flash-success');
+            } else {
+                cardInner.classList.add('flash-error');
+            }
+
+            // Wait for brief visual feedback, then move to next card or show stats
+            setTimeout(() => {
+                cardInner.classList.remove('flash-success', 'flash-error');
+                
+                if (currentFcIndex < currentFlashcards.length - 1) {
+                    stopSpecificAudio();
+                    currentFcIndex++;
+                    updateFlashcardUI();
+                } else {
+                    showFlashcardStats();
+                }
+            }, 400); 
+        }
+
+        function showFlashcardStats() {
+            stopSpecificAudio();
+            document.getElementById('fc-container').style.display = 'none';
+            document.getElementById('fc-stats').style.display = 'flex';
+            
+            const correctCount = flashcardResults.filter(r => r.knewIt).length;
+            const wrongResults = flashcardResults.filter(r => !r.knewIt);
+            
+            document.getElementById('fc-score-title').innerText = `You scored ${correctCount} / ${currentFlashcards.length}!`;
+            
+            let listHTML = '';
+            if (wrongResults.length === 0) {
+                listHTML = '<li style="text-align:center; color: var(--accent-sci); font-weight:700; margin-top: 2rem;">Perfect score! You know all the words! 🥳</li>';
+            } else {
+                wrongResults.forEach(w => {
+                    listHTML += `
+                        <li class="fc-wrong-item">
+                            <div class="fc-wrong-word">${w.item.word}</div>
+                            <div class="fc-wrong-def">${w.item.definition}</div>
+                        </li>
+                    `;
+                });
+            }
+            document.getElementById('fc-wrong-list').innerHTML = listHTML;
+        }
+
+        function redoFlashcards() {
+            currentFcIndex = 0;
+            flashcardResults = [];
+            document.getElementById('fc-stats').style.display = 'none';
+            document.getElementById('fc-container').style.display = 'flex';
+            updateFlashcardUI();
+        }
+
+        function quitFlashcards() {
+            closeModal('flashcard-modal');
+            stopSpecificAudio();
+        }
 
         function playFlashcardAudio() {
             stopSpecificAudio();
@@ -1557,6 +1826,16 @@
             if (preferredVoice) currentUtterance.voice = preferredVoice;
             currentUtterance.rate = 0.95;
             currentUtterance.pitch = 1.0;
+            
+            currentActiveCardStopBtn = document.getElementById('fc-stop-btn');
+
+            currentUtterance.onstart = () => {
+                speechPlaying = true;
+                if(currentActiveCardStopBtn) currentActiveCardStopBtn.style.display = 'flex';
+            };
+
+            currentUtterance.onend = () => resetAudioState();
+            currentUtterance.onerror = () => resetAudioState();
 
             window.speechSynthesis.speak(currentUtterance);
         }
