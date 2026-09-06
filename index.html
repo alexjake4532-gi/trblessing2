@@ -633,7 +633,15 @@
             border: none;
         }
 
+        .video-container video { background: #000; }
+
         /* --- FLASHCARD STYLES --- */
+        .flashcard-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
         .flashcard-container {
             display: flex;
             flex-direction: column;
@@ -703,6 +711,7 @@
             font-size: 3rem;
             font-weight: 700;
             color: #fff;
+            word-break: break-word;
         }
 
         .flip-card-back {
@@ -956,6 +965,9 @@
             /* Make flashcard buttons smaller on mobile */
             .fc-eval-btn { width: 50px; height: 50px; }
             .fc-eval-btn svg { width: 24px; height: 24px; }
+            
+            .flip-card-front .word { font-size: 2.2rem; }
+            .flashcard-container, .flashcard-stats { height: 350px; }
         }
 
         /* Keyframes refined for smoothness */
@@ -977,7 +989,7 @@
 
     <header>
         <div class="title-row">
-            <h1>Final Exam Prep Guide <span class="version-badge">v3.5</span></h1>
+            <h1>Final Exam Prep Guide <span class="version-badge">v3.6</span></h1>
             <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
         </div>
         <div class="warning-text">⚠️ If website stops, reload the website!</div>
@@ -1019,6 +1031,7 @@
                 <button class="close-modal" onclick="closeModal('changelog-modal')">&times;</button>
             </div>
             <ul class="changelog-list">
+                <li><span class="changelog-version">v3.6</span> BUG FIX: Rebuilt Flashcard Stats logic. Skipped cards are now properly tracked, ensuring exact scores and that no unreviewed words are missed.</li>
                 <li><span class="changelog-version">v3.5</span> Added Stats screen at the end of Flashcard decks (Score, Words to Review, Redo, and Quit).</li>
                 <li><span class="changelog-version">v3.4</span> Updated Flashcard Mode with Tick/Cross assessment buttons, smooth color animations, and dedicated Audio Stop button.</li>
                 <li><span class="changelog-version">v3.3</span> Added "Flashcards Mode" with interactive 3D flipping cards inside of every topic!</li>
@@ -1221,11 +1234,11 @@
                     <div class="topic-section">
                         <h3>Language</h3>
                         <ul>
-                            <li><strong>Unit 5:</strong> Where Does Our Food Come From? The World Around Us. (Pg. 48-55)[cite: 1]</li>
-                            <li><strong>Unit 6:</strong> Food and Farming (Pg. 56-63)[cite: 1]</li>
-                            <li><strong>Unit 7:</strong> Why Do We Make Art; Art and Artists (Pg. 68-75)[cite: 1]</li>
-                            <li><strong>Unit 8:</strong> Vocabulary: Art (Pg. 76-83)[cite: 1]</li>
-                            <li><strong>Unit 9:</strong> City (Pg. 88-95)[cite: 1]</li>
+                            <li><strong>Unit 5:</strong> Where Does Our Food Come From? The World Around Us. (Pg. 48-55)</li>
+                            <li><strong>Unit 6:</strong> Food and Farming (Pg. 56-63)</li>
+                            <li><strong>Unit 7:</strong> Why Do We Make Art; Art and Artists (Pg. 68-75)</li>
+                            <li><strong>Unit 8:</strong> Vocabulary: Art (Pg. 76-83)</li>
+                            <li><strong>Unit 9:</strong> City (Pg. 88-95)</li>
                         </ul>
                     </div>
 
@@ -1748,7 +1761,7 @@
             const cardInner = document.getElementById('fc-inner');
             
             // Record result
-            flashcardResults[currentFcIndex] = { item: currentFlashcards[currentFcIndex], knewIt: knewIt };
+            flashcardResults[currentFcIndex] = { knewIt: knewIt };
 
             // Add appropriate animation class
             if (knewIt) {
@@ -1776,20 +1789,33 @@
             document.getElementById('fc-container').style.display = 'none';
             document.getElementById('fc-stats').style.display = 'flex';
             
-            const correctCount = flashcardResults.filter(r => r.knewIt).length;
-            const wrongResults = flashcardResults.filter(r => !r.knewIt);
+            let correctCount = 0;
+            let wrongItems = [];
+            
+            // Loop through the entire deck to properly check skipped cards
+            currentFlashcards.forEach((item, index) => {
+                const result = flashcardResults[index];
+                
+                // Only count as correct if the user explicitly clicked the tick button
+                if (result && result.knewIt === true) {
+                    correctCount++;
+                } else {
+                    // If it was marked wrong, or skipped entirely, add it to review list
+                    wrongItems.push(item);
+                }
+            });
             
             document.getElementById('fc-score-title').innerText = `You scored ${correctCount} / ${currentFlashcards.length}!`;
             
             let listHTML = '';
-            if (wrongResults.length === 0) {
+            if (wrongItems.length === 0) {
                 listHTML = '<li style="text-align:center; color: var(--accent-sci); font-weight:700; margin-top: 2rem;">Perfect score! You know all the words! 🥳</li>';
             } else {
-                wrongResults.forEach(w => {
+                wrongItems.forEach(w => {
                     listHTML += `
                         <li class="fc-wrong-item">
-                            <div class="fc-wrong-word">${w.item.word}</div>
-                            <div class="fc-wrong-def">${w.item.definition}</div>
+                            <div class="fc-wrong-word">${w.word}</div>
+                            <div class="fc-wrong-def">${w.definition}</div>
                         </li>
                     `;
                 });
