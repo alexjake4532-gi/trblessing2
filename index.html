@@ -585,56 +585,6 @@
             font-size: 0.8rem;
         }
 
-        /* Videos Styles */
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .video-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.25rem;
-            transition: all 0.4s var(--spring-easing);
-        }
-        
-        .video-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255,255,255,0.15);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .video-card h3 {
-            color: var(--accent-lang);
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            border-radius: 8px;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-container video { background: #000; }
-
         /* --- FLASHCARD STYLES --- */
         .flashcard-wrapper {
             display: flex;
@@ -983,13 +933,119 @@
             from { opacity: 0; transform: translateY(40px) scale(0.95); } 
             to { opacity: 1; transform: translateY(0) scale(1); } 
         }
+
+        /* --- SECRET ADMIN PANEL --- */
+        .admin-panel {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0,0,0,.78);
+            backdrop-filter: blur(12px);
+        }
+        .admin-panel.active { display: flex; }
+        .admin-box {
+            width: min(1050px, 96vw);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: rgba(18,18,22,.96);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,.55);
+        }
+        .admin-box h2 { margin: 0 0 .35rem; }
+        .admin-sub { color: var(--text-muted); font-size: .9rem; margin-bottom: 1.2rem; }
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .admin-field { display:flex; flex-direction:column; gap:.4rem; }
+        .admin-field.full { grid-column: 1 / -1; }
+        .admin-field label { font-size:.82rem; color:var(--text-muted); font-weight:700; }
+        .admin-field input, .admin-field select, .admin-field textarea {
+            width:100%;
+            border:1px solid rgba(255,255,255,.12);
+            background:rgba(255,255,255,.05);
+            color:#fff;
+            border-radius:10px;
+            padding:.75rem;
+            outline:none;
+        }
+        .admin-field textarea { min-height:90px; resize:vertical; }
+        .admin-field input:focus, .admin-field select:focus, .admin-field textarea:focus {
+            border-color: var(--accent-lang);
+            box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+        }
+        .admin-actions { display:flex; flex-wrap:wrap; gap:.65rem; margin-top:1rem; }
+        .admin-action {
+            border:1px solid rgba(255,255,255,.14);
+            background:rgba(255,255,255,.07);
+            color:#fff;
+            border-radius:10px;
+            padding:.7rem 1rem;
+            font-weight:700;
+            cursor:pointer;
+        }
+        .admin-action:hover { background:rgba(255,255,255,.14); transform:translateY(-1px); }
+        .admin-action.primary { background:var(--accent-lang); border-color:var(--accent-lang); }
+        .admin-action.danger { background:rgba(239,68,68,.15); border-color:var(--accent-danger); color:#fff; }
+        .admin-status {
+            margin-top:.9rem;
+            padding:.7rem .85rem;
+            border-radius:10px;
+            background:rgba(255,255,255,.04);
+            color:var(--text-muted);
+            font-size:.85rem;
+        }
+        .admin-list {
+            margin-top:1rem;
+            max-height:260px;
+            overflow-y:auto;
+            display:flex;
+            flex-direction:column;
+            gap:.45rem;
+        }
+        .admin-item {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:.75rem;
+            padding:.65rem .75rem;
+            border:1px solid rgba(255,255,255,.07);
+            border-radius:10px;
+            background:rgba(0,0,0,.2);
+        }
+        .admin-item strong { color:#fff; }
+        .admin-item small { color:var(--text-muted); display:block; margin-top:.15rem; }
+        .admin-item button { flex-shrink:0; }
+        .admin-login {
+            width:min(430px,96vw);
+        }
+        .admin-login .admin-grid { grid-template-columns:1fr; }
+        .admin-note {
+            margin-top:.8rem;
+            color:var(--text-muted);
+            font-size:.78rem;
+            line-height:1.5;
+        }
+        @media (max-width:640px) {
+            .admin-grid { grid-template-columns:1fr; }
+            .admin-field.full { grid-column:auto; }
+            .admin-box { padding:1rem; }
+        }
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="title-row">
-            <h1>Final Exam Prep Guide <span class="version-badge">v3.6</span></h1>
+            <h1 id="exam-title" title="Click the title">Final Exam Prep Guide <span class="version-badge">v3.9</span></h1>
             <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
         </div>
         <div class="warning-text">⚠️ If website stops, reload the website!</div>
@@ -1013,14 +1069,86 @@
             <button class="action-btn" onclick="openModal('topics-modal')">
                 📖 What to Study
             </button>
-            <button class="action-btn highlight" onclick="openModal('videos-modal'); renderVideos();">
-                🎥 Videos
-            </button>
         </div>
     </div>
 
     <div id="words-grid" class="words-grid theme-language">
         <!-- Javascript dynamic cards injection -->
+    </div>
+
+
+    <!-- Secret Admin Unlock -->
+    <div id="admin-code-modal" class="admin-panel">
+        <div class="admin-box admin-login">
+            <div class="modal-header">
+                <div>
+                    <h2>🔐 Admin Access</h2>
+                    <p class="subtext">Enter the admin code to unlock vocabulary controls.</p>
+                </div>
+                <button class="close-modal" onclick="closeAdminCode()">&times;</button>
+            </div>
+            <div class="admin-grid">
+                <div class="admin-field">
+                    <label for="admin-code-input">Admin code</label>
+                    <input id="admin-code-input" type="password" autocomplete="off" placeholder="Enter code">
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button class="admin-action primary" onclick="verifyAdminCode()">Unlock Admin Panel</button>
+                <button class="admin-action" onclick="closeAdminCode()">Cancel</button>
+            </div>
+            <div id="admin-login-status" class="admin-status">Access is reset whenever the page is refreshed.</div>
+        </div>
+    </div>
+
+    <!-- Vocabulary Admin Panel -->
+    <div id="admin-panel" class="admin-panel">
+        <div class="admin-box">
+            <div class="modal-header">
+                <div>
+                    <h2>🛠️ Vocabulary Admin</h2>
+                    <p class="subtext">Add, edit, or remove vocabulary across every subject.</p>
+                </div>
+                <button class="close-modal" onclick="closeAdminPanel()">&times;</button>
+            </div>
+
+            <div class="admin-grid">
+                <div class="admin-field">
+                    <label for="admin-subject">Subject</label>
+                    <select id="admin-subject"></select>
+                </div>
+                <div class="admin-field">
+                    <label for="admin-group">Group / Topic</label>
+                    <select id="admin-group"></select>
+                </div>
+                <div class="admin-field">
+                    <label for="admin-word">Word</label>
+                    <input id="admin-word" type="text" placeholder="Vocabulary word">
+                </div>
+                <div class="admin-field">
+                    <label for="admin-definition">Definition</label>
+                    <textarea id="admin-definition" placeholder="Definition"></textarea>
+                </div>
+                <div class="admin-field full">
+                    <label for="admin-sentence">Example sentence</label>
+                    <textarea id="admin-sentence" placeholder="Example sentence"></textarea>
+                </div>
+            </div>
+
+            <div class="admin-actions">
+                <button class="admin-action primary" onclick="saveAdminVocab()">➕ Add / Save Word</button>
+                <button class="admin-action" onclick="clearAdminForm()">Clear Form</button>
+                <button class="admin-action danger" onclick="deleteSelectedAdminVocab()">🗑️ Remove Selected</button>
+                <button class="admin-action" onclick="closeAdminPanel()">Close</button>
+            </div>
+
+            <div id="admin-status" class="admin-status">Cloud sync is loading...</div>
+            <div id="admin-vocab-list" class="admin-list"></div>
+            <div class="admin-note">
+                Cross-device sync is enabled when a Firebase Realtime Database URL is placed in CLOUD_DB_URL near the top of the script.
+                Once connected, admin vocabulary changes are stored in the cloud and loaded by every device.
+            </div>
+        </div>
     </div>
 
     <!-- Changelog Modal -->
@@ -1035,8 +1163,6 @@
                 <li><span class="changelog-version">v3.5</span> Added Stats screen at the end of Flashcard decks (Score, Words to Review, Redo, and Quit).</li>
                 <li><span class="changelog-version">v3.4</span> Updated Flashcard Mode with Tick/Cross assessment buttons, smooth color animations, and dedicated Audio Stop button.</li>
                 <li><span class="changelog-version">v3.3</span> Added "Flashcards Mode" with interactive 3D flipping cards inside of every topic!</li>
-                <li><span class="changelog-version">v3.2</span> Added three real study videos with a working, self-hosted video player.</li>
-                <li><span class="changelog-version">v3.1</span> Added "VIDEOS" feature with an interactive video player modal!</li>
                 <li><span class="changelog-version">v3.0</span> MAJOR UPDATE: Shifted to Final Exam! Timetable, Syllabus, Language, and Phonics Vocab completely updated.</li>
                 <li><span class="changelog-version">v2.5</span> Shifted content to match initial provided code and cleared old midterm data.</li>
             </ul>
@@ -1113,24 +1239,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    <!-- Videos Modal -->
-    <div id="videos-modal" class="modal-overlay">
-        <div class="modal-content large">
-            <div class="modal-header">
-                <div>
-                    <h2>Study Videos</h2>
-                    <p class="subtext">Watch and review important lessons.</p>
-                </div>
-                <button class="close-modal" onclick="closeModal('videos-modal'); stopVideos();">&times;</button>
-            </div>
-            <div class="topics-scroll-area">
-                <div id="video-list" class="video-grid">
-                    <!-- Videos will be injected here via JavaScript -->
-                </div>
             </div>
         </div>
     </div>
@@ -1396,28 +1504,6 @@
     </div>
 
     <script>
-        // --- VIDEO DATA ARRAY ---
-        const videoData = [
-            {
-                title: "Sarasas Witaed Exams",
-                description: "A breakdown of the Semester 1 final exams, including the core subjects, languages, and the four-day battle plan.",
-                url: "Sarasas_Witaed_Exams.mp4",
-                type: "file"
-            },
-            {
-                title: "Cognitive Pacing: Exam Schedule",
-                description: "Explains how schools use cognitive load scheduling and strategic review blocks to keep student stamina high.",
-                url: "Cognitive_Pacing__The_Engineering_of_an_Exam_Schedule.mp4",
-                type: "file"
-            },
-            {
-                title: "Inside a 4th Grade Curriculum",
-                description: "Details the advanced STEM requirements, extreme language load, and the logistical marathon of the tests.",
-                url: "Inside_a_4th_Grade_International_Curriculum.mp4",
-                type: "file"
-            }
-        ];
-
         // Cleared old midterm questions so they won't confuse you. Ready to be populated!
         const studyQuestions = {
             science: [],
@@ -1571,6 +1657,397 @@
             healthEducation: []
         };
 
+
+        // ============================================================
+        // SECRET ADMIN + CLOUD VOCABULARY SYNC
+        // ============================================================
+        // IMPORTANT:
+        // A plain HTML file cannot securely hide an admin password.
+        // This is a convenience unlock, not real authentication.
+        // For cross-device persistence, set your Firebase Realtime
+        // Database URL below. Example:
+        // https://your-project-default-rtdb.firebaseio.com
+        const CLOUD_DB_URL = "https://final-exam-44e01-default-rtdb.firebaseio.com"; // Firebase Realtime Database
+        const CLOUD_DB_PATH = "final-exam-vocabulary";
+
+        const ADMIN_TRIGGER = "ADMIN";
+        const ADMIN_CODE = "Alex Jake";
+        const LOCAL_VOCAB_KEY = "finalExamVocabularyOverrides_v1";
+
+        let adminArmed = false;
+        let adminBuffer = "";
+        let adminUnlocked = false;
+        let adminEditingRef = null;
+        let cloudReady = false;
+
+        const SUBJECT_LABELS = {
+            language: "Language",
+            phonics: "Phonics",
+            science: "Science",
+            socialStudies: "Social Studies",
+            mathematics: "Mathematics",
+            healthEducation: "Health Education"
+        };
+
+        function cloneVocabularyData(data) {
+            return JSON.parse(JSON.stringify(data));
+        }
+
+        function normaliseVocabulary(data) {
+            const subjects = Object.keys(SUBJECT_LABELS);
+            const result = {};
+            subjects.forEach(subject => {
+                result[subject] = Array.isArray(data?.[subject])
+                    ? data[subject]
+                    : [];
+            });
+            return result;
+        }
+
+        async function loadVocabularyFromCloud() {
+            if (!CLOUD_DB_URL.trim()) return null;
+
+            try {
+                const response = await fetch(
+                    `${CLOUD_DB_URL.replace(/\/$/, "")}/${CLOUD_DB_PATH}.json`,
+                    { cache: "no-store" }
+                );
+                if (!response.ok) throw new Error(`Cloud read failed (${response.status})`);
+                const data = await response.json();
+                if (!data) return null;
+                cloudReady = true;
+                return normaliseVocabulary(data);
+            } catch (error) {
+                console.warn("Cloud vocabulary unavailable:", error);
+                cloudReady = false;
+                return null;
+            }
+        }
+
+        async function saveVocabularyToCloud() {
+            if (!CLOUD_DB_URL.trim()) return false;
+
+            try {
+                const response = await fetch(
+                    `${CLOUD_DB_URL.replace(/\/$/, "")}/${CLOUD_DB_PATH}.json`,
+                    {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(vocabularyData)
+                    }
+                );
+                if (!response.ok) throw new Error(`Cloud write failed (${response.status})`);
+                cloudReady = true;
+                return true;
+            } catch (error) {
+                console.error("Cloud vocabulary save failed:", error);
+                cloudReady = false;
+                return false;
+            }
+        }
+
+        function saveVocabularyLocal() {
+            localStorage.setItem(LOCAL_VOCAB_KEY, JSON.stringify(vocabularyData));
+        }
+
+        function loadVocabularyLocal() {
+            try {
+                const saved = localStorage.getItem(LOCAL_VOCAB_KEY);
+                return saved ? normaliseVocabulary(JSON.parse(saved)) : null;
+            } catch {
+                return null;
+            }
+        }
+
+        async function initialiseVocabularyStorage() {
+            const cloudData = await loadVocabularyFromCloud();
+
+            if (cloudData) {
+                Object.keys(SUBJECT_LABELS).forEach(subject => {
+                    vocabularyData[subject] = cloudData[subject];
+                });
+                saveVocabularyLocal();
+                return;
+            }
+
+            const localData = loadVocabularyLocal();
+            if (localData) {
+                Object.keys(SUBJECT_LABELS).forEach(subject => {
+                    vocabularyData[subject] = localData[subject];
+                });
+            }
+
+            // If the cloud database is configured but empty, seed it with the
+            // existing vocabulary so every device starts from the same data.
+            if (CLOUD_DB_URL.trim()) {
+                await saveVocabularyToCloud();
+            }
+        }
+
+        function armAdminSecret() {
+            adminArmed = true;
+            adminBuffer = "";
+            clearTimeout(window.__adminArmTimer);
+            window.__adminArmTimer = setTimeout(() => {
+                adminArmed = false;
+                adminBuffer = "";
+            }, 15000);
+        }
+
+        document.getElementById("exam-title").addEventListener("click", armAdminSecret);
+
+        document.addEventListener("keydown", (event) => {
+            if (!adminArmed || adminUnlocked) return;
+
+            if (event.key.length === 1) {
+                adminBuffer += event.key;
+                if (adminBuffer.length > ADMIN_TRIGGER.length) {
+                    adminBuffer = adminBuffer.slice(-ADMIN_TRIGGER.length);
+                }
+
+                if (adminBuffer === ADMIN_TRIGGER) {
+                    adminArmed = false;
+                    adminBuffer = "";
+                    openAdminCode();
+                }
+            }
+        });
+
+        function openAdminCode() {
+            document.getElementById("admin-code-modal").classList.add("active");
+            const input = document.getElementById("admin-code-input");
+            input.value = "";
+            document.getElementById("admin-login-status").textContent =
+                "Enter the admin code. Admin access will not survive a refresh.";
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closeAdminCode() {
+            document.getElementById("admin-code-modal").classList.remove("active");
+        }
+
+        function verifyAdminCode() {
+            const input = document.getElementById("admin-code-input");
+            const status = document.getElementById("admin-login-status");
+
+            if (input.value === ADMIN_CODE) {
+                adminUnlocked = true;
+                closeAdminCode();
+                openAdminPanel();
+            } else {
+                status.textContent = "Incorrect admin code.";
+                input.value = "";
+                input.focus();
+            }
+        }
+
+        document.getElementById("admin-code-input").addEventListener("keydown", (event) => {
+            if (event.key === "Enter") verifyAdminCode();
+        });
+
+        function openAdminPanel() {
+            if (!adminUnlocked) return;
+            document.getElementById("admin-panel").classList.add("active");
+            populateAdminSubjects();
+            updateAdminGroupOptions();
+            renderAdminVocabList();
+            updateAdminStatus();
+        }
+
+        function closeAdminPanel() {
+            document.getElementById("admin-panel").classList.remove("active");
+            adminEditingRef = null;
+            clearAdminForm();
+        }
+
+        function populateAdminSubjects() {
+            const select = document.getElementById("admin-subject");
+            if (select.options.length) return;
+
+            Object.entries(SUBJECT_LABELS).forEach(([key, label]) => {
+                const option = document.createElement("option");
+                option.value = key;
+                option.textContent = label;
+                select.appendChild(option);
+            });
+
+            select.addEventListener("change", () => {
+                adminEditingRef = null;
+                clearAdminForm();
+                updateAdminGroupOptions();
+                renderAdminVocabList();
+            });
+        }
+
+        function updateAdminGroupOptions() {
+            const subject = document.getElementById("admin-subject").value;
+            const select = document.getElementById("admin-group");
+            select.innerHTML = "";
+
+            const data = vocabularyData[subject] || [];
+            const grouped = data.length > 0 &&
+                (data[0].groupTitle || data[0].story);
+
+            if (grouped) {
+                data.forEach((group, index) => {
+                    const option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = group.groupTitle || group.story || `Group ${index + 1}`;
+                    select.appendChild(option);
+                });
+            } else {
+                const option = document.createElement("option");
+                option.value = "flat";
+                option.textContent = "General Vocabulary";
+                select.appendChild(option);
+            }
+        }
+
+        function getAdminTargetWords() {
+            const subject = document.getElementById("admin-subject").value;
+            const groupValue = document.getElementById("admin-group").value;
+            const data = vocabularyData[subject] || [];
+
+            if (groupValue === "flat" || !data.length) {
+                if (!data.length) vocabularyData[subject] = [];
+                return vocabularyData[subject];
+            }
+
+            return data[Number(groupValue)]?.words || [];
+        }
+
+        function getAdminGroupKey() {
+            const subject = document.getElementById("admin-subject").value;
+            const groupValue = document.getElementById("admin-group").value;
+            const data = vocabularyData[subject] || [];
+
+            if (groupValue === "flat" || !data.length) return null;
+            return Number(groupValue);
+        }
+
+        function clearAdminForm() {
+            document.getElementById("admin-word").value = "";
+            document.getElementById("admin-definition").value = "";
+            document.getElementById("admin-sentence").value = "";
+            adminEditingRef = null;
+        }
+
+        function editAdminVocab(index) {
+            const words = getAdminTargetWords();
+            const item = words[index];
+            if (!item) return;
+
+            adminEditingRef = index;
+            document.getElementById("admin-word").value = item.word || "";
+            document.getElementById("admin-definition").value = item.definition || "";
+            document.getElementById("admin-sentence").value = item.sentence || "";
+        }
+
+        async function persistVocabularyChanges() {
+            saveVocabularyLocal();
+            const synced = await saveVocabularyToCloud();
+            updateAdminStatus(synced
+                ? "Saved to cloud. Changes now sync to devices using the same Firebase database."
+                : (CLOUD_DB_URL.trim()
+                    ? "Cloud save failed. Local browser copy was saved instead."
+                    : "Saved locally. Add a Firebase Realtime Database URL to sync across devices.")
+            );
+            renderAdminVocabList();
+            renderTab(document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language");
+        }
+
+        async function saveAdminVocab() {
+            const subject = document.getElementById("admin-subject").value;
+            const groupValue = document.getElementById("admin-group").value;
+            const word = document.getElementById("admin-word").value.trim();
+            const definition = document.getElementById("admin-definition").value.trim();
+            const sentence = document.getElementById("admin-sentence").value.trim();
+
+            if (!word || !definition) {
+                updateAdminStatus("Word and definition are required.");
+                return;
+            }
+
+            const item = { word, definition, sentence };
+            const data = vocabularyData[subject] || [];
+            const grouped = data.length > 0 && (data[0].groupTitle || data[0].story);
+
+            if (grouped && groupValue !== "flat") {
+                const group = data[Number(groupValue)];
+                if (!group) return;
+
+                if (adminEditingRef === null) group.words.push(item);
+                else group.words[adminEditingRef] = item;
+            } else {
+                if (!Array.isArray(vocabularyData[subject])) vocabularyData[subject] = [];
+                if (adminEditingRef === null) vocabularyData[subject].push(item);
+                else vocabularyData[subject][adminEditingRef] = item;
+            }
+
+            clearAdminForm();
+            await persistVocabularyChanges();
+            updateAdminGroupOptions();
+        }
+
+        async function deleteSelectedAdminVocab() {
+            if (adminEditingRef === null) {
+                updateAdminStatus("Select a vocabulary item first.");
+                return;
+            }
+
+            const words = getAdminTargetWords();
+            const item = words[adminEditingRef];
+            if (!item) return;
+
+            words.splice(adminEditingRef, 1);
+            clearAdminForm();
+            await persistVocabularyChanges();
+        }
+
+        function renderAdminVocabList() {
+            const list = document.getElementById("admin-vocab-list");
+            if (!list) return;
+
+            const words = getAdminTargetWords();
+            list.innerHTML = "";
+
+            if (!words.length) {
+                list.innerHTML = '<div class="admin-status">No vocabulary in this subject/group yet.</div>';
+                return;
+            }
+
+            words.forEach((item, index) => {
+                const row = document.createElement("div");
+                row.className = "admin-item";
+                row.innerHTML = `
+                    <div>
+                        <strong>${escapeHTML(item.word || "")}</strong>
+                        <small>${escapeHTML(item.definition || "")}</small>
+                    </div>
+                    <button class="admin-action" onclick="editAdminVocab(${index})">Edit</button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        function updateAdminStatus(message) {
+            const status = document.getElementById("admin-status");
+            if (status) status.textContent = message || (
+                cloudReady
+                    ? "Cloud sync connected."
+                    : "Cloud sync is not configured; browser-only storage is active."
+            );
+        }
+
+        function escapeHTML(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
         const grid = document.getElementById('words-grid');
         const tabButtons = document.querySelectorAll('.tab-btn');
         const companionPet = document.getElementById('companion-pet');
@@ -1612,57 +2089,12 @@
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.classList.remove('active');
-                    if (modal.id === 'videos-modal') {
-                        stopVideos();
-                    }
                     if (modal.id === 'flashcard-modal') {
                         stopSpecificAudio();
                     }
                 }
             });
         });
-
-        // Video Rendering Logic
-        function renderVideos() {
-            const container = document.getElementById('video-list');
-            container.innerHTML = '';
-            
-            if (videoData.length === 0) {
-                container.innerHTML = `<div class="qa-card placeholder">Send your videos and they will appear here!</div>`;
-                return;
-            }
-
-            videoData.forEach((vid) => {
-                const isFile = vid.type === 'file' || /\.(mp4|webm|ogg)$/i.test(vid.url);
-                const player = isFile
-                    ? `<video controls preload="metadata" playsinline>
-                            <source src="${vid.url}">
-                            Your browser does not support the video tag.
-                       </video>`
-                    : `<iframe src="${vid.url}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
-
-                container.innerHTML += `
-                    <div class="video-card">
-                        <h3>${vid.title}</h3>
-                        <p style="color: var(--text-muted); font-size:0.9rem; margin-bottom: 1rem;">${vid.description}</p>
-                        <div class="video-container">
-                            ${player}
-                        </div>
-                    </div>
-                `;
-            });
-        }
-        
-        // Stop playing videos when modal closes
-        function stopVideos() {
-            document.querySelectorAll('#video-list video').forEach(v => {
-                v.pause();
-                v.removeAttribute('src');
-                v.load();
-            });
-            const container = document.getElementById('video-list');
-            container.innerHTML = '';
-        }
 
         // Helper to Create Vocabulary Card HTML Elements
         function createCardElement(item, index, theme) {
@@ -2132,12 +2564,16 @@
         window.speechSynthesis.onvoiceschanged = () => {};
 
         // Initial Setup
-        renderTab('language');
-        setTimeout(() => {
-            companionPet.classList.add('visible');
-            roamPet(); 
-            roamInterval = setInterval(roamPet, 5000); 
-        }, 1000); 
+        (async function initApp() {
+            await initialiseVocabularyStorage();
+            renderTab('language');
+
+            setTimeout(() => {
+                companionPet.classList.add('visible');
+                roamPet(); 
+                roamInterval = setInterval(roamPet, 5000); 
+            }, 1000); 
+        })();
 
     </script>
 </body>
