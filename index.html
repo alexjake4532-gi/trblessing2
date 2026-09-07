@@ -935,6 +935,195 @@
         }
 
         /* --- SECRET ADMIN PANEL --- */
+        .admin-intro {
+            position: fixed;
+            inset: 0;
+            z-index: 6000;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(65,105,255,.16), transparent 28%),
+                #030407;
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-intro.active {
+            opacity: 1;
+            pointer-events: none;
+            animation: adminIntroOut .7s 2.35s cubic-bezier(.22,.8,.2,1) forwards;
+        }
+        .admin-intro-grid {
+            position:absolute;
+            inset:-50%;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 54px 54px;
+            transform: perspective(500px) rotateX(58deg) translateY(15%);
+            animation: adminGridMove 2.8s linear infinite;
+        }
+        .admin-intro-vignette {
+            position:absolute;
+            inset:0;
+            background: radial-gradient(circle, transparent 25%, rgba(0,0,0,.88) 88%);
+        }
+        .admin-intro-scan {
+            position:absolute;
+            inset:0;
+            background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255,255,255,.018) 4px);
+            mix-blend-mode: screen;
+            pointer-events:none;
+        }
+        .admin-intro-core {
+            position:relative;
+            z-index:2;
+            text-align:center;
+            width:min(620px, 88vw);
+            transform: translateY(24px) scale(.96);
+            opacity:0;
+            animation: adminCoreIn .65s .12s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-kicker {
+            font-size:.68rem;
+            font-weight:800;
+            letter-spacing:.38em;
+            text-transform:uppercase;
+            color:rgba(255,255,255,.48);
+            margin-bottom:16px;
+        }
+        .admin-intro-title {
+            margin:0;
+            font-size:clamp(2.6rem, 7vw, 5.6rem);
+            line-height:.92;
+            letter-spacing:-.07em;
+            font-weight:900;
+            text-transform:uppercase;
+            text-shadow:0 0 34px rgba(120,150,255,.22);
+        }
+        .admin-intro-title span { display:inline-block; animation: adminTitlePulse 1.2s .55s ease both; }
+        .admin-intro-line {
+            height:1px;
+            width:0;
+            margin:25px auto 18px;
+            background:linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+            animation: adminLineIn .65s .72s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-status {
+            font-size:.74rem;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            color:rgba(255,255,255,.58);
+            animation: adminStatusBlink .9s 1s ease both;
+        }
+        .admin-intro-bar {
+            width:min(360px,70vw);
+            height:3px;
+            margin:22px auto 0;
+            background:rgba(255,255,255,.08);
+            overflow:hidden;
+            border-radius:99px;
+        }
+        .admin-intro-bar i {
+            display:block;
+            height:100%;
+            width:0;
+            background:#fff;
+            box-shadow:0 0 18px rgba(255,255,255,.7);
+            animation: adminLoad 1.45s .85s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-flash {
+            position:absolute;
+            inset:0;
+            background:#fff;
+            opacity:0;
+            z-index:4;
+            pointer-events:none;
+            animation:adminFlash .18s 2.18s ease-out forwards;
+        }
+        .admin-status-cycle { animation: adminStatusCycle .4s cubic-bezier(.16,1,.3,1) both !important; }
+        @keyframes adminStatusCycle { from { opacity:0; transform:translateY(7px); filter:blur(5px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
+        @keyframes adminCoreIn { to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes adminLineIn { to { width:100%; } }
+        @keyframes adminLoad { to { width:100%; } }
+        @keyframes adminGridMove { to { transform:perspective(500px) rotateX(58deg) translateY(25%); } }
+        @keyframes adminTitlePulse {
+            0% { opacity:0; letter-spacing:.16em; filter:blur(12px); }
+            55% { opacity:1; }
+            100% { letter-spacing:-.07em; filter:blur(0); }
+        }
+        @keyframes adminStatusBlink { 0%,100% { opacity:.45; } 50% { opacity:1; } }
+        @keyframes adminFlash { 0%{opacity:0} 45%{opacity:.16} 100%{opacity:0} }
+        @keyframes adminIntroOut {
+            0% { opacity:1; transform:scale(1); filter:blur(0); }
+            100% { opacity:0; transform:scale(1.025); filter:blur(8px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .admin-intro.active, .admin-intro-grid, .admin-intro-core, .admin-intro-title span,
+            .admin-intro-line, .admin-intro-status, .admin-intro-bar i, .admin-intro-flash {
+                animation:none !important;
+            }
+        }
+
+        /* --- v5.2 interaction-safe + cinematic refinements --- */
+        #admin-code-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .28s ease, visibility 0s linear .28s;
+        }
+        #admin-code-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition: opacity .28s ease, visibility 0s linear 0s;
+        }
+        #admin-code-modal.active .admin-login {
+            animation: adminCodePop .55s cubic-bezier(.16,1,.3,1) both;
+        }
+        #admin-code-modal.active .admin-login-badge { animation: adminElementIn .42s .10s both; }
+        #admin-code-modal.active .modal-header { animation: adminElementIn .42s .16s both; }
+        #admin-code-modal.active .admin-field { animation: adminElementIn .42s .22s both; }
+        #admin-code-modal.active .admin-actions { animation: adminElementIn .42s .28s both; }
+        #admin-code-modal.active .admin-status { animation: adminElementIn .42s .34s both; }
+
+        #admin-panel.active { animation: adminPanelIn .52s cubic-bezier(.16,1,.3,1) both; }
+        #admin-panel.closing { animation: adminPanelOut .36s ease both; }
+        #admin-panel .admin-box { transform-origin: center; }
+
+        .words-grid.vocab-switching > * {
+            animation: vocabSwitchOut .22s ease both !important;
+        }
+        .words-grid.vocab-entering > * {
+            animation: vocabSwitchIn .48s cubic-bezier(.16,1,.3,1) both !important;
+        }
+        @keyframes adminCodePop {
+            0% { opacity: 0; transform: translateY(22px) scale(.86) rotateX(8deg); filter: blur(12px); }
+            65% { opacity: 1; transform: translateY(-3px) scale(1.015) rotateX(0); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotateX(0); filter: blur(0); }
+        }
+        @keyframes adminElementIn {
+            from { opacity: 0; transform: translateY(10px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes adminPanelIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes adminPanelOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        @keyframes vocabSwitchOut {
+            from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+            to { opacity: 0; transform: translateY(-8px) scale(.985); filter: blur(4px); }
+        }
+        @keyframes vocabSwitchIn {
+            from { opacity: 0; transform: translateY(18px) scale(.98); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
         .admin-panel {
             position: fixed;
             inset: 0;
@@ -942,101 +1131,599 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
-            background: rgba(0,0,0,.78);
-            backdrop-filter: blur(12px);
+            padding: 24px;
+            background: rgba(3, 5, 10, .82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
+
         .admin-panel.active { display: flex; }
+
         .admin-box {
-            width: min(1050px, 96vw);
-            max-height: 90vh;
-            overflow-y: auto;
-            background: rgba(18,18,22,.96);
+            width: min(1180px, 96vw);
+            max-height: 92vh;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top right, rgba(59,130,246,.12), transparent 32%),
+                linear-gradient(145deg, rgba(25,27,34,.98), rgba(12,13,18,.98));
             border: 1px solid rgba(255,255,255,.12);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 30px 80px rgba(0,0,0,.55);
+            border-radius: 26px;
+            box-shadow: 0 40px 100px rgba(0,0,0,.65);
+            display: flex;
+            flex-direction: column;
         }
-        .admin-box h2 { margin: 0 0 .35rem; }
-        .admin-sub { color: var(--text-muted); font-size: .9rem; margin-bottom: 1.2rem; }
-        .admin-grid {
+
+        .admin-box.admin-login {
+            width: min(450px, 94vw);
+            max-height: none;
+            padding: 26px;
+        }
+
+        .admin-topbar {
+            padding: 24px 26px 20px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .admin-title-wrap { min-width: 0; }
+        .admin-title-wrap h2 {
+            margin: 0;
+            font-size: 1.45rem;
+            letter-spacing: -.03em;
+        }
+
+        .admin-sub {
+            color: var(--text-muted);
+            font-size: .86rem;
+            margin: 5px 0 0;
+            line-height: 1.45;
+        }
+
+        .admin-cloud-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(16,185,129,.1);
+            border: 1px solid rgba(16,185,129,.22);
+            color: #86efac;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .admin-close {
+            width: 42px;
+            height: 42px;
+            border: 0;
+            background: transparent;
+            color: rgba(255,255,255,.78);
+            cursor: pointer;
+            padding: 9px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            place-items: center;
+            border-radius: 50%;
+            transition: transform .28s cubic-bezier(.2,.8,.2,1), background .22s ease, color .22s ease;
+            flex-shrink: 0;
         }
-        .admin-field { display:flex; flex-direction:column; gap:.4rem; }
+        .admin-close svg { width: 24px; height: 24px; display:block; }
+        .admin-close:hover {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            transform: rotate(90deg) scale(1.08);
+        }
+        .admin-close:active { transform: rotate(90deg) scale(.94); }
+
+        .admin-body {
+            padding: 22px 26px 26px;
+            overflow-y: auto;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+            gap: 18px;
+        }
+
+        .admin-card {
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+            padding: 18px;
+            min-width: 0;
+        }
+
+        .admin-card h3 {
+            margin: 0;
+            font-size: .95rem;
+            letter-spacing: .01em;
+        }
+
+        .admin-card-description {
+            margin: 4px 0 16px;
+            color: var(--text-muted);
+            font-size: .78rem;
+            line-height: 1.45;
+        }
+
+        .admin-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
         .admin-field.full { grid-column: 1 / -1; }
-        .admin-field label { font-size:.82rem; color:var(--text-muted); font-weight:700; }
-        .admin-field input, .admin-field select, .admin-field textarea {
-            width:100%;
-            border:1px solid rgba(255,255,255,.12);
-            background:rgba(255,255,255,.05);
-            color:#fff;
-            border-radius:10px;
-            padding:.75rem;
-            outline:none;
+
+        .admin-field label {
+            font-size: .72rem;
+            color: #b8bcc7;
+            font-weight: 800;
+            letter-spacing: .07em;
+            text-transform: uppercase;
         }
-        .admin-field textarea { min-height:90px; resize:vertical; }
-        .admin-field input:focus, .admin-field select:focus, .admin-field textarea:focus {
-            border-color: var(--accent-lang);
+
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(0,0,0,.25);
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 13px;
+            outline: none;
+            font-size: .9rem;
+            transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .admin-field select { cursor: pointer; }
+        .admin-field select option { background: #18191f; color: #fff; }
+
+        .admin-field textarea {
+            min-height: 105px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .admin-field input::placeholder,
+        .admin-field textarea::placeholder { color: #717580; }
+
+        .admin-field input:focus,
+        .admin-field select:focus,
+        .admin-field textarea:focus {
+            border-color: rgba(59,130,246,.85);
+            background: rgba(59,130,246,.06);
             box-shadow: 0 0 0 3px rgba(59,130,246,.12);
         }
-        .admin-actions { display:flex; flex-wrap:wrap; gap:.65rem; margin-top:1rem; }
+
+        .admin-select-row {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .admin-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px;
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 15px;
+        }
+
         .admin-action {
-            border:1px solid rgba(255,255,255,.14);
-            background:rgba(255,255,255,.07);
-            color:#fff;
-            border-radius:10px;
-            padding:.7rem 1rem;
-            font-weight:700;
-            cursor:pointer;
+            border: 1px solid rgba(255,255,255,.11);
+            background: rgba(255,255,255,.055);
+            color: #fff;
+            border-radius: 11px;
+            padding: 10px 13px;
+            font-weight: 800;
+            font-size: .78rem;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
         }
-        .admin-action:hover { background:rgba(255,255,255,.14); transform:translateY(-1px); }
-        .admin-action.primary { background:var(--accent-lang); border-color:var(--accent-lang); }
-        .admin-action.danger { background:rgba(239,68,68,.15); border-color:var(--accent-danger); color:#fff; }
+
+        .admin-action:hover {
+            background: rgba(255,255,255,.11);
+            border-color: rgba(255,255,255,.2);
+            transform: translateY(-1px);
+        }
+
+        .admin-action.primary {
+            background: var(--accent-lang);
+            border-color: var(--accent-lang);
+            box-shadow: 0 8px 22px rgba(59,130,246,.2);
+        }
+
+        .admin-action.primary:hover { background: #2563eb; }
+        .admin-action.danger {
+            background: rgba(239,68,68,.1);
+            border-color: rgba(239,68,68,.45);
+            color: #fecaca;
+        }
+
+        .admin-action.danger:hover { background: rgba(239,68,68,.2); }
+
+        .admin-action.secondary {
+            background: rgba(139,92,246,.1);
+            border-color: rgba(139,92,246,.35);
+        }
+
         .admin-status {
-            margin-top:.9rem;
-            padding:.7rem .85rem;
-            border-radius:10px;
-            background:rgba(255,255,255,.04);
-            color:var(--text-muted);
-            font-size:.85rem;
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.06);
+            color: var(--text-muted);
+            font-size: .78rem;
+            line-height: 1.45;
         }
+
+        .admin-status.success {
+            color: #a7f3d0;
+            border-color: rgba(16,185,129,.2);
+            background: rgba(16,185,129,.06);
+        }
+
+        .admin-status.error {
+            color: #fecaca;
+            border-color: rgba(239,68,68,.2);
+            background: rgba(239,68,68,.06);
+        }
+
+        .admin-list-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .admin-count {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(59,130,246,.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59,130,246,.18);
+            font-size: .7rem;
+            font-weight: 800;
+        }
+
         .admin-list {
-            margin-top:1rem;
-            max-height:260px;
-            overflow-y:auto;
-            display:flex;
-            flex-direction:column;
-            gap:.45rem;
+            max-height: 440px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 3px;
         }
+
         .admin-item {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:.75rem;
-            padding:.65rem .75rem;
-            border:1px solid rgba(255,255,255,.07);
-            border-radius:10px;
-            background:rgba(0,0,0,.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 13px;
+            background: rgba(0,0,0,.2);
+            transition: .2s ease;
         }
-        .admin-item strong { color:#fff; }
-        .admin-item small { color:var(--text-muted); display:block; margin-top:.15rem; }
-        .admin-item button { flex-shrink:0; }
-        .admin-login {
-            width:min(430px,96vw);
+
+        .admin-item:hover {
+            background: rgba(255,255,255,.045);
+            border-color: rgba(255,255,255,.13);
+            transform: translateX(2px);
         }
-        .admin-login .admin-grid { grid-template-columns:1fr; }
+
+        .admin-item.selected {
+            border-color: rgba(59,130,246,.5);
+            background: rgba(59,130,246,.08);
+            box-shadow: inset 3px 0 0 var(--accent-lang);
+        }
+
+        .admin-item strong {
+            color: #fff;
+            font-size: .86rem;
+            display: block;
+            overflow-wrap: anywhere;
+        }
+
+        .admin-item small {
+            color: var(--text-muted);
+            display: block;
+            margin-top: 3px;
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+        }
+
+        .admin-item-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .admin-mini-btn {
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.05);
+            color: #fff;
+            border-radius: 9px;
+            padding: 7px 9px;
+            font-size: .7rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .admin-mini-btn:hover { background: rgba(255,255,255,.12); }
+        .admin-mini-btn.delete:hover {
+            background: rgba(239,68,68,.14);
+            border-color: rgba(239,68,68,.4);
+            color: #fecaca;
+        }
+
+        .admin-empty {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-muted);
+            border: 1px dashed rgba(255,255,255,.1);
+            border-radius: 13px;
+            font-size: .8rem;
+        }
+
         .admin-note {
-            margin-top:.8rem;
-            color:var(--text-muted);
-            font-size:.78rem;
-            line-height:1.5;
+            margin-top: 14px;
+            color: #777c88;
+            font-size: .7rem;
+            line-height: 1.55;
         }
-        @media (max-width:640px) {
-            .admin-grid { grid-template-columns:1fr; }
-            .admin-field.full { grid-column:auto; }
-            .admin-box { padding:1rem; }
+
+        .admin-login .modal-header { margin-bottom: 1.3rem; }
+
+        .admin-login-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 12px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(59,130,246,.1);
+            border: 1px solid rgba(59,130,246,.2);
+            color: #93c5fd;
+            font-size: .7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .admin-panel::-webkit-scrollbar,
+        .admin-body::-webkit-scrollbar,
+        .admin-list::-webkit-scrollbar { width: 7px; }
+
+        .admin-panel::-webkit-scrollbar-thumb,
+        .admin-body::-webkit-scrollbar-thumb,
+        .admin-list::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,.14);
+            border-radius: 99px;
+        }
+
+        @media (max-width: 850px) {
+            .admin-layout { grid-template-columns: 1fr; }
+            .admin-list { max-height: 300px; }
+        }
+
+        @media (max-width: 640px) {
+            .admin-panel { padding: 10px; }
+            .admin-topbar { padding: 18px; }
+            .admin-body { padding: 14px; }
+            .admin-select-row,
+            .admin-form-grid { grid-template-columns: 1fr; }
+            .admin-box { border-radius: 19px; }
+            .admin-action { flex: 1 1 auto; }
+            .admin-item { align-items: flex-start; }
+            .admin-item-actions { flex-direction: column; }
+        }
+
+
+        /* --- Admin panel motion polish --- */
+        .admin-panel {
+            opacity: 0;
+            transition: opacity .34s cubic-bezier(.22,1,.36,1);
+        }
+
+        .admin-panel.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .admin-panel.closing {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .admin-box {
+            transform: translateY(22px) scale(.965);
+            opacity: 0;
+            filter: blur(5px);
+            transition:
+                transform .48s cubic-bezier(.16,1,.3,1),
+                opacity .32s ease,
+                filter .48s ease;
+            will-change: transform, opacity, filter;
+        }
+
+        .admin-panel.active .admin-box {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        .admin-panel.closing .admin-box {
+            transform: translateY(12px) scale(.985);
+            opacity: 0;
+            filter: blur(3px);
+        }
+
+        .admin-panel.active .admin-topbar {
+            animation: adminTopbarIn .55s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-card {
+            animation: adminCardIn .58s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-card:nth-child(2) {
+            animation-delay: .07s;
+        }
+
+        .admin-panel.active .admin-field,
+        .admin-panel.active .admin-actions,
+        .admin-panel.active .admin-status,
+        .admin-panel.active .admin-list-header {
+            animation: adminContentIn .46s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-field:nth-child(2) { animation-delay: .035s; }
+        .admin-panel.active .admin-field:nth-child(3) { animation-delay: .07s; }
+        .admin-panel.active .admin-field:nth-child(4) { animation-delay: .105s; }
+
+        @keyframes adminTopbarIn {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes adminCardIn {
+            from { opacity: 0; transform: translateY(18px) scale(.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes adminContentIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-close {
+            display: grid;
+            place-items: center;
+            transition:
+                transform .32s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-close svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            transition: transform .34s cubic-bezier(.16,1,.3,1);
+        }
+
+        .admin-close:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 28px rgba(0,0,0,.28);
+        }
+
+        .admin-close:hover svg {
+            transform: rotate(90deg) scale(1.05);
+        }
+
+        .admin-close:active {
+            transform: scale(.93);
+        }
+
+        .admin-action,
+        .admin-mini-btn,
+        .admin-item,
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            will-change: transform;
+        }
+
+        .admin-action {
+            transition:
+                transform .28s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0,0,0,.18);
+        }
+
+        .admin-action:active {
+            transform: translateY(0) scale(.97);
+        }
+
+        .admin-item {
+            transition:
+                transform .28s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-item:hover {
+            transform: translateX(4px);
+        }
+
+        .admin-mini-btn {
+            transition:
+                transform .22s cubic-bezier(.16,1,.3,1),
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease;
+        }
+
+        .admin-mini-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            transition:
+                border-color .25s ease,
+                box-shadow .28s ease,
+                background .25s ease,
+                transform .22s ease;
+        }
+
+        .admin-field input:focus,
+        .admin-field select:focus,
+        .admin-field textarea:focus {
+            transform: translateY(-1px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .admin-panel,
+            .admin-box,
+            .admin-topbar,
+            .admin-card,
+            .admin-field,
+            .admin-actions,
+            .admin-status,
+            .admin-list-header {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                filter: none !important;
+            }
         }
 
     </style>
@@ -1045,10 +1732,10 @@
 
     <header>
         <div class="title-row">
-            <h1 id="exam-title" title="Click the title">Final Exam Prep Guide <span class="version-badge">v3.9</span></h1>
+            <h1 id="exam-title" title="Click the title">Final Exam Prep Guide <span class="version-badge">v5.2</span></h1>
             <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
         </div>
-        <div class="warning-text">⚠️ If website stops, reload the website!</div>
+        <div class="warning-text">⚠️ Make sure to refresh the website every hour, updates can drop any minute!</div>
         <p>Tap a card to expand. Click the play button to hear it aloud.</p>
     </header>
 
@@ -1080,73 +1767,108 @@
     <!-- Secret Admin Unlock -->
     <div id="admin-code-modal" class="admin-panel">
         <div class="admin-box admin-login">
+            <div class="admin-login-badge">🔐 Restricted area</div>
             <div class="modal-header">
                 <div>
-                    <h2>🔐 Admin Access</h2>
+                    <h2>Admin Access</h2>
                     <p class="subtext">Enter the admin code to unlock vocabulary controls.</p>
                 </div>
                 <button class="close-modal" onclick="closeAdminCode()">&times;</button>
             </div>
-            <div class="admin-grid">
-                <div class="admin-field">
-                    <label for="admin-code-input">Admin code</label>
-                    <input id="admin-code-input" type="password" autocomplete="off" placeholder="Enter code">
-                </div>
+
+            <div class="admin-field">
+                <label for="admin-code-input">Admin code</label>
+                <input id="admin-code-input" type="password" autocomplete="off" placeholder="Enter admin code">
             </div>
+
             <div class="admin-actions">
                 <button class="admin-action primary" onclick="verifyAdminCode()">Unlock Admin Panel</button>
                 <button class="admin-action" onclick="closeAdminCode()">Cancel</button>
             </div>
-            <div id="admin-login-status" class="admin-status">Access is reset whenever the page is refreshed.</div>
+
+            <div id="admin-login-status" class="admin-status">Access resets whenever the page is refreshed.</div>
         </div>
     </div>
 
     <!-- Vocabulary Admin Panel -->
+    <div id="admin-intro" class="admin-intro" aria-hidden="true">
+        <div class="admin-intro-grid"></div>
+        <div class="admin-intro-vignette"></div>
+        <div class="admin-intro-scan"></div>
+        <div class="admin-intro-core">
+            <div class="admin-intro-kicker">Secure Console</div>
+            <h2 class="admin-intro-title"><span>ADMIN ACCESS</span></h2>
+            <div class="admin-intro-line"></div>
+            <div class="admin-intro-status" id="admin-intro-status">Initializing control panel</div>
+            <div class="admin-intro-bar"><i></i></div>
+        </div>
+        <div class="admin-intro-flash"></div>
+    </div>
+
     <div id="admin-panel" class="admin-panel">
         <div class="admin-box">
-            <div class="modal-header">
-                <div>
+            <div class="admin-topbar">
+                <div class="admin-title-wrap">
                     <h2>🛠️ Vocabulary Admin</h2>
-                    <p class="subtext">Add, edit, or remove vocabulary across every subject.</p>
+                    <p class="admin-sub">Manage vocabulary across every subject and unit.</p>
                 </div>
-                <button class="close-modal" onclick="closeAdminPanel()">&times;</button>
+                <button class="admin-close" onclick="closeAdminPanel()" aria-label="Close admin panel">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                </button>
             </div>
 
-            <div class="admin-grid">
-                <div class="admin-field">
-                    <label for="admin-subject">Subject</label>
-                    <select id="admin-subject"></select>
-                </div>
-                <div class="admin-field">
-                    <label for="admin-group">Group / Topic</label>
-                    <select id="admin-group"></select>
-                </div>
-                <div class="admin-field">
-                    <label for="admin-word">Word</label>
-                    <input id="admin-word" type="text" placeholder="Vocabulary word">
-                </div>
-                <div class="admin-field">
-                    <label for="admin-definition">Definition</label>
-                    <textarea id="admin-definition" placeholder="Definition"></textarea>
-                </div>
-                <div class="admin-field full">
-                    <label for="admin-sentence">Example sentence</label>
-                    <textarea id="admin-sentence" placeholder="Example sentence"></textarea>
-                </div>
-            </div>
+            <div class="admin-body">
+                <div class="admin-layout">
+                    <section class="admin-card">
+                        <h3>Vocabulary editor</h3>
+                        <p class="admin-card-description">Choose a subject and unit. The list and editor update immediately when you switch either one.</p>
 
-            <div class="admin-actions">
-                <button class="admin-action primary" onclick="saveAdminVocab()">➕ Add / Save Word</button>
-                <button class="admin-action" onclick="clearAdminForm()">Clear Form</button>
-                <button class="admin-action danger" onclick="deleteSelectedAdminVocab()">🗑️ Remove Selected</button>
-                <button class="admin-action" onclick="closeAdminPanel()">Close</button>
-            </div>
+                        <div class="admin-select-row">
+                            <div class="admin-field">
+                                <label for="admin-subject">Subject</label>
+                                <select id="admin-subject"></select>
+                            </div>
+                            <div class="admin-field">
+                                <label for="admin-group">Unit / Topic</label>
+                                <select id="admin-group"></select>
+                            </div>
+                        </div>
 
-            <div id="admin-status" class="admin-status">Cloud sync is loading...</div>
-            <div id="admin-vocab-list" class="admin-list"></div>
-            <div class="admin-note">
-                Cross-device sync is enabled when a Firebase Realtime Database URL is placed in CLOUD_DB_URL near the top of the script.
-                Once connected, admin vocabulary changes are stored in the cloud and loaded by every device.
+                        <div class="admin-form-grid">
+                            <div class="admin-field">
+                                <label for="admin-word">Word</label>
+                                <input id="admin-word" type="text" placeholder="e.g. Vocabulary word">
+                            </div>
+                            <div class="admin-field">
+                                <label for="admin-definition">Definition</label>
+                                <textarea id="admin-definition" placeholder="What does it mean?"></textarea>
+                            </div>
+                            <div class="admin-field full">
+                                <label for="admin-sentence">Example sentence</label>
+                                <textarea id="admin-sentence" placeholder="Use the word in a sentence..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="admin-actions">
+                            <button id="admin-save-btn" class="admin-action primary" onclick="saveAdminVocab()">➕ Add Word</button>
+                            <button class="admin-action" onclick="clearAdminForm()">Clear</button>
+                            <button class="admin-action" onclick="refreshAdminFromCloud()">↻ Refresh</button>
+                        </div>
+
+                        <div id="admin-status" class="admin-status">Ready.</div>
+                    </section>
+
+                    <section class="admin-card">
+                        <div class="admin-list-header">
+                            <div>
+                                <h3>Words in this unit</h3>
+                                <p class="admin-card-description" style="margin-bottom:0">Click Edit to load a word into the editor.</p>
+                            </div>
+                            <span id="admin-count" class="admin-count">0 words</span>
+                        </div>
+                        <div id="admin-vocab-list" class="admin-list"></div>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
@@ -1845,24 +2567,88 @@
             if (event.key === "Enter") verifyAdminCode();
         });
 
+        let adminIntroTimer = null;
+        function startAdminIntroSequence() {
+            clearInterval(adminIntroTimer);
+            const status = document.getElementById('admin-intro-status');
+            if (!status) return;
+            const messages = [
+                'Authenticating command sequence',
+                'Loading vocabulary database',
+                'Mounting subject modules',
+                'Synchronizing admin controls',
+                'Access granted — launching console'
+            ];
+            let index = 0;
+            status.textContent = messages[0];
+            status.classList.remove('admin-status-cycle');
+            void status.offsetWidth;
+            status.classList.add('admin-status-cycle');
+            adminIntroTimer = setInterval(() => {
+                index++;
+                if (index >= messages.length) { clearInterval(adminIntroTimer); return; }
+                status.classList.remove('admin-status-cycle');
+                void status.offsetWidth;
+                status.textContent = messages[index];
+                status.classList.add('admin-status-cycle');
+            }, 430);
+        }
+
         function openAdminPanel() {
             if (!adminUnlocked) return;
-            document.getElementById("admin-panel").classList.add("active");
+
+            const panel = document.getElementById("admin-panel");
+            const intro = document.getElementById("admin-intro");
+
+            panel.classList.remove("closing");
             populateAdminSubjects();
             updateAdminGroupOptions();
             renderAdminVocabList();
             updateAdminStatus();
+
+            // Fortnite-style cinematic console boot: intro first, panel reveals after.
+            clearInterval(adminIntroTimer);
+            if (intro) {
+                intro.classList.remove("active");
+                void intro.offsetWidth;
+                intro.classList.add("active");
+                intro.setAttribute("aria-hidden", "false");
+                startAdminIntroSequence();
+            }
+
+            window.setTimeout(() => {
+                if (!adminUnlocked) return;
+                panel.classList.add("active");
+            }, 2350);
         }
 
         function closeAdminPanel() {
-            document.getElementById("admin-panel").classList.remove("active");
+            const panel = document.getElementById("admin-panel");
+            const intro = document.getElementById("admin-intro");
+            if (intro) {
+                intro.classList.remove("active");
+                intro.setAttribute("aria-hidden", "true");
+            }
+            panel.classList.add("closing");
+
+            // Closing the panel also ends this admin session.
+            // The title -> ADMIN -> code sequence must be completed again.
+            adminUnlocked = false;
+            adminArmed = false;
+            adminBuffer = "";
+            clearTimeout(window.__adminArmTimer);
+
             adminEditingRef = null;
             clearAdminForm();
+
+            window.setTimeout(() => {
+                panel.classList.remove("active", "closing");
+            }, 360);
         }
 
         function populateAdminSubjects() {
             const select = document.getElementById("admin-subject");
-            if (select.options.length) return;
+            if (select.dataset.ready === "true") return;
 
             Object.entries(SUBJECT_LABELS).forEach(([key, label]) => {
                 const option = document.createElement("option");
@@ -1871,6 +2657,7 @@
                 select.appendChild(option);
             });
 
+            select.dataset.ready = "true";
             select.addEventListener("change", () => {
                 adminEditingRef = null;
                 clearAdminForm();
@@ -1879,20 +2666,20 @@
             });
         }
 
-        function updateAdminGroupOptions() {
+        function updateAdminGroupOptions(preserveValue = true) {
             const subject = document.getElementById("admin-subject").value;
             const select = document.getElementById("admin-group");
+            const previousValue = preserveValue ? select.value : "";
             select.innerHTML = "";
 
             const data = vocabularyData[subject] || [];
-            const grouped = data.length > 0 &&
-                (data[0].groupTitle || data[0].story);
+            const grouped = data.length > 0 && (data[0].groupTitle || data[0].story);
 
             if (grouped) {
                 data.forEach((group, index) => {
                     const option = document.createElement("option");
-                    option.value = index;
-                    option.textContent = group.groupTitle || group.story || `Group ${index + 1}`;
+                    option.value = String(index);
+                    option.textContent = group.groupTitle || group.story || `Unit ${index + 1}`;
                     select.appendChild(option);
                 });
             } else {
@@ -1900,6 +2687,19 @@
                 option.value = "flat";
                 option.textContent = "General Vocabulary";
                 select.appendChild(option);
+            }
+
+            if ([...select.options].some(o => o.value === previousValue)) {
+                select.value = previousValue;
+            }
+
+            if (!select.dataset.ready) {
+                select.dataset.ready = "true";
+                select.addEventListener("change", () => {
+                    adminEditingRef = null;
+                    clearAdminForm();
+                    renderAdminVocabList();
+                });
             }
         }
 
@@ -1913,16 +2713,9 @@
                 return vocabularyData[subject];
             }
 
-            return data[Number(groupValue)]?.words || [];
-        }
-
-        function getAdminGroupKey() {
-            const subject = document.getElementById("admin-subject").value;
-            const groupValue = document.getElementById("admin-group").value;
-            const data = vocabularyData[subject] || [];
-
-            if (groupValue === "flat" || !data.length) return null;
-            return Number(groupValue);
+            return Array.isArray(data[Number(groupValue)]?.words)
+                ? data[Number(groupValue)].words
+                : (data[Number(groupValue)].words = []);
         }
 
         function clearAdminForm() {
@@ -1930,6 +2723,9 @@
             document.getElementById("admin-definition").value = "";
             document.getElementById("admin-sentence").value = "";
             adminEditingRef = null;
+            const saveBtn = document.getElementById("admin-save-btn");
+            if (saveBtn) saveBtn.textContent = "➕ Add Word";
+            document.querySelectorAll(".admin-item.selected").forEach(el => el.classList.remove("selected"));
         }
 
         function editAdminVocab(index) {
@@ -1941,19 +2737,34 @@
             document.getElementById("admin-word").value = item.word || "";
             document.getElementById("admin-definition").value = item.definition || "";
             document.getElementById("admin-sentence").value = item.sentence || "";
+
+            const saveBtn = document.getElementById("admin-save-btn");
+            if (saveBtn) saveBtn.textContent = "💾 Save Changes";
+
+            renderAdminVocabList();
+            requestAnimationFrame(() => {
+                const selected = document.querySelector(`[data-admin-index="${index}"]`);
+                if (selected) selected.classList.add("selected");
+            });
         }
 
         async function persistVocabularyChanges() {
             saveVocabularyLocal();
             const synced = await saveVocabularyToCloud();
-            updateAdminStatus(synced
-                ? "Saved to cloud. Changes now sync to devices using the same Firebase database."
-                : (CLOUD_DB_URL.trim()
-                    ? "Cloud save failed. Local browser copy was saved instead."
-                    : "Saved locally. Add a Firebase Realtime Database URL to sync across devices.")
+
+            updateAdminStatus(
+                synced
+                    ? "✓ Changes saved."
+                    : "⚠ Changes saved locally, but could not be synced.",
+                synced ? "success" : "error"
             );
+
             renderAdminVocabList();
-            renderTab(document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language");
+
+            const activeTab = document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language";
+            renderTab(activeTab);
+            updateAdminGroupOptions();
+            renderAdminVocabList();
         }
 
         async function saveAdminVocab() {
@@ -1964,7 +2775,7 @@
             const sentence = document.getElementById("admin-sentence").value.trim();
 
             if (!word || !definition) {
-                updateAdminStatus("Word and definition are required.");
+                updateAdminStatus("Word and definition are required.", "error");
                 return;
             }
 
@@ -1976,6 +2787,7 @@
                 const group = data[Number(groupValue)];
                 if (!group) return;
 
+                if (!Array.isArray(group.words)) group.words = [];
                 if (adminEditingRef === null) group.words.push(item);
                 else group.words[adminEditingRef] = item;
             } else {
@@ -1986,57 +2798,88 @@
 
             clearAdminForm();
             await persistVocabularyChanges();
-            updateAdminGroupOptions();
         }
 
-        async function deleteSelectedAdminVocab() {
-            if (adminEditingRef === null) {
-                updateAdminStatus("Select a vocabulary item first.");
+        async function deleteSelectedAdminVocab(index = adminEditingRef) {
+            if (index === null || index === undefined) {
+                updateAdminStatus("Select a word first, then use Remove.", "error");
                 return;
             }
 
             const words = getAdminTargetWords();
-            const item = words[adminEditingRef];
+            const item = words[index];
             if (!item) return;
 
-            words.splice(adminEditingRef, 1);
+            if (!confirm(`Remove "${item.word}" from this unit?`)) return;
+
+            words.splice(index, 1);
             clearAdminForm();
             await persistVocabularyChanges();
         }
 
         function renderAdminVocabList() {
             const list = document.getElementById("admin-vocab-list");
+            const count = document.getElementById("admin-count");
             if (!list) return;
 
             const words = getAdminTargetWords();
             list.innerHTML = "";
 
+            if (count) count.textContent = `${words.length} ${words.length === 1 ? "word" : "words"}`;
+
             if (!words.length) {
-                list.innerHTML = '<div class="admin-status">No vocabulary in this subject/group yet.</div>';
+                list.innerHTML = '<div class="admin-empty">No vocabulary in this unit yet.<br><br>Add the first word using the editor.</div>';
                 return;
             }
 
             words.forEach((item, index) => {
                 const row = document.createElement("div");
-                row.className = "admin-item";
+                row.className = `admin-item${adminEditingRef === index ? " selected" : ""}`;
+                row.dataset.adminIndex = index;
                 row.innerHTML = `
-                    <div>
+                    <div style="min-width:0">
                         <strong>${escapeHTML(item.word || "")}</strong>
                         <small>${escapeHTML(item.definition || "")}</small>
                     </div>
-                    <button class="admin-action" onclick="editAdminVocab(${index})">Edit</button>
+                    <div class="admin-item-actions">
+                        <button class="admin-mini-btn" onclick="editAdminVocab(${index})">Edit</button>
+                        <button class="admin-mini-btn delete" onclick="deleteSelectedAdminVocab(${index})">Delete</button>
+                    </div>
                 `;
                 list.appendChild(row);
             });
         }
 
-        function updateAdminStatus(message) {
+        async function refreshAdminFromCloud() {
+            updateAdminStatus("Refreshing...");
+            const cloudData = await loadVocabularyFromCloud();
+
+            if (!cloudData) {
+                updateAdminStatus("Could not refresh right now.", "error");
+                return;
+            }
+
+            Object.keys(SUBJECT_LABELS).forEach(subject => {
+                vocabularyData[subject] = cloudData[subject];
+            });
+
+            saveVocabularyLocal();
+            adminEditingRef = null;
+            clearAdminForm();
+            updateAdminGroupOptions(false);
+            renderAdminVocabList();
+
+            const activeTab = document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language";
+            renderTab(activeTab);
+            updateAdminStatus("✓ Refreshed.");
+        }
+
+        function updateAdminStatus(message, type = "") {
             const status = document.getElementById("admin-status");
-            if (status) status.textContent = message || (
-                cloudReady
-                    ? "Cloud sync connected."
-                    : "Cloud sync is not configured; browser-only storage is active."
-            );
+            if (!status) return;
+
+            status.className = `admin-status${type ? ` ${type}` : ""}`;
+            status.textContent = message || "Ready.";
         }
 
         function escapeHTML(value) {
@@ -2299,9 +3142,30 @@
         }
 
         // Render Tabs Function
-        function renderTab(tabName) {
+        let renderAnimationTimer = null;
+        function renderTab(tabName, animate = true) {
+            if (renderAnimationTimer) clearTimeout(renderAnimationTimer);
+            const wasRendered = grid.children.length > 0;
+            if (animate && wasRendered) {
+                grid.classList.remove('vocab-entering');
+                grid.classList.add('vocab-switching');
+                renderAnimationTimer = setTimeout(() => {
+                    grid.innerHTML = '';
+                    grid.className = `words-grid theme-${tabName} vocab-entering`;
+                    buildTabContent(tabName);
+                    requestAnimationFrame(() => {
+                        grid.querySelectorAll(':scope > *').forEach((el, i) => { el.style.animationDelay = `${Math.min(i, 18) * 0.035}s`; });
+                    });
+                    setTimeout(() => grid.classList.remove('vocab-entering'), 700);
+                }, 190);
+                return;
+            }
             grid.innerHTML = '';
             grid.className = `words-grid theme-${tabName}`;
+            buildTabContent(tabName);
+        }
+
+        function buildTabContent(tabName) {
 
             // Generate Questions to Study Section Header
             const qaHeaderWrapper = document.createElement('div');
@@ -2566,7 +3430,7 @@
         // Initial Setup
         (async function initApp() {
             await initialiseVocabularyStorage();
-            renderTab('language');
+            renderTab('language', false);
 
             setTimeout(() => {
                 companionPet.classList.add('visible');
