@@ -3096,13 +3096,20 @@
 
         // --- FLASHCARD LOGIC ---
         function startFlashcards(tabName, groupIndex) {
-            const group = vocabularyData[tabName][groupIndex];
-            currentFlashcards = group.words;
+            if (groupIndex !== null && groupIndex !== undefined) {
+                const group = vocabularyData[tabName][groupIndex];
+                currentFlashcards = group.words;
+                document.getElementById('fc-modal-title').innerText = group.groupTitle || group.story || "Flashcards";
+            } else {
+                currentFlashcards = vocabularyData[tabName];
+                let formattedTitle = tabName === 'socialStudies' ? 'Social Studies' : 
+                                     tabName === 'healthEducation' ? 'Health Education' :
+                                     tabName.charAt(0).toUpperCase() + tabName.slice(1);
+                document.getElementById('fc-modal-title').innerText = formattedTitle + " Vocabulary";
+            }
+            
             currentFcIndex = 0;
             flashcardResults = [];
-            
-            const title = group.groupTitle || group.story || "Flashcards";
-            document.getElementById('fc-modal-title').innerText = title;
             
             // Ensure flashcard container is visible, hide stats
             document.getElementById('fc-container').style.display = 'flex';
@@ -3326,7 +3333,23 @@
             const vocabHeaderWrapper = document.createElement('div');
             vocabHeaderWrapper.className = 'section-header-wrapper';
             vocabHeaderWrapper.style.marginTop = '1.5rem';
-            vocabHeaderWrapper.innerHTML = `<h2 class="section-title">Vocabulary</h2>`;
+            
+            const hasData = vocabularyData[tabName] && vocabularyData[tabName].length > 0;
+            const isGrouped = hasData && (vocabularyData[tabName][0].groupTitle || vocabularyData[tabName][0].story);
+            
+            if (hasData && !isGrouped) {
+                vocabHeaderWrapper.innerHTML = `
+                    <div class="story-title-container" style="border-bottom: none; padding-bottom: 0;">
+                        <h2 class="section-title" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Vocabulary</h2>
+                        <button class="play-fc-btn" onclick="startFlashcards('${tabName}', null)">
+                            🗂️ Flashcards
+                        </button>
+                    </div>
+                    <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-top: 0.5rem;"></div>
+                `;
+            } else {
+                vocabHeaderWrapper.innerHTML = `<h2 class="section-title">Vocabulary</h2>`;
+            }
             grid.appendChild(vocabHeaderWrapper);
 
             // Generate Vocabulary Cards
