@@ -2230,7 +2230,9 @@
         // Cleared old midterm questions so they won't confuse you. Ready to be populated!
         const studyQuestions = {
             science: [],
-            language: [],
+            language: [
+                { q: "What is a city?", a: "A city is an area in which a large number of people fairly live close together." }
+            ],
             socialStudies: [],
             mathematics: [
                 { q: "How do you work out a Mixed to Improper fraction? (e.g., 2 2/4)", a: "Multiply the denominator by the whole number (4 × 2 = 8), then add the numerator (8 + 2 = 10). The denominator stays the same, so the answer is 10/4." },
@@ -2242,138 +2244,93 @@
 
         const vocabularyData = {
             language: [
-                {
-                    groupTitle: "Unit 5: Food & The World Around Us",
-                    words: [
-                        { word: "Sugar cane", definition: "A tall grass grown in tropical regions that is a major source of sugar.", sentence: "Farmers harvest the sweet sugar cane to make the sugar we use for baking." },
-                        { word: "Wheat", definition: "A cereal plant that is ground into flour for making bread, pasta, and baked goods.", sentence: "The golden fields of wheat waved gently in the afternoon wind." },
-                        { word: "Cinnamon", definition: "An aromatic spice made from the peeled, dried, and rolled bark of a Southeast Asian tree.", sentence: "She sprinkled cinnamon over her warm apple pie to give it extra flavor." },
-                        { word: "Butter", definition: "A pale yellow edible fatty substance made by churning cream.", sentence: "The hot toast easily melted the thick layer of butter." },
-                        { word: "Vanilla", definition: "A sweet substance extracted from the pod of a tropical orchid, used to flavor sweet foods.", sentence: "They added a few drops of pure vanilla extract to the cake batter." },
-                        { word: "Ingredients", definition: "Any of the foods or substances that are combined to make a particular dish.", sentence: "Before starting to cook, she made sure she had all the necessary ingredients." },
-                        { word: "Bark", definition: "The tough, protective outer sheath of the trunk and branches of a tree.", sentence: "The tree's rough bark provided excellent camouflage for the climbing insects." },
-                        { word: "Plantation", definition: "A large estate or farm on which crops such as coffee, sugar, and tobacco are cultivated.", sentence: "The workers spent all morning picking fresh coffee beans on the plantation." },
-                        { word: "Steamship", definition: "A ship that is propelled by a steam engine.", sentence: "In the 1800s, it took weeks for a steamship to cross the wide Atlantic ocean." },
-                        { word: "Spoil", definition: "To diminish or destroy the value or quality of; food becoming unfit for eating.", sentence: "If you leave the milk out in the heat, it will spoil very quickly." },
-                        { word: "Leopard", definition: "A large, solitary cat that has a yellowish-brown coat with dark spots.", sentence: "The silent leopard rested high in the branches, watching the plains below." },
-                        { word: "Gather", definition: "To come together; to assemble or accumulate.", sentence: "The family will gather around the large table to enjoy a holiday meal." },
-                        { word: "Introduce", definition: "To make someone known by name to another in person.", sentence: "I would like to introduce my best friend to my parents this weekend." },
-                        { word: "Peel", definition: "To remove the outer covering or skin from a fruit or vegetable.", sentence: "Please use a sharp knife to carefully peel the potatoes for the soup." },
-                        { word: "Coax", definition: "To persuade someone gradually or by flattery to do something.", sentence: "He had to coax the frightened kitten out from underneath the sofa." }
-                    ]
-                },
-                {
-                    groupTitle: "Unit 6: Food and Farming",
-                    words: [
-                        { word: "Convenient", definition: "Fitting in well with a person's needs, activities, and plans; involving little trouble.", sentence: "The new supermarket near our house is very convenient for buying groceries." },
-                        { word: "Export", definition: "To send goods or services to another country for sale.", sentence: "Many tropical countries export fresh bananas and pineapples to colder regions." },
-                        { word: "Local", definition: "Relating or restricted to a particular area or one's neighborhood.", sentence: "We always try to buy vegetables from our local farmers to support the community." },
-                        { word: "Process", definition: "To perform a series of mechanical or chemical operations on something to change or preserve it.", sentence: "Factories process raw wheat to turn it into the fine white flour we buy." },
-                        { word: "Package", definition: "To put into a box or wrapping, especially for transport or sale.", sentence: "Workers carefully package the delicate berries to protect them during shipping." },
-                        { word: "Farmer's market", definition: "A food market where local farmers sell fruit and vegetables directly to consumers.", sentence: "Every Saturday morning, she buys fresh organic tomatoes at the farmer's market." },
-                        { word: "Agriculture", definition: "The science or practice of farming, including cultivation of the soil for growing crops.", sentence: "Modern agriculture utilizes advanced tractors and machines to increase food production." },
-                        { word: "Corporate farm", definition: "A large-scale agricultural operation run by a major business company.", sentence: "The corporate farm produced thousands of tons of corn every single harvest season." },
-                        { word: "Decrease", definition: "To make or become smaller or fewer in size, amount, intensity, or degree.", sentence: "Recycling at home helps to decrease the amount of trash sent to the landfill." },
-                        { word: "Century", definition: "A period of one hundred years.", sentence: "Over the last century, human technology has advanced incredibly fast." },
-                        { word: "Chemical", definition: "A distinct compound or substance, often artificially prepared or purified.", sentence: "Some farmers use a chemical spray to keep harmful bugs away from their crops." },
-                        { word: "Grocery stores", definition: "A retail shop that primarily sells food, either fresh or preserved.", sentence: "Mom went to three different grocery stores to find the exact brand of pasta she wanted." },
-                        { word: "Food labels", definition: "A panel found on a package of food which contains a variety of information about the nutritional value.", sentence: "Always read the food labels to check how much sugar is inside your favorite snacks." },
-                        { word: "Organic food", definition: "Food produced by methods that comply with the standards of organic farming, avoiding artificial chemicals.", sentence: "Organic food is often considered healthier because it is grown without harsh pesticides." },
-                        { word: "Whole food", definition: "Food that has been processed or refined as little as possible and is free from additives.", sentence: "Eating a diet based on whole food like fresh vegetables and grains is excellent for your body." }
-                    ]
-                },
-                {
-                    groupTitle: "Units 7 & 8: Art and Artists",
-                    words: [
-                        { word: "Sketch", definition: "A rough or unfinished drawing or painting, often made to assist in making a more finished picture.", sentence: "The artist quickly drew a sketch of the bird before it flew away." },
-                        { word: "Pastels", definition: "A crayon made of powdered pigments bound with gum or resin, used for drawing.", sentence: "She used soft blue and pink pastels to create a beautiful drawing of the sunset." },
-                        { word: "Canvas", definition: "A strong, unbleached cloth used as a surface for oil painting.", sentence: "The painter stared at the blank white canvas, waiting for inspiration to strike." },
-                        { word: "Paintbrushes", definition: "A brush used for applying paint to a surface.", sentence: "He cleaned his thick paintbrushes with water after finishing the large mural." },
-                        { word: "Shapes", definition: "The external form, contours, or outline of someone or something.", sentence: "The child cut out stars and triangular shapes from the colored construction paper." },
-                        { word: "String", definition: "Material consisting of threads of cotton, hemp, or other material twisted together.", sentence: "They tied the colorful balloons to the chairs using a long piece of string." },
-                        { word: "Three-dimensional", definition: "Having or appearing to have length, breadth, and depth.", sentence: "The artist carved a stunning three-dimensional sculpture out of solid marble." },
-                        { word: "Prodigy", definition: "A person, especially a young one, endowed with exceptional qualities or abilities.", sentence: "The young musical prodigy could play complex piano pieces by the age of five." },
-                        { word: "Street painter", definition: "An artist who creates visual art directly on public pavement or sidewalks.", sentence: "The talented street painter drew an amazing 3D waterfall right on the concrete path." },
-                        { word: "Carpenter", definition: "A person who makes and repairs wooden objects and structures.", sentence: "The skilled carpenter built a sturdy oak dining table for the family." },
-                        { word: "Sculptor", definition: "An artist who makes sculptures.", sentence: "The sculptor used sharp tools to carefully chisel the rough stone into a beautiful face." },
-                        { word: "Complex", definition: "Consisting of many different and connected parts.", sentence: "The clock had a highly complex mechanism of tiny spinning gears inside." },
-                        { word: "Washable", definition: "Able to be washed without being damaged or having the colors fade.", sentence: "Luckily, the children were using washable paint, so the stains came right out of their clothes." },
-                        { word: "Combines", definition: "To unite or merge for a common purpose.", sentence: "The recipe combines sweet and sour flavors perfectly." },
-                        { word: "Fascination", definition: "The state of feeling an intense interest in something.", sentence: "Her deep fascination with the ocean led her to become a marine biologist." },
-                        { word: "Exhibition", definition: "A public display of works of art or items of interest, held in an art gallery or museum.", sentence: "The new photography exhibition opens at the downtown art gallery next week." },
-                        { word: "Frame", definition: "A rigid structure that surrounds or encloses something such as a picture, door, or windowpanes.", sentence: "He placed his favorite family photograph into a beautiful wooden frame." },
-                        { word: "Landscape", definition: "A picture representing an area of countryside.", sentence: "The artist painted a sweeping landscape of the rolling green hills and valley." },
-                        { word: "Texture", definition: "The feel, appearance, or consistency of a surface or a substance.", sentence: "You could feel the rough texture of the dried oil paint on the canvas." },
-                        { word: "Shading", definition: "The darkening or coloring of an illustration or diagram with parallel lines or a block of color.", sentence: "She used delicate pencil shading to make the drawn apple look perfectly round." },
-                        { word: "Perspective", definition: "The art of drawing solid objects on a two-dimensional surface so as to give the right impression of their height, width, depth, and position in relation to each other.", sentence: "Using proper perspective made the drawn road look like it stretched far into the distance." },
-                        { word: "Contrast", definition: "The state of being strikingly different from something else in juxtaposition or close association.", sentence: "The bright yellow flower stood out in sharp contrast against the dark green leaves." },
-                        { word: "Space", definition: "A continuous area or expanse which is free, available, or unoccupied.", sentence: "The modern painting utilized a lot of empty white space to emphasize the single red dot." },
-                        { word: "Stained", definition: "Marked or discolored with something that is not easily removed.", sentence: "His apron was heavily stained with splatters of blue and green acrylic paint." },
-                        { word: "Brilliant", definition: "Exceptionally clever or talented; or outstandingly bright.", sentence: "The fireworks exploded in a brilliant flash of neon colors across the night sky." },
-                        { word: "Pale", definition: "Light in color or having little color.", sentence: "She used a pale pink color to paint the soft flower petals." },
-                        { word: "Ignore", definition: "Refuse to take notice of or acknowledge; disregard intentionally.", sentence: "Try to ignore the loud construction noises outside while you study for the test." },
-                        { word: "Worries", definition: "The state of being anxious and troubled over actual or potential problems.", sentence: "He tries not to let his worries about the upcoming math test ruin his weekend." },
-                        { word: "Famous", definition: "Known about by many people.", sentence: "The famous actor signed autographs for his fans outside the theater." },
-                        { word: "Speechless", definition: "Unable to speak, especially as the temporary result of shock or some strong emotion.", sentence: "When she saw the surprise birthday party, she was completely speechless." }
-                    ]
-                },
-                {
-                    groupTitle: "Unit 9: City & Society",
-                    words: [
-                        { word: "Canal", definition: "An artificial waterway constructed to allow the passage of boats or ships inland.", sentence: "Small boats transport goods up and down the narrow city canal every morning." },
-                        { word: "Port", definition: "A town or city with a harbor where ships load or unload, especially one where customs officers are stationed.", sentence: "The busy port was filled with massive cargo ships arriving from across the ocean." },
-                        { word: "Architecture", definition: "The art or practice of designing and constructing buildings.", sentence: "The historic city is famous for its beautiful and ancient stone architecture." },
-                        { word: "Rickshaw", definition: "A light two-wheeled passenger vehicle drawn by one or more people, chiefly used in Asian countries.", sentence: "The tourists took a scenic ride through the old town in a wooden rickshaw." },
-                        { word: "Street vendor", definition: "A person who sells food or items to the public from a portable stall or cart.", sentence: "The friendly street vendor sold delicious hot noodles to people walking by." },
-                        { word: "Antiques", definition: "A collectible object such as a piece of furniture or work of art that has a high value because of its considerable age.", sentence: "They visited a dusty shop to look for rare antiques to decorate their new home." },
-                        { word: "Souvenirs", definition: "A thing that is kept as a reminder of a person, place, or event.", sentence: "She bought several keychains and postcards as souvenirs from her trip to Japan." },
-                        { word: "Batik", definition: "A method (originally used in Java) of producing colored designs on textiles by dyeing them, having first applied wax to the parts to be left undyed.", sentence: "The marketplace sold beautiful shirts made from colorful, hand-dyed batik fabric." },
-                        { word: "Exotic fruits", definition: "Fruits that are not native to a particular area, usually introduced from tropical regions.", sentence: "The market stall was piled high with exotic fruits like dragon fruit and starfruit." },
-                        { word: "Tuna", definition: "A large and active predatory schooling fish of the mackerel family.", sentence: "Freshly caught tuna is highly prized for making high-quality sushi." },
-                        { word: "Shrimp", definition: "A small free-swimming crustacean with an elongated body, typically marine and frequently harvested for food.", sentence: "He ordered a bowl of hot soup filled with vegetables and spicy shrimp." },
-                        { word: "Countless", definition: "Too many to be counted; very many.", sentence: "There are countless stars visible in the sky when you travel far away from city lights." },
-                        { word: "Congested", definition: "So crowded with traffic or people as to hinder freedom of movement.", sentence: "During rush hour, the main highway becomes heavily congested with cars." },
-                        { word: "Haggle", definition: "Dispute or bargain persistently, especially over the cost of something.", sentence: "It is customary to haggle with the market sellers to get a better price for clothes." },
-                        { word: "Banned", definition: "Officially or legally prohibit.", sentence: "Smoking has been completely banned inside all public restaurants." }
-                    ]
-                }
+                { word: "Exhibition", definition: "A public display of works of art or items of interest, held in an art gallery or museum.", sentence: "The new photography exhibition opens at the downtown art gallery next week." },
+                { word: "Tuna", definition: "A large and active predatory schooling fish of the mackerel family.", sentence: "Freshly caught tuna is highly prized for making high-quality sushi." },
+                { word: "Sculptor", definition: "An artist who makes sculptures.", sentence: "The sculptor used sharp tools to carefully chisel the rough stone into a beautiful face." },
+                { word: "Sketch", definition: "A rough or unfinished drawing or painting, often made to assist in making a more finished picture.", sentence: "The artist quickly drew a sketch of the bird before it flew away." },
+                { word: "Architecture", definition: "The art or practice of designing and constructing buildings.", sentence: "The historic city is famous for its beautiful and ancient stone architecture." },
+                { word: "Landscape", definition: "A picture representing an area of countryside.", sentence: "The artist painted a sweeping landscape of the rolling green hills and valley." },
+                { word: "Texture", definition: "The feel, appearance, or consistency of a surface or a substance.", sentence: "You could feel the rough texture of the dried oil paint on the canvas." },
+                { word: "Street Painter", definition: "An artist who creates visual art directly on public pavement or sidewalks.", sentence: "The talented street painter drew an amazing 3D waterfall right on the concrete path." },
+                { word: "Carpenter", definition: "A person who makes and repairs wooden objects and structures.", sentence: "The skilled carpenter built a sturdy oak dining table for the family." },
+                { word: "Canvas", definition: "A strong, unbleached cloth used as a surface for oil painting.", sentence: "The painter stared at the blank white canvas, waiting for inspiration to strike." },
+                { word: "Thread/string", definition: "Material consisting of long, thin strands of cotton, hemp, or other fibers twisted together.", sentence: "They used a colorful piece of thread to sew the patch onto the jacket." },
+                { word: "Traditional Fabric", definition: "Cloth produced by weaving or knitting using customary methods of a specific culture.", sentence: "The local market sells beautiful traditional fabric woven by hand." },
+                { word: "Street Vendor", definition: "A person who sells food or items to the public from a portable stall or cart.", sentence: "The friendly street vendor sold delicious hot noodles to people walking by." },
+                { word: "Volunteer", definition: "A person who freely offers to take part in an enterprise or undertake a task.", sentence: "She decided to be a volunteer at the animal shelter to help care for the dogs." },
+                { word: "Organic", definition: "Food produced by methods that comply with the standards of organic farming, avoiding artificial chemicals.", sentence: "Organic food is often considered healthier because it is grown without harsh pesticides." },
+                { word: "Perspective", definition: "The art of drawing solid objects on a two-dimensional surface so as to give the right impression of their height, width, depth, and position.", sentence: "Using proper perspective made the drawn road look like it stretched far into the distance." },
+                { word: "Chemicals", definition: "A distinct compound or substance, often artificially prepared or purified.", sentence: "Some farmers use a chemical spray to keep harmful bugs away from their crops." },
+                { word: "Rickshaw", definition: "A light two-wheeled passenger vehicle drawn by one or more people, chiefly used in Asian countries.", sentence: "The tourists took a scenic ride through the old town in a wooden rickshaw." },
+                { word: "Ingredients", definition: "Any of the foods or substances that are combined to make a particular dish.", sentence: "Before starting to cook, she made sure she had all the necessary ingredients." },
+                { word: "Enraged", definition: "Very angry; furious.", sentence: "The bull became enraged when it saw the bright red cloth." },
+                { word: "Imagination", definition: "The ability of the mind to be creative or resourceful and form new ideas.", sentence: "Reading fantasy books helps children develop a strong imagination." },
+                { word: "Patients", definition: "People receiving or registered to receive medical treatment.", sentence: "The doctor visited all of her patients in the hospital to check on their recovery." },
+                { word: "Prodigy", definition: "A person, especially a young one, endowed with exceptional qualities or abilities.", sentence: "The young musical prodigy could play complex piano pieces by the age of five." },
+                { word: "Exotic Fruits", definition: "Fruits that are not native to a particular area, usually introduced from tropical regions.", sentence: "The market stall was piled high with exotic fruits like dragon fruit and starfruit." },
+                { word: "Adjectives", definition: "Words that describe or modify another person or thing in a sentence.", sentence: "Words like 'beautiful', 'tall', and 'fast' are adjectives used to describe nouns." },
+                { word: "Assistant", definition: "A person who helps in particular work and acts as a subordinate.", sentence: "The manager asked her assistant to print the important documents for the meeting." },
+                { word: "Dissatisfied", definition: "Not content or happy with something.", sentence: "The customer was dissatisfied with his cold meal and asked the waiter for a replacement." },
+                { word: "Speechless", definition: "Unable to speak, especially as the temporary result of shock or some strong emotion.", sentence: "When she saw the surprise birthday party, she was completely speechless." },
+                { word: "Realistic", definition: "Representing familiar things in a way that is accurate or true to life.", sentence: "The painting of the apple was so realistic that it almost looked like a photograph." },
+                { word: "Comprehension", definition: "The action or capability of understanding something.", sentence: "Reading comprehension is an important skill to make sure you understand the story." },
+                { word: "City", definition: "An area in which a large number of people live fairly close together.", sentence: "Millions of people live and work in the busy city." }
             ],
             phonics: [
                 {
-                    groupTitle: "Blends & Digraphs (tr, sm, ch, sh, st, sw)",
+                    groupTitle: "1. Opposites / Antonyms",
                     words: [
-                        { word: "Train", definition: "Phonics: 'tr' blend. A series of connected vehicles traveling on railways.", sentence: "The fast train carried hundreds of passengers across the country." },
-                        { word: "Tree", definition: "Phonics: 'tr' blend. A woody perennial plant with a trunk and branches.", sentence: "The tall oak tree provided wonderful shade during the hot summer." },
-                        { word: "Smile", definition: "Phonics: 'sm' blend. Form one's features into a pleased, kind, or amused expression.", sentence: "The teacher gave the student a warm smile when they answered correctly." },
-                        { word: "Small", definition: "Phonics: 'sm' blend. Of a size that is less than normal or usual.", sentence: "The small puppy could easily fit inside a shoebox." },
-                        { word: "Chair", definition: "Phonics: 'ch' digraph. A separate seat for one person, typically with a back and four legs.", sentence: "He pulled up a wooden chair to sit at the dinner table." },
-                        { word: "Chop", definition: "Phonics: 'ch' digraph. Cut something into pieces with repeated sharp blows of an axe or knife.", sentence: "You must carefully chop the carrots before adding them to the soup." },
-                        { word: "Ship", definition: "Phonics: 'sh' digraph. A vessel larger than a boat for transporting people or goods by sea.", sentence: "The massive cargo ship sailed slowly across the deep blue ocean." },
-                        { word: "Wash", definition: "Phonics: 'sh' digraph. Clean with water and, typically, soap or detergent.", sentence: "Don't forget to wash your hands before sitting down to eat dinner." },
-                        { word: "Star", definition: "Phonics: 'st' blend. A fixed luminous point in the night sky.", sentence: "The bright north star guided the sailors through the dark night." },
-                        { word: "Fast", definition: "Phonics: 'st' blend. Moving or capable of moving at high speed.", sentence: "The cheetah is famous for being an incredibly fast runner." },
-                        { word: "Swim", definition: "Phonics: 'sw' blend. Propel the body through water by using the limbs.", sentence: "The children love to swim in the cool pool during the summer." },
-                        { word: "Sweet", definition: "Phonics: 'sw' blend. Having the pleasant taste characteristic of sugar or honey.", sentence: "The fresh strawberries from the garden were perfectly ripe and sweet." }
+                        { word: "Hot / Cold", definition: "Antonyms are words with opposite meanings.", sentence: "Fire is hot, but ice is cold." },
+                        { word: "Fast / Slow", definition: "Opposites describe extremes.", sentence: "The cheetah is fast, but the turtle is slow." }
                     ]
                 },
                 {
-                    groupTitle: "Word Skills: Homophones, Synonyms, Rhyming Words",
+                    groupTitle: "2. Verbs",
                     words: [
-                        { word: "Sun", definition: "Homophone of 'Son'. The star around which the earth orbits.", sentence: "The sun provides the light and heat needed for plants to grow." },
-                        { word: "Son", definition: "Homophone of 'Sun'. A boy or man in relation to either or both of his parents.", sentence: "The proud father taught his son how to ride a bicycle." },
-                        { word: "See", definition: "Homophone of 'Sea'. Perceive with the eyes; discern visually.", sentence: "If you look closely, you can see a bird hiding in the branches." },
-                        { word: "Sea", definition: "Homophone of 'See'. The expanse of salt water that covers most of the earth's surface.", sentence: "The pirate ship sailed across the stormy sea searching for treasure." },
-                        { word: "Right", definition: "Homophone of 'Write'. Morally good, justified, or acceptable; or a direction.", sentence: "Make sure you turn right at the stop sign to find the school." },
-                        { word: "Write", definition: "Homophone of 'Right'. Mark on a surface with a pen, pencil, or similar implement.", sentence: "Please write your name clearly at the top of your test paper." },
-                        { word: "Happy", definition: "Synonym of 'Glad'. Feeling or showing pleasure or contentment.", sentence: "The boy was incredibly happy when he received a new puppy." },
-                        { word: "Glad", definition: "Synonym of 'Happy'. Pleased; delighted.", sentence: "I am so glad that you were able to come to my party." },
-                        { word: "Quick", definition: "Synonym of 'Fast'. Moving fast or doing something in a short time.", sentence: "The rabbit made a quick jump to escape from the bushes." },
-                        { word: "Big", definition: "Synonym of 'Large'. Of considerable size, extent, or intensity.", sentence: "The elephant is a very big animal that requires a lot of food." },
-                        { word: "Large", definition: "Synonym of 'Big'. Of considerable or relatively great size, extent, or capacity.", sentence: "They ordered a large pizza to share with all their friends." },
-                        { word: "Cat", definition: "Rhymes with 'Hat'. A small domesticated carnivorous mammal.", sentence: "The fluffy cat curled up on the sofa and went to sleep." },
-                        { word: "Hat", definition: "Rhymes with 'Cat'. A shaped covering for the head worn for warmth or as a fashion item.", sentence: "He wore a wide straw hat to protect his face from the sun." },
-                        { word: "Day", definition: "Rhymes with 'Play'. A period of twenty-four hours as a unit of time.", sentence: "It was a beautiful sunny day to spend outside at the park." },
-                        { word: "Play", definition: "Rhymes with 'Day'. Engage in activity for enjoyment and recreation rather than a serious or practical purpose.", sentence: "The children went outside to play tag in the backyard." }
+                        { word: "Run", definition: "An action word meaning to move swiftly on foot.", sentence: "I like to run in the park." },
+                        { word: "Jump", definition: "An action word meaning to push oneself off a surface into the air.", sentence: "See how high you can jump!" }
+                    ]
+                },
+                {
+                    groupTitle: "3. Past Tense",
+                    words: [
+                        { word: "Walked", definition: "The past tense of walk; an action that already happened.", sentence: "Yesterday, we walked to the store." },
+                        { word: "Ran", definition: "The irregular past tense of run.", sentence: "He ran as fast as he could in the race." }
+                    ]
+                },
+                {
+                    groupTitle: "4. Correct the sentence",
+                    words: [
+                        { word: "Capitalization & Punctuation", definition: "Starting with a capital letter and ending with a period.", sentence: "Incorrect: 'he is tall' -> Correct: 'He is tall.'" },
+                        { word: "Subject-Verb Agreement", definition: "Matching singular/plural subjects with the correct verb.", sentence: "Incorrect: 'The dogs barks' -> Correct: 'The dogs bark.'" }
+                    ]
+                },
+                {
+                    groupTitle: "5. Count Nouns",
+                    words: [
+                        { word: "Apples", definition: "Nouns you can easily count (one apple, two apples).", sentence: "She bought three red apples." },
+                        { word: "Books", definition: "A countable noun referring to things you read.", sentence: "There are five books on the shelf." }
+                    ]
+                },
+                {
+                    groupTitle: "6. Non-Count Nouns",
+                    words: [
+                        { word: "Water", definition: "A liquid that cannot be counted individually.", sentence: "Please pour me a glass of water." },
+                        { word: "Rice", definition: "Small grains that are treated as a mass, not counted individually.", sentence: "We eat a lot of rice for dinner." }
+                    ]
+                },
+                {
+                    groupTitle: "7. Homophones",
+                    words: [
+                        { word: "Sun / Son", definition: "Words that sound the same but have different meanings and spellings.", sentence: "The sun is bright, and the man's son is playing." },
+                        { word: "Sea / See", definition: "Sound alike, but one is an ocean and one is an action.", sentence: "I can see the ships on the sea." }
+                    ]
+                },
+                {
+                    groupTitle: "8. Rhyming Words",
+                    words: [
+                        { word: "Cat / Hat", definition: "Words that end with the same sound.", sentence: "The cat wore a tall, striped hat." },
+                        { word: "Day / Play", definition: "Words ending in the 'ay' sound.", sentence: "It is a beautiful day to go out and play." }
                     ]
                 }
             ],
@@ -2408,7 +2365,38 @@
                 { word: "Prism", definition: "A transparent object that can bend and separate white light into different colours.", sentence: "A prism can split white light into a range of colours." },
                 { word: "Herbivore", definition: "An animal that mainly eats plants.", sentence: "A rabbit is a herbivore because it eats plants." }
             ],
-            socialStudies: [],
+            socialStudies: [
+                { word: "Society", definition: "People living together in organized communities.", sentence: "A healthy society is one where people help each other." },
+                { word: "Leader", definition: "A person who guides or directs a group.", sentence: "The class president is a good leader who listens to everyone." },
+                { word: "Tradition", definition: "Beliefs or customs handed down from generation to generation.", sentence: "It is a tradition in my family to eat a big meal on New Year's Eve." },
+                { word: "Moral", definition: "Concerned with the principles of right and wrong behavior.", sentence: "The story has a good moral about the importance of being honest." },
+                { word: "Community", definition: "A group of people living in the same place or having a particular characteristic in common.", sentence: "We planted trees in the park to help our local community." },
+                { word: "Culture", definition: "The arts, customs, and habits that characterize a particular society or nation.", sentence: "Thai culture is famous for its beautiful temples and spicy food." },
+                { word: "Behavior", definition: "The way in which an animal or person acts in response to a particular situation.", sentence: "The teacher rewarded the students for their excellent behavior during the trip." },
+                { word: "Dialect", definition: "A particular form of a language which is peculiar to a specific region or social group.", sentence: "People in the north of Thailand speak a different dialect than people in the south." },
+                { word: "Currency", definition: "A system of money in general use in a particular country.", sentence: "The currency used in Thailand is the Thai Baht." },
+                { word: "Goods", definition: "Things that are made to be sold.", sentence: "The market is full of fresh goods like fruit, vegetables, and clothes." },
+                { word: "Services", definition: "Actions or work that someone does for someone else.", sentence: "Doctors and teachers provide important services to our city." },
+                { word: "Digital", definition: "Involving or relating to the use of computer technology.", sentence: "We use a digital clock to check the time on our phones." },
+                { word: "Patience", definition: "The capacity to accept or tolerate delay, trouble, or suffering without getting angry or upset.", sentence: "You need a lot of patience to learn how to play a difficult song on the piano." },
+                { word: "Want", definition: "Have a desire to possess or do something; wish for.", sentence: "I want a new toy, but I do not necessarily need it to survive." },
+                { word: "Needs", definition: "Things that are required because they are essential or very important.", sentence: "Food, water, and shelter are basic human needs." },
+                { word: "Currency Symbols", definition: "A graphic symbol used as a shorthand for a currency's name.", sentence: "The dollar sign ($) and the baht sign (฿) are examples of currency symbols." },
+                { word: "Responsibility", definition: "The state or fact of having a duty to deal with something.", sentence: "It is my responsibility to feed the family dog every morning." },
+                { word: "Children's rights", definition: "The human rights of children with particular attention to the rights of special protection and care.", sentence: "Education and safety are fundamental children's rights." },
+                { word: "Regions in Thailand", definition: "The different geographical and cultural areas of the country.", sentence: "There are several distinct regions in Thailand, including the North, South, Central, and Northeast." },
+                { word: "Appreciation", definition: "Recognition and enjoyment of the good qualities of someone or something.", sentence: "She showed her appreciation by giving her teacher a beautiful thank you card." },
+                { word: "Advertising", definition: "The activity or profession of producing advertisements for commercial products or services.", sentence: "The company used television advertising to sell its new sports shoes." },
+                { word: "Consumer", definition: "A person who purchases goods and services for personal use.", sentence: "As a smart consumer, he always checks the price before buying a product." },
+                { word: "Population", definition: "All the inhabitants of a particular town, area, or country.", sentence: "The population of the busy capital city is growing every single year." },
+                { word: "Worship", definition: "The feeling or expression of reverence and adoration for a deity.", sentence: "Many people go to the temple to worship and make merit on special holidays." },
+                { word: "Respect", definition: "A feeling of deep admiration for someone or something elicited by their abilities, qualities, or achievements.", sentence: "We should always show respect to our parents and elders." },
+                { word: "Preservation", definition: "The action of maintaining something in its original or existing state.", sentence: "The preservation of old historic buildings is very important for our culture." },
+                { word: "Rituals", definition: "A religious or solemn ceremony consisting of a series of actions performed according to a prescribed order.", sentence: "Traditional Thai weddings involve many beautiful rituals." },
+                { word: "Symbols", definition: "A mark or character used as a conventional representation of an object, function, or process.", sentence: "The flag and the national anthem are symbols of our country." },
+                { word: "Festival", definition: "A day or period of celebration, typically a religious commemoration.", sentence: "Songkran is a famous water festival celebrated every year in April." },
+                { word: "Phi ta khon", definition: "A festival held in Dan Sai, Loei province, Northeastern Thailand, known for its colorful ghost masks.", sentence: "People wear huge, colorful ghost masks during the famous Phi ta khon parade." }
+            ],
             mathematics: [
                 { word: "Mixed Numbers", definition: "A whole number and a fraction combined into one mixed entity.", sentence: "2 ½ is an example of a mixed number." },
                 { word: "Fractions", definition: "A number that represents a part of a whole.", sentence: "One half and three quarters are fractions." },
@@ -2439,11 +2427,30 @@
                 { word: "Subtraction", definition: "The math process of taking one number away from another.", sentence: "The subtraction of 2 from 5 leaves us with 3." },
                 { word: "10 Times As Much", definition: "To find out how many times a number fits into another by comparing zeroes.", sentence: "Working out: 1,000,000 (6 zeroes) minus 100,000 (5 zeroes) = 1 zero left. So add 1 zero (10x as much)." }
             ],
-            healthEducation: []
+            healthEducation: [
+                { word: "Cheat", definition: "To act dishonestly or unfairly in order to gain an advantage.", sentence: "It is against the rules to cheat during the sports competition." },
+                { word: "Culture", definition: "The customs, arts, social institutions, and achievements of a particular nation or people.", sentence: "Learning about Thai culture includes understanding traditional dances and music." },
+                { word: "Sportsmanship", definition: "Fair and generous behavior or treatment of others, especially in a sports contest.", sentence: "Shaking hands with the opposing team shows excellent sportsmanship." },
+                { word: "Appropriate Behavior", definition: "Acting in a way that is suitable or proper, such as traditional Thai manners.", sentence: "Showing respect to elders is an example of appropriate behavior." },
+                { word: "Parallel Lines", definition: "Lines in a plane which do not meet; two lines that are always the same distance apart.", sentence: "The dancers stood in two parallel lines facing the audience." },
+                { word: "Skipping Rope", definition: "A piece of rope used for jumping over as a game or for exercise.", sentence: "She used a skipping rope to warm up before gym class." },
+                { word: "Stationary Body Movements", definition: "Moving parts of the body while staying in one place, like bending or stretching.", sentence: "Touching your toes without walking is a stationary body movement." },
+                { word: "Mobile Body Movements", definition: "Movements that involve traveling from one place to another, such as running or jumping.", sentence: "Running across the field is a basic mobile body movement." },
+                { word: "Exercise Equipment", definition: "Tools or apparatus used during physical activity, like balls, hoops, or ropes.", sentence: "Throwing a basketball is a body movement with exercise equipment." },
+                { word: "Conductor", definition: "A person who directs the performance of an orchestra or choir.", sentence: "The conductor waved his baton to keep the musicians in time." },
+                { word: "Music", definition: "Vocal or instrumental sounds combined to produce beauty of form, harmony, and expression of emotion.", sentence: "Listening to calming music can help you relax after a long day." },
+                { word: "Dance", definition: "Move rhythmically to music, typically following a set sequence of steps.", sentence: "The students learned a traditional Thai dance for the school festival." },
+                { word: "Rotation", definition: "The action of rotating around an axis or center.", sentence: "A slow rotation of the shoulders helps release tension before exercising." },
+                { word: "Rhythm", definition: "A strong, regular, repeated pattern of movement or sound.", sentence: "The children clapped their hands to the rhythm of the drum." }
+            ]
         };
 
         const DEFAULT_SCIENCE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.science));
         const DEFAULT_MATHEMATICS_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.mathematics));
+        const DEFAULT_LANGUAGE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.language));
+        const DEFAULT_SOCIALSTUDIES_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.socialStudies));
+        const DEFAULT_HE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.healthEducation));
+        const DEFAULT_PHONICS_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.phonics));
 
 
         // ============================================================
@@ -2492,8 +2499,6 @@
             return result;
         }
 
-        // Keep the Science vocabulary in sync with the requested list without
-        // changing vocabulary in any other subject.
         function applyScienceVocabularyUpdate() {
             const currentScience = Array.isArray(vocabularyData.science)
                 ? vocabularyData.science
@@ -2518,8 +2523,6 @@
             vocabularyData.science = Array.from(existing.values());
         }
 
-        // Keep the Mathematics vocabulary in sync with the requested list without
-        // changing vocabulary in any other subject.
         function applyMathematicsVocabularyUpdate() {
             const currentMath = Array.isArray(vocabularyData.mathematics)
                 ? vocabularyData.mathematics
@@ -2541,6 +2544,92 @@
             });
 
             vocabularyData.mathematics = Array.from(existing.values());
+        }
+
+        function applyLanguageVocabularyUpdate() {
+            const currentLang = Array.isArray(vocabularyData.language)
+                ? vocabularyData.language
+                : [];
+            
+            // If the old format (grouped) is detected, override it completely
+            if (currentLang.length > 0 && (currentLang[0].groupTitle || currentLang[0].story)) {
+                vocabularyData.language = JSON.parse(JSON.stringify(DEFAULT_LANGUAGE_VOCABULARY));
+                return;
+            }
+
+            const existing = new Map();
+            currentLang.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_LANGUAGE_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.language = Array.from(existing.values());
+        }
+
+        function applySocialStudiesVocabularyUpdate() {
+            const currentSoc = Array.isArray(vocabularyData.socialStudies)
+                ? vocabularyData.socialStudies
+                : [];
+            
+            const existing = new Map();
+            currentSoc.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_SOCIALSTUDIES_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.socialStudies = Array.from(existing.values());
+        }
+
+        function applyHealthEducationVocabularyUpdate() {
+            const currentHE = Array.isArray(vocabularyData.healthEducation)
+                ? vocabularyData.healthEducation
+                : [];
+            
+            const existing = new Map();
+            currentHE.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_HE_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.healthEducation = Array.from(existing.values());
+        }
+
+        function applyPhonicsVocabularyUpdate() {
+            const current = vocabularyData.phonics || [];
+            // If the old format (the specific old group titles) is detected, override completely
+            if (current.length > 0 && current[0].groupTitle && current[0].groupTitle.includes("Blends & Digraphs")) {
+                vocabularyData.phonics = JSON.parse(JSON.stringify(DEFAULT_PHONICS_VOCABULARY));
+            } else if (current.length === 0) {
+                vocabularyData.phonics = JSON.parse(JSON.stringify(DEFAULT_PHONICS_VOCABULARY));
+            }
+            // Otherwise, we leave the custom edits alone
         }
 
         async function loadVocabularyFromCloud() {
@@ -2607,6 +2696,10 @@
                 });
                 applyScienceVocabularyUpdate();
                 applyMathematicsVocabularyUpdate();
+                applyLanguageVocabularyUpdate();
+                applySocialStudiesVocabularyUpdate();
+                applyHealthEducationVocabularyUpdate();
+                applyPhonicsVocabularyUpdate();
                 saveVocabularyLocal();
                 if (CLOUD_DB_URL.trim()) await saveVocabularyToCloud();
                 return;
@@ -2619,6 +2712,10 @@
                 });
                 applyScienceVocabularyUpdate();
                 applyMathematicsVocabularyUpdate();
+                applyLanguageVocabularyUpdate();
+                applySocialStudiesVocabularyUpdate();
+                applyHealthEducationVocabularyUpdate();
+                applyPhonicsVocabularyUpdate();
             }
 
             // If the cloud database is configured but empty, seed it with the
