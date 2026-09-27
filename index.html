@@ -1,0 +1,3784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=818689d6-4945-4baa-ac6a-43df61011dd5
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam Vocabulary Study Guide</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #09090b;
+            --card-bg: rgba(24, 24, 27, 0.6);
+            --accent-lang: #3b82f6;
+            --accent-lang-glow: rgba(59, 130, 246, 0.4);
+            --accent-phonics: #f43f5e;
+            --accent-phonics-glow: rgba(244, 63, 94, 0.4);
+            --accent-sci: #10b981;
+            --accent-sci-glow: rgba(16, 185, 129, 0.4);
+            --accent-soc: #f59e0b;
+            --accent-soc-glow: rgba(245, 158, 11, 0.4);
+            --accent-math: #ec4899;
+            --accent-math-glow: rgba(236, 72, 153, 0.4);
+            --accent-he: #8b5cf6;
+            --accent-he-glow: rgba(139, 92, 246, 0.4);
+            --accent-moral: #06b6d4; 
+            --accent-moral-glow: rgba(6, 182, 212, 0.4);
+            --accent-danger: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            
+            /* Enhanced Easing Curves for Smoother Animations */
+            --spring-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --smooth-easing: cubic-bezier(0.16, 1, 0.3, 1);
+            --expand-easing: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #09090b, #171723, #0d1b1e, #1a160c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s var(--spring-easing) forwards;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .version-badge {
+            font-size: 1rem;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-lang);
+            padding: 0.3rem 0.8rem;
+            border-radius: 99px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            vertical-align: middle;
+            font-weight: 800;
+            letter-spacing: 0;
+            -webkit-text-fill-color: var(--accent-lang);
+        }
+
+        .changelog-btn {
+            position: absolute;
+            right: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s var(--spring-easing);
+            will-change: transform, background;
+        }
+
+        .changelog-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.5);
+        }
+
+        .warning-text {
+            color: var(--accent-danger);
+            font-size: 0.75rem; 
+            font-weight: 700;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 99px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            animation: pulseWarning 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseWarning {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); border-color: rgba(239, 68, 68, 0.2); }
+            100% { box-shadow: 0 0 10px 0 rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); }
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Nav Container for Tabs and Syllabus Button */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s var(--smooth-easing) forwards;
+            gap: 1rem;
+            z-index: 1;
+        }
+
+        /* Glassmorphic Tabs */
+        .tabs-container {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(24, 24, 27, 0.4);
+            padding: 0.5rem;
+            border-radius: 99px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 99px;
+            transition: all 0.4s var(--smooth-easing);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active { transform: translateY(0) scale(1.02); }
+        .tab-btn.active[data-tab="language"] { background: var(--accent-lang); color: white; box-shadow: 0 0 20px var(--accent-lang-glow); }
+        .tab-btn.active[data-tab="phonics"] { background: var(--accent-phonics); color: white; box-shadow: 0 0 20px var(--accent-phonics-glow); }
+        .tab-btn.active[data-tab="science"] { background: var(--accent-sci); color: white; box-shadow: 0 0 20px var(--accent-sci-glow); }
+        .tab-btn.active[data-tab="socialStudies"] { background: var(--accent-soc); color: white; box-shadow: 0 0 20px var(--accent-soc-glow); }
+        .tab-btn.active[data-tab="mathematics"] { background: var(--accent-math); color: white; box-shadow: 0 0 20px var(--accent-math-glow); }
+        .tab-btn.active[data-tab="healthEducation"] { background: var(--accent-he); color: white; box-shadow: 0 0 20px var(--accent-he-glow); }
+
+        /* Action Buttons (Right Side) */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s var(--spring-easing);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            will-change: transform, box-shadow;
+        }
+
+        .action-btn.highlight {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent-lang);
+            color: #fff;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+        }
+        
+        .action-btn.highlight:hover {
+            background: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 25px var(--accent-lang-glow);
+        }
+
+        /* Words Container grid */
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            z-index: 1;
+        }
+
+        /* Note Callouts */
+        .diagram-note {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1.2rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: none;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeBloom 0.8s var(--spring-easing) forwards;
+            will-change: transform, opacity;
+        }
+        .diagram-note.visible { display: block; }
+        .theme-science .diagram-note { border-left: 4px solid var(--accent-sci); }
+        .theme-socialStudies .diagram-note { border-left: 4px solid var(--accent-soc); }
+        .theme-mathematics .diagram-note { border-left: 4px solid var(--accent-math); }
+        .theme-healthEducation .diagram-note { border-left: 4px solid var(--accent-he); }
+
+        /* Titles for Sections */
+        .section-header-wrapper {
+            grid-column: 1 / -1; 
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            animation: fadeBloom 0.8s var(--spring-easing) forwards;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+        
+        .story-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .story-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-lang);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+        
+        .theme-phonics .story-title { color: var(--accent-phonics); }
+        .theme-science .story-title { color: var(--accent-sci); }
+        .theme-socialStudies .story-title { color: var(--accent-soc); }
+        .theme-mathematics .story-title { color: var(--accent-math); }
+        .theme-healthEducation .story-title { color: var(--accent-he); }
+
+        /* Play Flashcards Button */
+        .play-fc-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s var(--spring-easing);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .play-fc-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Question Cards Styling */
+        .qa-card {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--text-muted);
+            position: relative;
+            grid-column: 1 / -1; 
+            transition: all 0.5s var(--spring-easing);
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeBloom 0.8s var(--spring-easing) forwards;
+            will-change: transform, opacity;
+        }
+
+        .qa-card:hover { transform: translateY(-6px) scale(1.01); z-index: 10; }
+
+        .theme-science .qa-card:not(.placeholder) { border-left-color: var(--accent-sci); }
+        .theme-science .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-sci-glow); border-color: rgba(16, 185, 129, 0.3); }
+        .theme-language .qa-card:not(.placeholder) { border-left-color: var(--accent-lang); }
+        .theme-language .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-lang-glow); border-color: rgba(59, 130, 246, 0.3); }
+        .theme-phonics .qa-card:not(.placeholder) { border-left-color: var(--accent-phonics); }
+        .theme-phonics .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-phonics-glow); border-color: rgba(244, 63, 94, 0.3); }
+        .theme-socialStudies .qa-card:not(.placeholder) { border-left-color: var(--accent-soc); }
+        .theme-socialStudies .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-soc-glow); border-color: rgba(245, 158, 11, 0.3); }
+        .theme-mathematics .qa-card:not(.placeholder) { border-left-color: var(--accent-math); }
+        .theme-mathematics .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-math-glow); border-color: rgba(236, 72, 153, 0.3); }
+        .theme-healthEducation .qa-card:not(.placeholder) { border-left-color: var(--accent-he); }
+        .theme-healthEducation .qa-card:not(.placeholder):hover { box-shadow: 0 15px 35px -10px var(--accent-he-glow); border-color: rgba(139, 92, 246, 0.3); }
+
+        .qa-card.placeholder { text-align: center; font-style: italic; color: var(--text-muted); border-left-color: rgba(255, 255, 255, 0.1); padding: 2rem; }
+        .qa-q { font-weight: 700; color: #ffffff; font-size: 1.05rem; margin-bottom: 0.5rem; padding-right: 90px; }
+        .qa-a { color: #d4d4d8; line-height: 1.6; font-size: 0.95rem; }
+        .qa-actions { position: absolute; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; }
+
+        /* Vocabulary Card Styling */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.5s var(--spring-easing);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: fadeBloom 0.8s var(--spring-easing) forwards;
+            will-change: transform, opacity, box-shadow;
+        }
+
+        .theme-language .card:hover { border-color: var(--accent-lang); box-shadow: 0 15px 35px -10px var(--accent-lang-glow); }
+        .theme-phonics .card:hover { border-color: var(--accent-phonics); box-shadow: 0 15px 35px -10px var(--accent-phonics-glow); }
+        .theme-science .card:hover { border-color: var(--accent-sci); box-shadow: 0 15px 35px -10px var(--accent-sci-glow); }
+        .theme-socialStudies .card:hover { border-color: var(--accent-soc); box-shadow: 0 15px 35px -10px var(--accent-soc-glow); }
+        .theme-mathematics .card:hover { border-color: var(--accent-math); box-shadow: 0 15px 35px -10px var(--accent-math-glow); }
+        .theme-healthEducation .card:hover { border-color: var(--accent-he); box-shadow: 0 15px 35px -10px var(--accent-he-glow); }
+
+        .card:hover { transform: translateY(-8px) scale(1.03); z-index: 10; }
+
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; transition: all 0.5s var(--spring-easing); opacity: 0.7; }
+        .theme-language .card::before { background: var(--accent-lang); }
+        .theme-phonics .card::before { background: var(--accent-phonics); }
+        .theme-science .card::before { background: var(--accent-sci); }
+        .theme-socialStudies .card::before { background: var(--accent-soc); }
+        .theme-mathematics .card::before { background: var(--accent-math); }
+        .theme-healthEducation .card::before { background: var(--accent-he); }
+        .card:hover::before { width: 8px; opacity: 1; }
+
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+        .word-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; color: #ffffff; transition: color 0.3s ease; }
+
+        .audio-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.4s var(--spring-easing); flex-shrink: 0;
+        }
+        
+        .qa-actions .audio-btn { width: 34px; height: 34px; }
+        .audio-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.2) rotate(8deg); }
+        .audio-btn:active { transform: scale(0.9); }
+        .audio-btn svg { width: 18px; height: 18px; fill: var(--text-main); transition: fill 0.2s; }
+        .qa-actions .audio-btn svg { width: 14px; height: 14px; }
+
+        .stop-btn { background: var(--accent-danger); display: none; border: none; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4); margin-left: 0.5rem; }
+        .stop-btn:hover { background: #dc2626; transform: scale(1.2) rotate(-5deg); }
+
+        .card-details { 
+            display: grid; 
+            grid-template-rows: 0fr; 
+            opacity: 0; 
+            transition: grid-template-rows 0.5s var(--expand-easing), opacity 0.4s ease 0.1s; 
+        }
+        .card-details-inner { overflow: hidden; }
+        .card.expanded .card-details { grid-template-rows: 1fr; opacity: 1; margin-top: 1rem; }
+        .card.expanded .card-details-inner { padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+        .definition { font-size: 0.95rem; color: #e4e4e7; line-height: 1.6; margin-bottom: 1rem; }
+        .sentence { font-size: 0.9rem; color: var(--text-muted); font-style: italic; line-height: 1.5; padding-left: 0.75rem; position: relative; }
+
+        .theme-language .sentence { border-left: 2px solid var(--accent-lang-glow); }
+        .theme-phonics .sentence { border-left: 2px solid var(--accent-phonics-glow); }
+        .theme-science .sentence { border-left: 2px solid var(--accent-sci-glow); }
+        .theme-socialStudies .sentence { border-left: 2px solid var(--accent-soc-glow); }
+        .theme-mathematics .sentence { border-left: 2px solid var(--accent-math-glow); }
+        .theme-healthEducation .sentence { border-left: 2px solid var(--accent-he-glow); }
+
+        .word-num { position: absolute; bottom: 1rem; right: 1.5rem; font-size: 3rem; font-weight: 800; color: rgba(255, 255, 255, 0.03); pointer-events: none; transition: all 0.5s var(--spring-easing); }
+        .card:hover .word-num { transform: scale(1.15) translateX(-8px) rotate(-3deg); color: rgba(255, 255, 255, 0.06); }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s var(--smooth-easing);
+            will-change: opacity;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            transform: scale(0.9) translateY(30px);
+            opacity: 0;
+            transition: transform 0.5s var(--spring-easing), opacity 0.4s var(--smooth-easing);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            will-change: transform, opacity;
+        }
+        
+        .modal-content.large { max-width: 900px; max-height: 85vh; }
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+        
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+        .modal-header h2 { margin: 0; font-size: 1.5rem; color: #fff; }
+        .modal-header p.subtext { margin: 0.25rem 0 0 0; color: var(--text-muted); font-size: 0.9rem; }
+        
+        .close-modal { background: transparent; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: all 0.3s var(--spring-easing); padding: 0; line-height: 1; }
+        .close-modal:hover { color: white; transform: rotate(90deg) scale(1.2); }
+        
+        .changelog-list { list-style: none; padding: 0; margin: 0; max-height: 350px; overflow-y: auto; }
+        .topics-scroll-area { overflow-y: auto; padding-right: 1rem; flex-grow: 1; }
+        
+        .changelog-list::-webkit-scrollbar, .topics-scroll-area::-webkit-scrollbar { width: 6px; }
+        .changelog-list::-webkit-scrollbar-track, .topics-scroll-area::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .changelog-list::-webkit-scrollbar-thumb, .topics-scroll-area::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        
+        .changelog-list li { padding: 1rem 0; border-bottom: 1px dashed rgba(255,255,255,0.1); font-size: 0.95rem; color: #d4d4d8; transition: transform 0.3s ease; }
+        .changelog-list li:hover { transform: translateX(5px); color: white; }
+        .changelog-list li:last-child { border-bottom: none; }
+        .changelog-version { font-weight: 700; color: var(--accent-lang); margin-right: 0.5rem; display: inline-block; min-width: 45px; }
+
+        .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .topic-section { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 1.25rem; transition: transform 0.4s var(--spring-easing); }
+        .topic-section:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .topic-section h3 { margin-top: 0; margin-bottom: 0.75rem; color: var(--accent-lang); font-size: 1.1rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+        .topic-section ul { padding-left: 1.2rem; margin: 0; color: #d4d4d8; font-size: 0.9rem; line-height: 1.5; }
+        .topic-section ul li { margin-bottom: 0.4rem; }
+        .topic-section ul ul { margin-top: 0.25rem; margin-bottom: 0.5rem; padding-left: 1.2rem; list-style-type: circle; color: var(--text-muted); }
+
+        /* Timetable Styles */
+        .timetable-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .timetable-wrapper::-webkit-scrollbar { height: 8px; }
+        .timetable-wrapper::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .timetable-wrapper::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px; 
+            color: #e4e4e7;
+            font-size: 0.85rem;
+        }
+
+        .timetable th, .timetable td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .timetable th {
+            background: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+        }
+
+        .timetable td { background: rgba(255, 255, 255, 0.02); }
+        .timetable .day-cell { background: rgba(59, 130, 246, 0.15); font-weight: 700; font-size: 0.9rem; color: #fff; }
+        .timetable .break-cell { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); font-style: italic; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            padding: 1rem 0.5rem;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        /* --- FLASHCARD STYLES --- */
+        .flashcard-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 420px;
+            perspective: 1000px;
+            margin: 1rem 0;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s var(--spring-easing);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Flashcard Animation Classes */
+        .flash-success .flip-card-front, 
+        .flash-success .flip-card-back {
+            border-color: var(--accent-sci) !important;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5) !important;
+            background: rgba(16, 185, 129, 0.15) !important;
+        }
+
+        .flash-error .flip-card-front, 
+        .flash-error .flip-card-back {
+            border-color: var(--accent-danger) !important;
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.5) !important;
+            background: rgba(239, 68, 68, 0.15) !important;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease; 
+        }
+
+        .flip-card-front .word {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            word-break: break-word;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-back .def {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-back .sent {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Audio buttons inside flashcard */
+        .fc-audio-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Tick / Cross Evaluation Controls */
+        .fc-assessment-controls {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .fc-eval-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--spring-easing);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .fc-eval-btn svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .fc-eval-btn.cross-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--accent-danger);
+            color: var(--accent-danger);
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .fc-eval-btn.tick-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--accent-sci);
+            color: var(--accent-sci);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Bottom Flashcard Navigation Controls */
+        .flashcard-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .fc-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 99px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s var(--spring-easing);
+        }
+
+        .fc-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .fc-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .fc-counter {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Flashcard Stats Screen */
+        .flashcard-stats {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 420px;
+            margin: 1rem 0;
+            color: #fff;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .fc-score-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fc-stats-content {
+            flex-grow: 1;
+            width: 100%;
+            overflow-y: auto;
+            margin: 1rem 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .fc-stats-content::-webkit-scrollbar { width: 6px; }
+        .fc-stats-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .fc-stats-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        
+        .fc-stats-content h4 {
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .fc-wrong-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .fc-wrong-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+        
+        .fc-wrong-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .fc-wrong-word {
+            font-weight: 700;
+            color: var(--accent-danger);
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .fc-wrong-def {
+            font-size: 0.95rem;
+            color: #d4d4d8;
+            line-height: 1.5;
+        }
+        
+        .fc-stats-actions {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Companion Pet Styles */
+        #companion-pet {
+            position: fixed; 
+            top: -150px; 
+            left: 50px; 
+            width: 80px; 
+            height: 80px; 
+            z-index: 1000; 
+            cursor: pointer;
+            transition: left 5s ease-in-out, top 5s ease-in-out;
+            will-change: left, top;
+        }
+        
+        #companion-pet.visible { top: 50px; }
+        #companion-pet.grabbing { cursor: grabbing; transition: none !important; }
+
+        #pet-icon { width: 100%; height: 100%; display: block; animation: bounceFloat 3s ease-in-out infinite alternate; transition: transform 0.5s var(--spring-easing); }
+        @keyframes bounceFloat { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(-20px) scale(1.05); } }
+
+        .motivation-bubble {
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(15px) scale(0.8);
+            background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 0.8rem 1.2rem;
+            color: #ffffff; font-size: 0.95rem; font-weight: 600; backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05); white-space: nowrap; opacity: 0; pointer-events: none; transition: all 0.5s var(--spring-easing);
+            will-change: transform, opacity;
+        }
+        #companion-pet.visible .motivation-bubble.show { opacity: 1; transform: translateX(-50%) translateY(-15px) scale(1); }
+
+        #pet-pillow { position: absolute; bottom: -20px; left: -15px; width: 110px; height: 50px; z-index: -1; opacity: 0; transition: all 0.6s var(--spring-easing); transform: translateY(30px) scale(0.5); }
+        #companion-pet.sleeping #pet-pillow { opacity: 1; transform: translateY(0) scale(1); }
+        #companion-pet.sleeping #pet-icon { animation: none; transform: translateY(12px) scale(1); }
+        
+        .eye-open { display: block; }
+        .eye-closed { display: none; }
+        #companion-pet.sleeping .eye-open { display: none; }
+        #companion-pet.sleeping .eye-closed { display: block; }
+
+        #pet-zzz-container { display: none; }
+        #companion-pet.sleeping #pet-zzz-container { display: block; }
+
+        .z-particle { position: absolute; color: #cbd5e1; font-weight: 900; opacity: 0; font-family: 'Comic Sans MS', cursive, sans-serif; pointer-events: none; }
+        .z1 { font-size: 1.2rem; top: -10px; left: 50px; animation: floatZ 3s infinite ease-in-out 0s; }
+        .z2 { font-size: 1rem; top: -20px; left: 65px; animation: floatZ 3s infinite ease-in-out 0.8s; }
+        .z3 { font-size: 0.8rem; top: -30px; left: 75px; animation: floatZ 3s infinite ease-in-out 1.6s; }
+
+        @keyframes floatZ { 0% { transform: translate(0, 0) scale(0.5) rotate(-10deg); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 0.8; } 100% { transform: translate(25px, -45px) scale(1.5) rotate(15deg); opacity: 0; } }
+
+        @media (max-width: 850px) {
+            .title-row { flex-direction: column; }
+            .changelog-btn { position: static; margin-top: 1rem; }
+            .topics-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .nav-container { flex-direction: column; justify-content: center; }
+            .tabs-container { width: 100%; justify-content: space-around; border-radius: 16px; }
+            .tab-btn { padding: 0.6rem 1rem; font-size: 0.9rem; flex: 1 1 40%; text-align: center; }
+            .action-buttons { width: 100%; flex-direction: row; flex-wrap: wrap; }
+            .action-btn { flex: 1; justify-content: center; font-size: 0.85rem; padding: 0.6rem 1rem; }
+            header h1 { font-size: 2.2rem; }
+            #companion-pet { width: 60px; height: 60px; }
+            .motivation-bubble { font-size: 0.8rem; padding: 0.5rem 1rem; }
+            .z1 { left: 40px; } .z2 { left: 55px; } .z3 { left: 65px; }
+            
+            /* Make flashcard buttons smaller on mobile */
+            .fc-eval-btn { width: 50px; height: 50px; }
+            .fc-eval-btn svg { width: 24px; height: 24px; }
+            
+            .flip-card-front .word { font-size: 2.2rem; }
+            .flashcard-container, .flashcard-stats { height: 350px; }
+        }
+
+        /* Keyframes refined for smoothness */
+        @keyframes fadeInDown { 
+            from { opacity: 0; transform: translateY(-40px) scale(0.95); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+        @keyframes fadeBloom { 
+            from { opacity: 0; transform: translateY(40px) scale(0.95); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+
+        /* --- SECRET ADMIN PANEL --- */
+        .admin-intro {
+            position: fixed;
+            inset: 0;
+            z-index: 6000;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(65,105,255,.16), transparent 28%),
+                #030407;
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-intro.active {
+            opacity: 1;
+            pointer-events: none;
+            animation: adminIntroOut .7s 2.35s cubic-bezier(.22,.8,.2,1) forwards;
+        }
+        .admin-intro-grid {
+            position:absolute;
+            inset:-50%;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 54px 54px;
+            transform: perspective(500px) rotateX(58deg) translateY(15%);
+            animation: adminGridMove 2.8s linear infinite;
+        }
+        .admin-intro-vignette {
+            position:absolute;
+            inset:0;
+            background: radial-gradient(circle, transparent 25%, rgba(0,0,0,.88) 88%);
+        }
+        .admin-intro-scan {
+            position:absolute;
+            inset:0;
+            background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255,255,255,.018) 4px);
+            mix-blend-mode: screen;
+            pointer-events:none;
+        }
+        .admin-intro-core {
+            position:relative;
+            z-index:2;
+            text-align:center;
+            width:min(620px, 88vw);
+            transform: translateY(24px) scale(.96);
+            opacity:0;
+            animation: adminCoreIn .65s .12s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-kicker {
+            font-size:.68rem;
+            font-weight:800;
+            letter-spacing:.38em;
+            text-transform:uppercase;
+            color:rgba(255,255,255,.48);
+            margin-bottom:16px;
+        }
+        .admin-intro-title {
+            margin:0;
+            font-size:clamp(2.6rem, 7vw, 5.6rem);
+            line-height:.92;
+            letter-spacing:-.07em;
+            font-weight:900;
+            text-transform:uppercase;
+            text-shadow:0 0 34px rgba(120,150,255,.22);
+        }
+        .admin-intro-title span { display:inline-block; animation: adminTitlePulse 1.2s .55s ease both; }
+        .admin-intro-line {
+            height:1px;
+            width:0;
+            margin:25px auto 18px;
+            background:linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+            animation: adminLineIn .65s .72s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-status {
+            font-size:.74rem;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            color:rgba(255,255,255,.58);
+            animation: adminStatusBlink .9s 1s ease both;
+        }
+        .admin-intro-bar {
+            width:min(360px,70vw);
+            height:3px;
+            margin:22px auto 0;
+            background:rgba(255,255,255,.08);
+            overflow:hidden;
+            border-radius:99px;
+        }
+        .admin-intro-bar i {
+            display:block;
+            height:100%;
+            width:0;
+            background:#fff;
+            box-shadow:0 0 18px rgba(255,255,255,.7);
+            animation: adminLoad 1.45s .85s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .admin-intro-flash {
+            position:absolute;
+            inset:0;
+            background:#fff;
+            opacity:0;
+            z-index:4;
+            pointer-events:none;
+            animation:adminFlash .18s 2.18s ease-out forwards;
+        }
+        .admin-status-cycle { animation: adminStatusCycle .4s cubic-bezier(.16,1,.3,1) both !important; }
+        @keyframes adminStatusCycle { from { opacity:0; transform:translateY(7px); filter:blur(5px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
+        @keyframes adminCoreIn { to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes adminLineIn { to { width:100%; } }
+        @keyframes adminLoad { to { width:100%; } }
+        @keyframes adminGridMove { to { transform:perspective(500px) rotateX(58deg) translateY(25%); } }
+        @keyframes adminTitlePulse {
+            0% { opacity:0; letter-spacing:.16em; filter:blur(12px); }
+            55% { opacity:1; }
+            100% { letter-spacing:-.07em; filter:blur(0); }
+        }
+        @keyframes adminStatusBlink { 0%,100% { opacity:.45; } 50% { opacity:1; } }
+        @keyframes adminFlash { 0%{opacity:0} 45%{opacity:.16} 100%{opacity:0} }
+        @keyframes adminIntroOut {
+            0% { opacity:1; transform:scale(1); filter:blur(0); }
+            100% { opacity:0; transform:scale(1.025); filter:blur(8px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .admin-intro.active, .admin-intro-grid, .admin-intro-core, .admin-intro-title span,
+            .admin-intro-line, .admin-intro-status, .admin-intro-bar i, .admin-intro-flash {
+                animation:none !important;
+            }
+        }
+
+        /* --- v5.2 interaction-safe + cinematic refinements --- */
+        #admin-code-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .28s ease, visibility 0s linear .28s;
+        }
+        #admin-code-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition: opacity .28s ease, visibility 0s linear 0s;
+        }
+        #admin-code-modal.active .admin-login {
+            animation: adminCodePop .55s cubic-bezier(.16,1,.3,1) both;
+        }
+        #admin-code-modal.active .admin-login-badge { animation: adminElementIn .42s .10s both; }
+        #admin-code-modal.active .modal-header { animation: adminElementIn .42s .16s both; }
+        #admin-code-modal.active .admin-field { animation: adminElementIn .42s .22s both; }
+        #admin-code-modal.active .admin-actions { animation: adminElementIn .42s .28s both; }
+        #admin-code-modal.active .admin-status { animation: adminElementIn .42s .34s both; }
+
+        #admin-panel.active { animation: adminPanelIn .52s cubic-bezier(.16,1,.3,1) both; }
+        #admin-panel.closing { animation: adminPanelOut .36s ease both; }
+        #admin-panel .admin-box { transform-origin: center; }
+
+        .words-grid.vocab-switching > * {
+            animation: vocabSwitchOut .22s ease both !important;
+        }
+        .words-grid.vocab-entering > * {
+            animation: vocabSwitchIn .48s cubic-bezier(.16,1,.3,1) both !important;
+        }
+        @keyframes adminCodePop {
+            0% { opacity: 0; transform: translateY(22px) scale(.86) rotateX(8deg); filter: blur(12px); }
+            65% { opacity: 1; transform: translateY(-3px) scale(1.015) rotateX(0); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotateX(0); filter: blur(0); }
+        }
+        @keyframes adminElementIn {
+            from { opacity: 0; transform: translateY(10px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes adminPanelIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes adminPanelOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        @keyframes vocabSwitchOut {
+            from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+            to { opacity: 0; transform: translateY(-8px) scale(.985); filter: blur(4px); }
+        }
+        @keyframes vocabSwitchIn {
+            from { opacity: 0; transform: translateY(18px) scale(.98); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        .admin-panel {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(3, 5, 10, .82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .admin-panel.active { display: flex; }
+
+        .admin-box {
+            width: min(1180px, 96vw);
+            max-height: 92vh;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top right, rgba(59,130,246,.12), transparent 32%),
+                linear-gradient(145deg, rgba(25,27,34,.98), rgba(12,13,18,.98));
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 26px;
+            box-shadow: 0 40px 100px rgba(0,0,0,.65);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-box.admin-login {
+            width: min(450px, 94vw);
+            max-height: none;
+            padding: 26px;
+        }
+
+        .admin-topbar {
+            padding: 24px 26px 20px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .admin-title-wrap { min-width: 0; }
+        .admin-title-wrap h2 {
+            margin: 0;
+            font-size: 1.45rem;
+            letter-spacing: -.03em;
+        }
+
+        .admin-sub {
+            color: var(--text-muted);
+            font-size: .86rem;
+            margin: 5px 0 0;
+            line-height: 1.45;
+        }
+
+        .admin-cloud-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(16,185,129,.1);
+            border: 1px solid rgba(16,185,129,.22);
+            color: #86efac;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .admin-close {
+            width: 42px;
+            height: 42px;
+            border: 0;
+            background: transparent;
+            color: rgba(255,255,255,.78);
+            cursor: pointer;
+            padding: 9px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            transition: transform .28s cubic-bezier(.2,.8,.2,1), background .22s ease, color .22s ease;
+            flex-shrink: 0;
+        }
+        .admin-close svg { width: 24px; height: 24px; display:block; }
+        .admin-close:hover {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            transform: rotate(90deg) scale(1.08);
+        }
+        .admin-close:active { transform: rotate(90deg) scale(.94); }
+
+        .admin-body {
+            padding: 22px 26px 26px;
+            overflow-y: auto;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+            gap: 18px;
+        }
+
+        .admin-card {
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+            padding: 18px;
+            min-width: 0;
+        }
+
+        .admin-card h3 {
+            margin: 0;
+            font-size: .95rem;
+            letter-spacing: .01em;
+        }
+
+        .admin-card-description {
+            margin: 4px 0 16px;
+            color: var(--text-muted);
+            font-size: .78rem;
+            line-height: 1.45;
+        }
+
+        .admin-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .admin-field.full { grid-column: 1 / -1; }
+
+        .admin-field label {
+            font-size: .72rem;
+            color: #b8bcc7;
+            font-weight: 800;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(0,0,0,.25);
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 13px;
+            outline: none;
+            font-size: .9rem;
+            transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .admin-field select { cursor: pointer; }
+        .admin-field select option { background: #18191f; color: #fff; }
+
+        .admin-field textarea {
+            min-height: 105px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .admin-field input::placeholder,
+        .admin-field textarea::placeholder { color: #717580; }
+
+        .admin-field input:focus,
+        .admin-field select:focus,
+        .admin-field textarea:focus {
+            border-color: rgba(59,130,246,.85);
+            background: rgba(59,130,246,.06);
+            box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+        }
+
+        .admin-select-row {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .admin-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px;
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 15px;
+        }
+
+        .admin-action {
+            border: 1px solid rgba(255,255,255,.11);
+            background: rgba(255,255,255,.055);
+            color: #fff;
+            border-radius: 11px;
+            padding: 10px 13px;
+            font-weight: 800;
+            font-size: .78rem;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .admin-action:hover {
+            background: rgba(255,255,255,.11);
+            border-color: rgba(255,255,255,.2);
+            transform: translateY(-1px);
+        }
+
+        .admin-action.primary {
+            background: var(--accent-lang);
+            border-color: var(--accent-lang);
+            box-shadow: 0 8px 22px rgba(59,130,246,.2);
+        }
+
+        .admin-action.primary:hover { background: #2563eb; }
+        .admin-action.danger {
+            background: rgba(239,68,68,.1);
+            border-color: rgba(239,68,68,.45);
+            color: #fecaca;
+        }
+
+        .admin-action.danger:hover { background: rgba(239,68,68,.2); }
+
+        .admin-action.secondary {
+            background: rgba(139,92,246,.1);
+            border-color: rgba(139,92,246,.35);
+        }
+
+        .admin-status {
+            margin-top: 14px;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.06);
+            color: var(--text-muted);
+            font-size: .78rem;
+            line-height: 1.45;
+        }
+
+        .admin-status.success {
+            color: #a7f3d0;
+            border-color: rgba(16,185,129,.2);
+            background: rgba(16,185,129,.06);
+        }
+
+        .admin-status.error {
+            color: #fecaca;
+            border-color: rgba(239,68,68,.2);
+            background: rgba(239,68,68,.06);
+        }
+
+        .admin-list-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .admin-count {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(59,130,246,.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59,130,246,.18);
+            font-size: .7rem;
+            font-weight: 800;
+        }
+
+        .admin-list {
+            max-height: 440px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 3px;
+        }
+
+        .admin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 13px;
+            background: rgba(0,0,0,.2);
+            transition: .2s ease;
+        }
+
+        .admin-item:hover {
+            background: rgba(255,255,255,.045);
+            border-color: rgba(255,255,255,.13);
+            transform: translateX(2px);
+        }
+
+        .admin-item.selected {
+            border-color: rgba(59,130,246,.5);
+            background: rgba(59,130,246,.08);
+            box-shadow: inset 3px 0 0 var(--accent-lang);
+        }
+
+        .admin-item strong {
+            color: #fff;
+            font-size: .86rem;
+            display: block;
+            overflow-wrap: anywhere;
+        }
+
+        .admin-item small {
+            color: var(--text-muted);
+            display: block;
+            margin-top: 3px;
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+        }
+
+        .admin-item-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .admin-mini-btn {
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.05);
+            color: #fff;
+            border-radius: 9px;
+            padding: 7px 9px;
+            font-size: .7rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .admin-mini-btn:hover { background: rgba(255,255,255,.12); }
+        .admin-mini-btn.delete:hover {
+            background: rgba(239,68,68,.14);
+            border-color: rgba(239,68,68,.4);
+            color: #fecaca;
+        }
+
+        .admin-empty {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-muted);
+            border: 1px dashed rgba(255,255,255,.1);
+            border-radius: 13px;
+            font-size: .8rem;
+        }
+
+        .admin-note {
+            margin-top: 14px;
+            color: #777c88;
+            font-size: .7rem;
+            line-height: 1.55;
+        }
+
+        .admin-login .modal-header { margin-bottom: 1.3rem; }
+
+        .admin-login-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 12px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(59,130,246,.1);
+            border: 1px solid rgba(59,130,246,.2);
+            color: #93c5fd;
+            font-size: .7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .admin-panel::-webkit-scrollbar,
+        .admin-body::-webkit-scrollbar,
+        .admin-list::-webkit-scrollbar { width: 7px; }
+
+        .admin-panel::-webkit-scrollbar-thumb,
+        .admin-body::-webkit-scrollbar-thumb,
+        .admin-list::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,.14);
+            border-radius: 99px;
+        }
+
+        @media (max-width: 850px) {
+            .admin-layout { grid-template-columns: 1fr; }
+            .admin-list { max-height: 300px; }
+        }
+
+        @media (max-width: 640px) {
+            .admin-panel { padding: 10px; }
+            .admin-topbar { padding: 18px; }
+            .admin-body { padding: 14px; }
+            .admin-select-row,
+            .admin-form-grid { grid-template-columns: 1fr; }
+            .admin-box { border-radius: 19px; }
+            .admin-action { flex: 1 1 auto; }
+            .admin-item { align-items: flex-start; }
+            .admin-item-actions { flex-direction: column; }
+        }
+
+
+        /* --- Admin panel motion polish --- */
+        .admin-panel {
+            opacity: 0;
+            transition: opacity .34s cubic-bezier(.22,1,.36,1);
+        }
+
+        .admin-panel.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .admin-panel.closing {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .admin-box {
+            transform: translateY(22px) scale(.965);
+            opacity: 0;
+            filter: blur(5px);
+            transition:
+                transform .48s cubic-bezier(.16,1,.3,1),
+                opacity .32s ease,
+                filter .48s ease;
+            will-change: transform, opacity, filter;
+        }
+
+        .admin-panel.active .admin-box {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        .admin-panel.closing .admin-box {
+            transform: translateY(12px) scale(.985);
+            opacity: 0;
+            filter: blur(3px);
+        }
+
+        .admin-panel.active .admin-topbar {
+            animation: adminTopbarIn .55s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-card {
+            animation: adminCardIn .58s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-card:nth-child(2) {
+            animation-delay: .07s;
+        }
+
+        .admin-panel.active .admin-field,
+        .admin-panel.active .admin-actions,
+        .admin-panel.active .admin-status,
+        .admin-panel.active .admin-list-header {
+            animation: adminContentIn .46s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .admin-panel.active .admin-field:nth-child(2) { animation-delay: .035s; }
+        .admin-panel.active .admin-field:nth-child(3) { animation-delay: .07s; }
+        .admin-panel.active .admin-field:nth-child(4) { animation-delay: .105s; }
+
+        @keyframes adminTopbarIn {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes adminCardIn {
+            from { opacity: 0; transform: translateY(18px) scale(.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes adminContentIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-close {
+            display: grid;
+            place-items: center;
+            transition:
+                transform .32s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-close svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            transition: transform .34s cubic-bezier(.16,1,.3,1);
+        }
+
+        .admin-close:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 28px rgba(0,0,0,.28);
+        }
+
+        .admin-close:hover svg {
+            transform: rotate(90deg) scale(1.05);
+        }
+
+        .admin-close:active {
+            transform: scale(.93);
+        }
+
+        .admin-action,
+        .admin-mini-btn,
+        .admin-item,
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            will-change: transform;
+        }
+
+        .admin-action {
+            transition:
+                transform .28s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0,0,0,.18);
+        }
+
+        .admin-action:active {
+            transform: translateY(0) scale(.97);
+        }
+
+        .admin-item {
+            transition:
+                transform .28s cubic-bezier(.16,1,.3,1),
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .admin-item:hover {
+            transform: translateX(4px);
+        }
+
+        .admin-mini-btn {
+            transition:
+                transform .22s cubic-bezier(.16,1,.3,1),
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease;
+        }
+
+        .admin-mini-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .admin-field input,
+        .admin-field select,
+        .admin-field textarea {
+            transition:
+                border-color .25s ease,
+                box-shadow .28s ease,
+                background .25s ease,
+                transform .22s ease;
+        }
+
+        .admin-field input:focus,
+        .admin-field select:focus,
+        .admin-field textarea:focus {
+            transform: translateY(-1px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .admin-panel,
+            .admin-box,
+            .admin-topbar,
+            .admin-card,
+            .admin-field,
+            .admin-actions,
+            .admin-status,
+            .admin-list-header {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+
+        /* --- Study Tools link list --- */
+        .study-tool-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+        }
+
+        .study-tool-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        .study-tool-text { min-width: 0; }
+
+        .study-tool-name {
+            font-weight: 700;
+            color: var(--accent-lang);
+            font-size: 1rem;
+            display: block;
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .study-tool-link:hover .study-tool-name {
+            color: #fff;
+        }
+
+        .study-tool-desc {
+            margin: 0.3rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title-row">
+            <h1 id="exam-title" title="Click the title">Final Exam Prep Guide <span class="version-badge">v5.2</span></h1>
+            <button class="changelog-btn" onclick="openModal('changelog-modal')">📋 Changelog</button>
+        </div>
+        <div class="warning-text">⚠️ Make sure to refresh the website every hour, updates can drop any minute!</div>
+        <p>Tap a card to expand. Click the play button to hear it aloud.</p>
+    </header>
+
+    <div class="nav-container">
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="language">Language</button>
+            <button class="tab-btn" data-tab="phonics">Phonics</button>
+            <button class="tab-btn" data-tab="science">Science</button>
+            <button class="tab-btn" data-tab="socialStudies">Social Studies</button>
+            <button class="tab-btn" data-tab="mathematics">Mathematics</button>
+            <button class="tab-btn" data-tab="healthEducation">H.E.</button>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="openModal('timetable-modal')">
+                🕒 Timetable
+            </button>
+            <button class="action-btn" onclick="openModal('topics-modal')">
+                📖 What to Study
+            </button>
+            <button class="action-btn highlight" onclick="openModal('study-tools-modal')">
+                🧰 Study Tools
+            </button>
+        </div>
+    </div>
+
+    <div id="words-grid" class="words-grid theme-language">
+        <!-- Javascript dynamic cards injection -->
+    </div>
+
+
+    <!-- Secret Admin Unlock -->
+    <div id="admin-code-modal" class="admin-panel">
+        <div class="admin-box admin-login">
+            <div class="admin-login-badge">🔐 Restricted area</div>
+            <div class="modal-header">
+                <div>
+                    <h2>Admin Access</h2>
+                    <p class="subtext">Enter the admin code to unlock vocabulary controls.</p>
+                </div>
+                <button class="close-modal" onclick="closeAdminCode()">&times;</button>
+            </div>
+
+            <div class="admin-field">
+                <label for="admin-code-input">Admin code</label>
+                <input id="admin-code-input" type="password" autocomplete="off" placeholder="Enter admin code">
+            </div>
+
+            <div class="admin-actions">
+                <button class="admin-action primary" onclick="verifyAdminCode()">Unlock Admin Panel</button>
+                <button class="admin-action" onclick="closeAdminCode()">Cancel</button>
+            </div>
+
+            <div id="admin-login-status" class="admin-status">Access resets whenever the page is refreshed.</div>
+        </div>
+    </div>
+
+    <!-- Vocabulary Admin Panel -->
+    <div id="admin-intro" class="admin-intro" aria-hidden="true">
+        <div class="admin-intro-grid"></div>
+        <div class="admin-intro-vignette"></div>
+        <div class="admin-intro-scan"></div>
+        <div class="admin-intro-core">
+            <div class="admin-intro-kicker">Secure Console</div>
+            <h2 class="admin-intro-title"><span>ADMIN ACCESS</span></h2>
+            <div class="admin-intro-line"></div>
+            <div class="admin-intro-status" id="admin-intro-status">Initializing control panel</div>
+            <div class="admin-intro-bar"><i></i></div>
+        </div>
+        <div class="admin-intro-flash"></div>
+    </div>
+
+    <div id="admin-panel" class="admin-panel">
+        <div class="admin-box">
+            <div class="admin-topbar">
+                <div class="admin-title-wrap">
+                    <h2>🛠️ Vocabulary Admin</h2>
+                    <p class="admin-sub">Manage vocabulary across every subject and unit.</p>
+                </div>
+                <button class="admin-close" onclick="closeAdminPanel()" aria-label="Close admin panel">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                </button>
+            </div>
+
+            <div class="admin-body">
+                <div class="admin-layout">
+                    <section class="admin-card">
+                        <h3>Vocabulary editor</h3>
+                        <p class="admin-card-description">Choose a subject and unit. The list and editor update immediately when you switch either one.</p>
+
+                        <div class="admin-select-row">
+                            <div class="admin-field">
+                                <label for="admin-subject">Subject</label>
+                                <select id="admin-subject"></select>
+                            </div>
+                            <div class="admin-field">
+                                <label for="admin-group">Unit / Topic</label>
+                                <select id="admin-group"></select>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-field">
+                                <label for="admin-word">Word</label>
+                                <input id="admin-word" type="text" placeholder="e.g. Vocabulary word">
+                            </div>
+                            <div class="admin-field">
+                                <label for="admin-definition">Definition</label>
+                                <textarea id="admin-definition" placeholder="What does it mean?"></textarea>
+                            </div>
+                            <div class="admin-field full">
+                                <label for="admin-sentence">Example sentence</label>
+                                <textarea id="admin-sentence" placeholder="Use the word in a sentence..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="admin-actions">
+                            <button id="admin-save-btn" class="admin-action primary" onclick="saveAdminVocab()">➕ Add Word</button>
+                            <button class="admin-action" onclick="clearAdminForm()">Clear</button>
+                            <button class="admin-action" onclick="refreshAdminFromCloud()">↻ Refresh</button>
+                        </div>
+
+                        <div id="admin-status" class="admin-status">Ready.</div>
+                    </section>
+
+                    <section class="admin-card">
+                        <div class="admin-list-header">
+                            <div>
+                                <h3>Words in this unit</h3>
+                                <p class="admin-card-description" style="margin-bottom:0">Click Edit to load a word into the editor.</p>
+                            </div>
+                            <span id="admin-count" class="admin-count">0 words</span>
+                        </div>
+                        <div id="admin-vocab-list" class="admin-list"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Changelog Modal -->
+    <div id="changelog-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update History</h2>
+                <button class="close-modal" onclick="closeModal('changelog-modal')">&times;</button>
+            </div>
+            <ul class="changelog-list">
+                <li><span class="changelog-version">v3.6</span> BUG FIX: Rebuilt Flashcard Stats logic. Skipped cards are now properly tracked, ensuring exact scores and that no unreviewed words are missed.</li>
+                <li><span class="changelog-version">v3.5</span> Added Stats screen at the end of Flashcard decks (Score, Words to Review, Redo, and Quit).</li>
+                <li><span class="changelog-version">v3.4</span> Updated Flashcard Mode with Tick/Cross assessment buttons, smooth color animations, and dedicated Audio Stop button.</li>
+                <li><span class="changelog-version">v3.3</span> Added "Flashcards Mode" with interactive 3D flipping cards inside of every topic!</li>
+                <li><span class="changelog-version">v3.0</span> MAJOR UPDATE: Shifted to Final Exam! Timetable, Syllabus, Language, and Phonics Vocab completely updated.</li>
+                <li><span class="changelog-version">v2.5</span> Shifted content to match initial provided code and cleared old midterm data.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcard-modal" class="modal-overlay">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <div>
+                    <h2 id="fc-modal-title">Flashcards</h2>
+                    <p class="subtext">Tap the card to flip it over. Assess your knowledge below!</p>
+                </div>
+                <button class="close-modal" onclick="closeModal('flashcard-modal'); stopSpecificAudio();">&times;</button>
+            </div>
+            
+            <div class="flashcard-wrapper" id="fc-wrapper">
+                
+                <!-- Main Flashcard View -->
+                <div class="flashcard-container" id="fc-container">
+                    <div class="flip-card" id="fc-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="flip-card-inner" id="fc-inner">
+                            <div class="flip-card-front">
+                                <div class="word" id="fc-word">Word</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="def" id="fc-def">Definition</div>
+                                <div class="sent" id="fc-sent">Sentence</div>
+                                
+                                <!-- Flashcard Audio Controls -->
+                                <div class="fc-audio-controls">
+                                    <button class="audio-btn" id="fc-play-btn" style="width: 45px; height: 45px;" onclick="event.stopPropagation(); playFlashcardAudio()">
+                                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                                    </button>
+                                    <button class="audio-btn stop-btn" id="fc-stop-btn" style="width: 45px; height: 45px; background: var(--accent-danger);" onclick="event.stopPropagation(); stopSpecificAudio()">
+                                        <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z" fill="currentColor"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tick & Cross Assessment Controls -->
+                    <div class="fc-assessment-controls">
+                        <button class="fc-eval-btn cross-btn" onclick="markFlashcard(false)" title="I don't know this">
+                            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                        </button>
+                        <button class="fc-eval-btn tick-btn" onclick="markFlashcard(true)" title="I know this">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Bottom Navigation -->
+                    <div class="flashcard-controls">
+                        <button class="fc-btn" id="fc-prev" onclick="prevCard()">&#8592; Previous</button>
+                        <div class="fc-counter" id="fc-counter">1 / 10</div>
+                        <button class="fc-btn" id="fc-next" onclick="nextCard()">Next &#8594;</button>
+                    </div>
+                </div>
+
+                <!-- Stats View (Hidden by default) -->
+                <div class="flashcard-stats" id="fc-stats">
+                    <h3 class="fc-score-title" id="fc-score-title">You scored X / Y!</h3>
+                    <div class="fc-stats-content">
+                        <h4>Words to review:</h4>
+                        <ul id="fc-wrong-list" class="fc-wrong-list">
+                            <!-- Incorrect words injected here -->
+                        </ul>
+                    </div>
+                    <div class="fc-stats-actions">
+                        <button class="fc-btn" onclick="redoFlashcards()">Redo Deck</button>
+                        <button class="fc-btn" style="background: var(--accent-danger);" onclick="quitFlashcards()">Quit</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Timetable Modal -->
+    <div id="timetable-modal" class="modal-overlay">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <div>
+                    <h2>Final Examination Timetable</h2>
+                    <p class="subtext">Sarasas Witaed Chiang Mai School | 1st Semester Academic Year 2026 | IEP Year 4</p>
+                </div>
+                <button class="close-modal" onclick="closeModal('timetable-modal')">&times;</button>
+            </div>
+            <div class="topics-scroll-area">
+                <div class="timetable-wrapper">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Period<br><br>Time</th>
+                                <th rowspan="2" style="width:40px;"></th>
+                                <th>Period 1</th>
+                                <th>Period 2</th>
+                                <th rowspan="2" style="width:40px;"></th>
+                                <th>Period 3</th>
+                                <th>Period 4</th>
+                                <th rowspan="2" style="width:40px;"></th>
+                                <th>Period 5</th>
+                                <th rowspan="2" style="width:40px;"></th>
+                                <th>Period 6</th>
+                                <th>Period 7</th>
+                                <th rowspan="2" style="width:40px;"></th>
+                            </tr>
+                            <tr>
+                                <th>08.15 - 09.05</th>
+                                <th>09.05 - 09.55</th>
+                                <th>10.10 - 11.00</th>
+                                <th>11.00 - 11.50</th>
+                                <th>12.30 - 13.20</th>
+                                <th>13.35 - 14.25</th>
+                                <th>14.25 - 15.15</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="day-cell"><strong>Tuesday</strong><br>29-Sep-26</td>
+                                <td rowspan="4" class="break-cell vertical-text">Flag Ceremony 07.50 - 08.15</td>
+                                <td colspan="2">Language</td>
+                                <td rowspan="4" class="break-cell vertical-text">Break 15 minutes (09.55 - 10.10)</td>
+                                <td>Thai</td>
+                                <td>Music</td>
+                                <td rowspan="4" class="break-cell vertical-text">Lunch 11.50-12.30</td>
+                                <td>Review</td>
+                                <td rowspan="4" class="break-cell vertical-text">Break 15 minutes (13.20 - 13.35)</td>
+                                <td>Science (Thai)</td>
+                                <td>Japanese</td>
+                                <td rowspan="4" class="break-cell vertical-text">Special Class (15.30 - 16.30)</td>
+                            </tr>
+                            <tr>
+                                <td class="day-cell"><strong>Wednesday</strong><br>30-Sep-26</td>
+                                <td colspan="2">Mathematics</td>
+                                <td colspan="2">Art</td>
+                                <td>Review</td>
+                                <td colspan="2">Social Studies</td>
+                            </tr>
+                            <tr>
+                                <td class="day-cell"><strong>Thursday</strong><br>1-Oct-26</td>
+                                <td colspan="2">Math (Thai)</td>
+                                <td>Phonics</td>
+                                <td>Chinese</td>
+                                <td>Review</td>
+                                <td colspan="2">H.E.</td>
+                            </tr>
+                            <tr>
+                                <td class="day-cell"><strong>Friday</strong><br>2-Oct-26</td>
+                                <td colspan="2">Science</td>
+                                <td colspan="2">Moral</td>
+                                <td>History</td>
+                                <td colspan="2">Science (ไทย ปฏิบัติ)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What To Study Modal -->
+    <div id="topics-modal" class="modal-overlay">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <div>
+                    <h2>Final Exam Topics</h2>
+                    <p class="subtext">Sarasas Witaed Chiang Mai School | Semester 1, Academic Year 2026 | IEP Year 4</p>
+                </div>
+                <button class="close-modal" onclick="closeModal('topics-modal')">&times;</button>
+            </div>
+            <div class="topics-scroll-area">
+                <div class="topics-grid">
+                    
+                    <div class="topic-section">
+                        <h3>Language</h3>
+                        <ul>
+                            <li><strong>Unit 5:</strong> Where Does Our Food Come From? The World Around Us. (Pg. 48-55)</li>
+                            <li><strong>Unit 6:</strong> Food and Farming (Pg. 56-63)</li>
+                            <li><strong>Unit 7:</strong> Why Do We Make Art; Art and Artists (Pg. 68-75)</li>
+                            <li><strong>Unit 8:</strong> Vocabulary: Art (Pg. 76-83)</li>
+                            <li><strong>Unit 9:</strong> City (Pg. 88-95)</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Phonics</h3>
+                        <ul>
+                            <li><strong>Unit 4:</strong> tr, sm, ch, sh (Pg. 30)</li>
+                            <li><strong>Unit 5:</strong> st, sw, ch, sh (Pg. 34)</li>
+                            <li><strong>Word Skills:</strong> Homophones, Rhyming Words, Synonyms</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Mathematics</h3>
+                        <ul>
+                            <li><strong>Unit 2:</strong> 
+                                <ul>
+                                    <li>Fractions: Making Comparisons with Same Denominator and Numerator (Pg. 36-37)</li>
+                                    <li>Relating Whole Numbers (Pg. 40)</li>
+                                    <li>Ordering with Different Numerator and Denominator (Pg. 42)</li>
+                                    <li>Calculating Equivalent Fractions (Pg. 44)</li>
+                                    <li>Ordering with Related Denominator (Pg. 46)</li>
+                                    <li>Mixed Numbers (Pg. 48-52)</li>
+                                    <li>Simplifying (Pg. 54)</li>
+                                </ul>
+                            </li>
+                            <li>Building a Picture of One Million (Pg. 56-59)</li>
+                            <li>Rounding Numbers (Pg. 70-71)</li>
+                            <li>Making Estimates (Pg. 72)</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Social Studies</h3>
+                        <ul>
+                            <li><strong>Unit 4:</strong> Thai Culture
+                                <ul>
+                                    <li>Culture in Different Regions (Pg. 43-47)</li>
+                                    <li>Occupation, Food, Traditions and Language (Pg. 48-51)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Science</h3>
+                        <ul>
+                            <li><strong>Unit 3:</strong> Soil in Our Area
+                                <ul>
+                                    <li>Soil Formation and Properties (Pg. 54-62)</li>
+                                    <li>Soil and Plant Growth (Pg. 63-69)</li>
+                                    <li>Soil Improvement (Pg. 70-74)</li>
+                                    <li>Soil Utilization in Local Areas (Pg. 75-77)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Unit 4:</strong> Light
+                                <ul>
+                                    <li>Light Movement, Light Source and Solar Cells (Pg. 79-87)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Health Education</h3>
+                        <ul>
+                            <li><strong>Unit 4:</strong> Sexual Behavior</li>
+                            <li><strong>Unit 5:</strong> Daily Movements</li>
+                            <li><strong>Unit 6:</strong> Rhythm Exercise</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Insight Music</h3>
+                        <ul>
+                            <li><strong>Songs:</strong> Taffy & Come with Me</li>
+                            <li>Note identification (middle DO to high DO)</li>
+                            <li>Note writing (middle DO to high DO)</li>
+                            <li>Kodaly hand signs (DO to TI)</li>
+                            <li>Vocabulary & meaning from the lyrics</li>
+                            <li>Listening: Melodic dictation: DO, RE, MI, SOL</li>
+                            <li>Symbols: loud, soft, getting louder, getting softer</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Japanese</h3>
+                        <ul>
+                            <li><strong>Unit 3:</strong> なんねんせいですか？ Pg. 44-45</li>
+                            <li><strong>Unit 4:</strong> どこにすんでいますか？ Pg. 52-53</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-section">
+                        <h3>Chinese</h3>
+                        <ul>
+                            <li><strong>Unit 4:</strong> 他们在做游戏。 พวกเขากำลังเล่นเกม</li>
+                            <li><strong>Unit 6:</strong> 今天是几月几号? วันนี้เป็นวันที่เท่าไหร่ เดือนอะไร?</li>
+                            <li>Translate the meaning of the vocabulary words. (Pg. 27, 29, 30, 38, 41, 42)</li>
+                            <li>Match the conversations with their correct translation. (P. 28, 40)</li>
+                            <li>Choose the correct conversation for each picture. (Pg. 116, 123)</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Tools Modal -->
+    <div id="study-tools-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2>🧰 Study Tools</h2>
+                    <p class="subtext">Extra websites to help you prepare for the final exam.</p>
+                </div>
+                <button class="close-modal" onclick="closeModal('study-tools-modal')">&times;</button>
+            </div>
+            <p style="margin: 0 0 1rem 0; padding: 0.75rem 1rem; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 10px; color: #93c5fd; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                👉 Click the <span style="color: var(--accent-lang); font-weight: 800;">blue text</span> to go to the website
+            </p>
+            <ul class="changelog-list">
+                <li>
+                    <a class="study-tool-link" href="https://finaljapanese.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <span class="study-tool-icon">🇯🇵</span>
+                        <span class="study-tool-text">
+                            <span class="study-tool-name">Japanese Study Website</span>
+                            <span class="study-tool-desc">Practice Japanese vocabulary and lessons for the final exam.</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="study-tool-link" href="https://finalchinese.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <span class="study-tool-icon">🇨🇳</span>
+                        <span class="study-tool-text">
+                            <span class="study-tool-name">Chinese Study Website</span>
+                            <span class="study-tool-desc">Review Chinese vocabulary, conversations, and translations.</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="study-tool-link" href="https://pomozy.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <span class="study-tool-icon">⏱️</span>
+                        <span class="study-tool-text">
+                            <span class="study-tool-name">Pomozy — Pomodoro Timer</span>
+                            <span class="study-tool-desc">Stay focused using the Pomodoro technique while you study.</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Companion Pet - Study Owl -->
+    <div id="companion-pet">
+        <div class="motivation-bubble"></div>
+        
+        <!-- Zzz Animations -->
+        <div id="pet-zzz-container">
+            <div class="z-particle z1">Z</div>
+            <div class="z-particle z2">z</div>
+            <div class="z-particle z3">z</div>
+        </div>
+
+        <!-- Pillow -->
+        <svg id="pet-pillow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40">
+            <rect x="5" y="15" width="90" height="25" rx="12" fill="#334155" stroke="#475569" stroke-width="2"/>
+            <line x1="15" y1="27" x2="85" y2="27" stroke="#475569" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Owl Icon -->
+        <svg id="pet-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="20" y="30" width="60" height="50" rx="30" fill="#2d3748"/>
+            <rect x="25" y="35" width="50" height="40" rx="20" fill="#4a5568"/>
+            <path d="M 35 70 Q 50 85 65 70 Z" fill="#e2e8f0"/>
+            <g class="eye-open">
+                <circle cx="35" cy="45" r="14" fill="#f7fafc"/>
+                <circle cx="65" cy="45" r="14" fill="#f7fafc"/>
+                <circle cx="35" cy="45" r="6" fill="#1a202c"/>
+                <circle cx="65" cy="45" r="6" fill="#1a202c"/>
+                <circle cx="32" cy="42" r="2" fill="white"/>
+                <circle cx="62" cy="42" r="2" fill="white"/>
+            </g>
+            <g class="eye-closed">
+                <circle cx="35" cy="45" r="14" fill="#f7fafc"/>
+                <circle cx="65" cy="45" r="14" fill="#f7fafc"/>
+                <path d="M 25 45 Q 35 52 45 45" stroke="#1a202c" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M 55 45 Q 65 52 75 45" stroke="#1a202c" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </g>
+            <polygon points="50,52 45,62 55,62" fill="#ecc94b"/>
+            <path d="M 22 45 Q 5 60 20 75 Z" fill="#2d3748"/>
+            <path d="M 78 45 Q 95 60 80 75 Z" fill="#2d3748"/>
+            <circle cx="35" cy="45" r="14" fill="none" stroke="#3182ce" stroke-width="3"/>
+            <circle cx="65" cy="45" r="14" fill="none" stroke="#3182ce" stroke-width="3"/>
+            <line x1="49" y1="45" x2="51" y2="45" stroke="#3182ce" stroke-width="3"/>
+            <line x1="21" y1="45" x2="15" y2="40" stroke="#3182ce" stroke-width="3"/>
+            <line x1="79" y1="45" x2="85" y2="40" stroke="#3182ce" stroke-width="3"/>
+        </svg>
+    </div>
+
+    <script>
+        // Cleared old midterm questions so they won't confuse you. Ready to be populated!
+        const studyQuestions = {
+            science: [],
+            language: [
+                { q: "What is a city?", a: "A city is an area in which a large number of people fairly live close together." }
+            ],
+            socialStudies: [],
+            mathematics: [
+                { q: "How do you work out a Mixed to Improper fraction? (e.g., 2 2/4)", a: "Multiply the denominator by the whole number (4 × 2 = 8), then add the numerator (8 + 2 = 10). The denominator stays the same, so the answer is 10/4." },
+                { q: "How do you work out '10 times as much' (e.g., 1,000,000 vs 100,000)?", a: "Count the zeroes! 1,000,000 (6 zeroes) minus 100,000 (5 zeroes) = 1 zero. So you just add 1 zero, which means it is 10 times as much." }
+            ],
+            healthEducation: [],
+            phonics: []
+        };
+
+        const vocabularyData = {
+            language: [
+                { word: "Exhibition", definition: "A public display of works of art or items of interest, held in an art gallery or museum.", sentence: "The new photography exhibition opens at the downtown art gallery next week." },
+                { word: "Tuna", definition: "A large and active predatory schooling fish of the mackerel family.", sentence: "Freshly caught tuna is highly prized for making high-quality sushi." },
+                { word: "Sculptor", definition: "An artist who makes sculptures.", sentence: "The sculptor used sharp tools to carefully chisel the rough stone into a beautiful face." },
+                { word: "Sketch", definition: "A rough or unfinished drawing or painting, often made to assist in making a more finished picture.", sentence: "The artist quickly drew a sketch of the bird before it flew away." },
+                { word: "Architecture", definition: "The art or practice of designing and constructing buildings.", sentence: "The historic city is famous for its beautiful and ancient stone architecture." },
+                { word: "Landscape", definition: "A picture representing an area of countryside.", sentence: "The artist painted a sweeping landscape of the rolling green hills and valley." },
+                { word: "Texture", definition: "The feel, appearance, or consistency of a surface or a substance.", sentence: "You could feel the rough texture of the dried oil paint on the canvas." },
+                { word: "Street Painter", definition: "An artist who creates visual art directly on public pavement or sidewalks.", sentence: "The talented street painter drew an amazing 3D waterfall right on the concrete path." },
+                { word: "Carpenter", definition: "A person who makes and repairs wooden objects and structures.", sentence: "The skilled carpenter built a sturdy oak dining table for the family." },
+                { word: "Canvas", definition: "A strong, unbleached cloth used as a surface for oil painting.", sentence: "The painter stared at the blank white canvas, waiting for inspiration to strike." },
+                { word: "Thread/string", definition: "Material consisting of long, thin strands of cotton, hemp, or other fibers twisted together.", sentence: "They used a colorful piece of thread to sew the patch onto the jacket." },
+                { word: "Traditional Fabric", definition: "Cloth produced by weaving or knitting using customary methods of a specific culture.", sentence: "The local market sells beautiful traditional fabric woven by hand." },
+                { word: "Street Vendor", definition: "A person who sells food or items to the public from a portable stall or cart.", sentence: "The friendly street vendor sold delicious hot noodles to people walking by." },
+                { word: "Volunteer", definition: "A person who freely offers to take part in an enterprise or undertake a task.", sentence: "She decided to be a volunteer at the animal shelter to help care for the dogs." },
+                { word: "Organic", definition: "Food produced by methods that comply with the standards of organic farming, avoiding artificial chemicals.", sentence: "Organic food is often considered healthier because it is grown without harsh pesticides." },
+                { word: "Perspective", definition: "The art of drawing solid objects on a two-dimensional surface so as to give the right impression of their height, width, depth, and position.", sentence: "Using proper perspective made the drawn road look like it stretched far into the distance." },
+                { word: "Chemicals", definition: "A distinct compound or substance, often artificially prepared or purified.", sentence: "Some farmers use a chemical spray to keep harmful bugs away from their crops." },
+                { word: "Rickshaw", definition: "A light two-wheeled passenger vehicle drawn by one or more people, chiefly used in Asian countries.", sentence: "The tourists took a scenic ride through the old town in a wooden rickshaw." },
+                { word: "Ingredients", definition: "Any of the foods or substances that are combined to make a particular dish.", sentence: "Before starting to cook, she made sure she had all the necessary ingredients." },
+                { word: "Enraged", definition: "Very angry; furious.", sentence: "The bull became enraged when it saw the bright red cloth." },
+                { word: "Imagination", definition: "The ability of the mind to be creative or resourceful and form new ideas.", sentence: "Reading fantasy books helps children develop a strong imagination." },
+                { word: "Patients", definition: "People receiving or registered to receive medical treatment.", sentence: "The doctor visited all of her patients in the hospital to check on their recovery." },
+                { word: "Prodigy", definition: "A person, especially a young one, endowed with exceptional qualities or abilities.", sentence: "The young musical prodigy could play complex piano pieces by the age of five." },
+                { word: "Exotic Fruits", definition: "Fruits that are not native to a particular area, usually introduced from tropical regions.", sentence: "The market stall was piled high with exotic fruits like dragon fruit and starfruit." },
+                { word: "Adjectives", definition: "Words that describe or modify another person or thing in a sentence.", sentence: "Words like 'beautiful', 'tall', and 'fast' are adjectives used to describe nouns." },
+                { word: "Assistant", definition: "A person who helps in particular work and acts as a subordinate.", sentence: "The manager asked her assistant to print the important documents for the meeting." },
+                { word: "Dissatisfied", definition: "Not content or happy with something.", sentence: "The customer was dissatisfied with his cold meal and asked the waiter for a replacement." },
+                { word: "Speechless", definition: "Unable to speak, especially as the temporary result of shock or some strong emotion.", sentence: "When she saw the surprise birthday party, she was completely speechless." },
+                { word: "Realistic", definition: "Representing familiar things in a way that is accurate or true to life.", sentence: "The painting of the apple was so realistic that it almost looked like a photograph." },
+                { word: "Comprehension", definition: "The action or capability of understanding something.", sentence: "Reading comprehension is an important skill to make sure you understand the story." },
+                { word: "City", definition: "An area in which a large number of people live fairly close together.", sentence: "Millions of people live and work in the busy city." }
+            ],
+            phonics: [
+                {
+                    groupTitle: "1. Opposites / Antonyms",
+                    words: [
+                        { word: "Hot / Cold", definition: "Antonyms are words with opposite meanings.", sentence: "Fire is hot, but ice is cold." },
+                        { word: "Fast / Slow", definition: "Opposites describe extremes.", sentence: "The cheetah is fast, but the turtle is slow." }
+                    ]
+                },
+                {
+                    groupTitle: "2. Verbs",
+                    words: [
+                        { word: "Run", definition: "An action word meaning to move swiftly on foot.", sentence: "I like to run in the park." },
+                        { word: "Jump", definition: "An action word meaning to push oneself off a surface into the air.", sentence: "See how high you can jump!" }
+                    ]
+                },
+                {
+                    groupTitle: "3. Past Tense",
+                    words: [
+                        { word: "Walked", definition: "The past tense of walk; an action that already happened.", sentence: "Yesterday, we walked to the store." },
+                        { word: "Ran", definition: "The irregular past tense of run.", sentence: "He ran as fast as he could in the race." }
+                    ]
+                },
+                {
+                    groupTitle: "4. Correct the sentence",
+                    words: [
+                        { word: "Capitalization & Punctuation", definition: "Starting with a capital letter and ending with a period.", sentence: "Incorrect: 'he is tall' -> Correct: 'He is tall.'" },
+                        { word: "Subject-Verb Agreement", definition: "Matching singular/plural subjects with the correct verb.", sentence: "Incorrect: 'The dogs barks' -> Correct: 'The dogs bark.'" }
+                    ]
+                },
+                {
+                    groupTitle: "5. Count Nouns",
+                    words: [
+                        { word: "Apples", definition: "Nouns you can easily count (one apple, two apples).", sentence: "She bought three red apples." },
+                        { word: "Books", definition: "A countable noun referring to things you read.", sentence: "There are five books on the shelf." }
+                    ]
+                },
+                {
+                    groupTitle: "6. Non-Count Nouns",
+                    words: [
+                        { word: "Water", definition: "A liquid that cannot be counted individually.", sentence: "Please pour me a glass of water." },
+                        { word: "Rice", definition: "Small grains that are treated as a mass, not counted individually.", sentence: "We eat a lot of rice for dinner." }
+                    ]
+                },
+                {
+                    groupTitle: "7. Homophones",
+                    words: [
+                        { word: "Sun / Son", definition: "Words that sound the same but have different meanings and spellings.", sentence: "The sun is bright, and the man's son is playing." },
+                        { word: "Sea / See", definition: "Sound alike, but one is an ocean and one is an action.", sentence: "I can see the ships on the sea." }
+                    ]
+                },
+                {
+                    groupTitle: "8. Rhyming Words",
+                    words: [
+                        { word: "Cat / Hat", definition: "Words that end with the same sound.", sentence: "The cat wore a tall, striped hat." },
+                        { word: "Day / Play", definition: "Words ending in the 'ay' sound.", sentence: "It is a beautiful day to go out and play." }
+                    ]
+                }
+            ],
+            science: [
+                { word: "Chemical Fertilizer", definition: "A substance added to soil to provide nutrients that help plants grow.", sentence: "The farmer used chemical fertilizer to add nutrients to the soil." },
+                { word: "Soil erosion", definition: "The wearing away or removal of soil by wind, water, or other natural forces.", sentence: "Heavy rain can cause soil erosion on bare land." },
+                { word: "Humus", definition: "Dark, organic material in soil formed from the decomposition of dead plants and animals.", sentence: "Humus makes the soil rich and helps plants grow well." },
+                { word: "Nutrients", definition: "Substances that living things need for growth, health, and energy.", sentence: "Plants get important nutrients from the soil." },
+                { word: "Decay", definition: "The process of breaking down or rotting after something dies.", sentence: "Leaves slowly decay on the forest floor." },
+                { word: "Types of soil", definition: "Different kinds of soil that have different amounts and sizes of particles and properties.", sentence: "Different types of soil are suitable for different plants." },
+                { word: "Bacteria", definition: "Very small living organisms that can be found in soil, water, air, and living things.", sentence: "Some bacteria help break down dead material in the soil." },
+                { word: "Soil Formation", definition: "The natural process by which soil develops from rocks and organic matter over time.", sentence: "Soil formation can take a very long time." },
+                { word: "Ploughing", definition: "The process of turning and loosening soil before planting crops.", sentence: "Farmers use ploughing to prepare the soil for planting." },
+                { word: "Domestic", definition: "Relating to animals that are kept or cared for by people.", sentence: "Cows and chickens can be domestic animals." },
+                { word: "Sunlight", definition: "The light and energy that come from the Sun.", sentence: "Plants need sunlight to make their food." },
+                { word: "Decomposition", definition: "The process in which dead plants and animals are broken down into simpler materials.", sentence: "Decomposition returns useful materials to the soil." },
+                { word: "Solar Energy", definition: "Energy that comes from the Sun and can be used to provide heat or electricity.", sentence: "Solar energy can be used to produce electricity." },
+                { word: "Transparent", definition: "A material that allows most light to pass through so objects can be seen clearly.", sentence: "Clear glass is transparent, so we can see through it." },
+                { word: "Translucent", definition: "A material that allows some light to pass through but does not let objects be seen clearly.", sentence: "Frosted glass is translucent because it lets some light through." },
+                { word: "Opaque", definition: "A material that does not allow light to pass through it.", sentence: "A wooden door is opaque and blocks light." },
+                { word: "Light", definition: "A form of energy that allows us to see objects.", sentence: "We need light to see the things around us." },
+                { word: "Particles of Soil", definition: "The tiny pieces that make up soil, including sand, silt, clay, and organic matter.", sentence: "The size of the particles of soil affects how much water the soil can hold." },
+                { word: "Nitrogen", definition: "A nutrient needed by plants for healthy growth and the formation of proteins.", sentence: "Plants need nitrogen to grow strong and healthy." },
+                { word: "Leguminous", definition: "Describing plants such as beans and peas that belong to the legume family and can help add nitrogen to soil.", sentence: "Leguminous plants can help improve the nitrogen content of soil." },
+                { word: "Dairy", definition: "Relating to milk and foods made from milk, or animals kept for milk.", sentence: "Milk, cheese, and yogurt are common dairy products." },
+                { word: "Natural and Artificial Light Sources", definition: "Natural light sources occur in nature, while artificial light sources are made by people.", sentence: "The Sun is a natural light source, while a lamp is an artificial light source." },
+                { word: "Migration", definition: "The movement of animals from one place to another, often at certain times of the year.", sentence: "Some birds travel long distances during migration." },
+                { word: "Photosynthesis", definition: "The process by which green plants use sunlight, water, and carbon dioxide to make food.", sentence: "Photosynthesis helps green plants make their own food." },
+                { word: "Reflection", definition: "The bouncing back of light when it hits a surface.", sentence: "We can see our face because light is reflected from a mirror." },
+                { word: "Refraction", definition: "The bending of light when it passes from one material into another.", sentence: "Refraction can make a straw in a glass of water look bent." },
+                { word: "Shadow", definition: "A dark area formed when an object blocks light.", sentence: "The tree made a large shadow on the ground." },
+                { word: "Prism", definition: "A transparent object that can bend and separate white light into different colours.", sentence: "A prism can split white light into a range of colours." },
+                { word: "Herbivore", definition: "An animal that mainly eats plants.", sentence: "A rabbit is a herbivore because it eats plants." }
+            ],
+            socialStudies: [
+                { word: "Society", definition: "People living together in organized communities.", sentence: "A healthy society is one where people help each other." },
+                { word: "Leader", definition: "A person who guides or directs a group.", sentence: "The class president is a good leader who listens to everyone." },
+                { word: "Tradition", definition: "Beliefs or customs handed down from generation to generation.", sentence: "It is a tradition in my family to eat a big meal on New Year's Eve." },
+                { word: "Moral", definition: "Concerned with the principles of right and wrong behavior.", sentence: "The story has a good moral about the importance of being honest." },
+                { word: "Community", definition: "A group of people living in the same place or having a particular characteristic in common.", sentence: "We planted trees in the park to help our local community." },
+                { word: "Culture", definition: "The arts, customs, and habits that characterize a particular society or nation.", sentence: "Thai culture is famous for its beautiful temples and spicy food." },
+                { word: "Behavior", definition: "The way in which an animal or person acts in response to a particular situation.", sentence: "The teacher rewarded the students for their excellent behavior during the trip." },
+                { word: "Dialect", definition: "A particular form of a language which is peculiar to a specific region or social group.", sentence: "People in the north of Thailand speak a different dialect than people in the south." },
+                { word: "Currency", definition: "A system of money in general use in a particular country.", sentence: "The currency used in Thailand is the Thai Baht." },
+                { word: "Goods", definition: "Things that are made to be sold.", sentence: "The market is full of fresh goods like fruit, vegetables, and clothes." },
+                { word: "Services", definition: "Actions or work that someone does for someone else.", sentence: "Doctors and teachers provide important services to our city." },
+                { word: "Digital", definition: "Involving or relating to the use of computer technology.", sentence: "We use a digital clock to check the time on our phones." },
+                { word: "Patience", definition: "The capacity to accept or tolerate delay, trouble, or suffering without getting angry or upset.", sentence: "You need a lot of patience to learn how to play a difficult song on the piano." },
+                { word: "Want", definition: "Have a desire to possess or do something; wish for.", sentence: "I want a new toy, but I do not necessarily need it to survive." },
+                { word: "Needs", definition: "Things that are required because they are essential or very important.", sentence: "Food, water, and shelter are basic human needs." },
+                { word: "Currency Symbols", definition: "A graphic symbol used as a shorthand for a currency's name.", sentence: "The dollar sign ($) and the baht sign (฿) are examples of currency symbols." },
+                { word: "Responsibility", definition: "The state or fact of having a duty to deal with something.", sentence: "It is my responsibility to feed the family dog every morning." },
+                { word: "Children's rights", definition: "The human rights of children with particular attention to the rights of special protection and care.", sentence: "Education and safety are fundamental children's rights." },
+                { word: "Regions in Thailand", definition: "The different geographical and cultural areas of the country.", sentence: "There are several distinct regions in Thailand, including the North, South, Central, and Northeast." },
+                { word: "Appreciation", definition: "Recognition and enjoyment of the good qualities of someone or something.", sentence: "She showed her appreciation by giving her teacher a beautiful thank you card." },
+                { word: "Advertising", definition: "The activity or profession of producing advertisements for commercial products or services.", sentence: "The company used television advertising to sell its new sports shoes." },
+                { word: "Consumer", definition: "A person who purchases goods and services for personal use.", sentence: "As a smart consumer, he always checks the price before buying a product." },
+                { word: "Population", definition: "All the inhabitants of a particular town, area, or country.", sentence: "The population of the busy capital city is growing every single year." },
+                { word: "Worship", definition: "The feeling or expression of reverence and adoration for a deity.", sentence: "Many people go to the temple to worship and make merit on special holidays." },
+                { word: "Respect", definition: "A feeling of deep admiration for someone or something elicited by their abilities, qualities, or achievements.", sentence: "We should always show respect to our parents and elders." },
+                { word: "Preservation", definition: "The action of maintaining something in its original or existing state.", sentence: "The preservation of old historic buildings is very important for our culture." },
+                { word: "Rituals", definition: "A religious or solemn ceremony consisting of a series of actions performed according to a prescribed order.", sentence: "Traditional Thai weddings involve many beautiful rituals." },
+                { word: "Symbols", definition: "A mark or character used as a conventional representation of an object, function, or process.", sentence: "The flag and the national anthem are symbols of our country." },
+                { word: "Festival", definition: "A day or period of celebration, typically a religious commemoration.", sentence: "Songkran is a famous water festival celebrated every year in April." },
+                { word: "Phi ta khon", definition: "A festival held in Dan Sai, Loei province, Northeastern Thailand, known for its colorful ghost masks.", sentence: "People wear huge, colorful ghost masks during the famous Phi ta khon parade." }
+            ],
+            mathematics: [
+                { word: "Mixed Numbers", definition: "A whole number and a fraction combined into one mixed entity.", sentence: "2 ½ is an example of a mixed number." },
+                { word: "Fractions", definition: "A number that represents a part of a whole.", sentence: "One half and three quarters are fractions." },
+                { word: "Numerator", definition: "The top number in a fraction that shows how many parts we have.", sentence: "In the fraction 3/4, 3 is the numerator." },
+                { word: "Denominator", definition: "The bottom number in a fraction that shows how many equal parts the whole is divided into.", sentence: "In the fraction 3/4, 4 is the denominator." },
+                { word: "Improper Fraction", definition: "A fraction where the numerator is greater than or equal to the denominator.", sentence: "5/4 is an improper fraction because the top number is larger." },
+                { word: "Estimates", definition: "An approximate calculation or educated guess of a quantity.", sentence: "We made estimates of how many jellybeans were in the glass jar." },
+                { word: "Billion", definition: "A very large number; one thousand million (1,000,000,000).", sentence: "There are over seven billion people living on Earth." },
+                { word: "Equivalent", definition: "Having the same value or amount.", sentence: "The fractions 1/2 and 2/4 are equivalent." },
+                { word: "Million", definition: "A large number; one thousand thousands (1,000,000).", sentence: "Working out 10 times as much: 1,000,000 (6 zeroes) - 100,000 (5 zeroes) = 1 zero. So add 1 zero (10)." },
+                { word: "Simplifying", definition: "Reducing a fraction to its lowest terms.", sentence: "Simplifying the fraction 4/8 gives us 1/2." },
+                { word: "> (Greater than)", definition: "A symbol used to show that one number is larger than another.", sentence: "We use the > symbol to show that 5 is greater than 3." },
+                { word: "< (Less than)", definition: "A symbol used to show that one number is smaller than another.", sentence: "We use the < symbol to show that 2 is less than 4." },
+                { word: "= (Equal to)", definition: "A symbol used to show that two numbers have the exact same value.", sentence: "The = symbol shows that 10 is equal to 10." },
+                { word: "Mixed to improper fraction", definition: "Changing a mixed number into a top-heavy fraction. Multiply the denominator by the whole number, then add the numerator.", sentence: "Working out: For 2 2/4 -> Multiply 4 x 2 = 8, then Add 8 + 2 = 10. Answer = 10/4." },
+                { word: "Improper to mixed fraction", definition: "Changing a top-heavy fraction into a whole number and a smaller fraction.", sentence: "Converting 5/2 from an improper to mixed fraction gives 2 1/2." },
+                { word: "Multiplication", definition: "The mathematical operation of adding a number to itself a certain number of times.", sentence: "The multiplication of 3 times 4 equals 12." },
+                { word: "Equivalent Fraction", definition: "Fractions that look different but show the exact same amount.", sentence: "2/4 is an equivalent fraction to 1/2." },
+                { word: "Hundredths", definition: "One part out of one hundred equal parts.", sentence: "In the decimal 0.05, the 5 is in the hundredths place." },
+                { word: "Thousandths", definition: "One part out of one thousand equal parts.", sentence: "In the decimal 0.007, the 7 is in the thousandths place." },
+                { word: "Tens", definition: "The place value representing how many sets of ten are in a number.", sentence: "In the number 45, the 4 is in the tens place." },
+                { word: "Ones", definition: "The place value representing the single units in a number.", sentence: "In the number 45, the 5 is in the ones place." },
+                { word: "Place Value", definition: "The value of a digit based on its position in a number.", sentence: "Understanding place value is important for reading large numbers." },
+                { word: "Words to digits", definition: "Writing a number using numerical symbols instead of letters.", sentence: "Converting words to digits for 'ten' gives us the number 10." },
+                { word: "Digits to Words", definition: "Writing a number using letters instead of numerical symbols.", sentence: "Converting digits to words for 7 gives us 'seven'." },
+                { word: "Rounding Numbers", definition: "Adjusting a number to make it simpler while keeping its value close to the original.", sentence: "Rounding numbers makes 73 closer to 70 than 80." },
+                { word: "Addition", definition: "The math process of combining two or more numbers together.", sentence: "The addition of 5 and 3 gives a total of 8." },
+                { word: "Subtraction", definition: "The math process of taking one number away from another.", sentence: "The subtraction of 2 from 5 leaves us with 3." },
+                { word: "10 Times As Much", definition: "To find out how many times a number fits into another by comparing zeroes.", sentence: "Working out: 1,000,000 (6 zeroes) minus 100,000 (5 zeroes) = 1 zero left. So add 1 zero (10x as much)." }
+            ],
+            healthEducation: [
+                { word: "Cheat", definition: "To act dishonestly or unfairly in order to gain an advantage.", sentence: "It is against the rules to cheat during the sports competition." },
+                { word: "Culture", definition: "The customs, arts, social institutions, and achievements of a particular nation or people.", sentence: "Learning about Thai culture includes understanding traditional dances and music." },
+                { word: "Sportsmanship", definition: "Fair and generous behavior or treatment of others, especially in a sports contest.", sentence: "Shaking hands with the opposing team shows excellent sportsmanship." },
+                { word: "Appropriate Behavior", definition: "Acting in a way that is suitable or proper, such as traditional Thai manners.", sentence: "Showing respect to elders is an example of appropriate behavior." },
+                { word: "Parallel Lines", definition: "Lines in a plane which do not meet; two lines that are always the same distance apart.", sentence: "The dancers stood in two parallel lines facing the audience." },
+                { word: "Skipping Rope", definition: "A piece of rope used for jumping over as a game or for exercise.", sentence: "She used a skipping rope to warm up before gym class." },
+                { word: "Stationary Body Movements", definition: "Moving parts of the body while staying in one place, like bending or stretching.", sentence: "Touching your toes without walking is a stationary body movement." },
+                { word: "Mobile Body Movements", definition: "Movements that involve traveling from one place to another, such as running or jumping.", sentence: "Running across the field is a basic mobile body movement." },
+                { word: "Exercise Equipment", definition: "Tools or apparatus used during physical activity, like balls, hoops, or ropes.", sentence: "Throwing a basketball is a body movement with exercise equipment." },
+                { word: "Conductor", definition: "A person who directs the performance of an orchestra or choir.", sentence: "The conductor waved his baton to keep the musicians in time." },
+                { word: "Music", definition: "Vocal or instrumental sounds combined to produce beauty of form, harmony, and expression of emotion.", sentence: "Listening to calming music can help you relax after a long day." },
+                { word: "Dance", definition: "Move rhythmically to music, typically following a set sequence of steps.", sentence: "The students learned a traditional Thai dance for the school festival." },
+                { word: "Rotation", definition: "The action of rotating around an axis or center.", sentence: "A slow rotation of the shoulders helps release tension before exercising." },
+                { word: "Rhythm", definition: "A strong, regular, repeated pattern of movement or sound.", sentence: "The children clapped their hands to the rhythm of the drum." }
+            ]
+        };
+
+        const DEFAULT_SCIENCE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.science));
+        const DEFAULT_MATHEMATICS_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.mathematics));
+        const DEFAULT_LANGUAGE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.language));
+        const DEFAULT_SOCIALSTUDIES_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.socialStudies));
+        const DEFAULT_HE_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.healthEducation));
+        const DEFAULT_PHONICS_VOCABULARY = JSON.parse(JSON.stringify(vocabularyData.phonics));
+
+
+        // ============================================================
+        // SECRET ADMIN + CLOUD VOCABULARY SYNC
+        // ============================================================
+        // IMPORTANT:
+        // A plain HTML file cannot securely hide an admin password.
+        // This is a convenience unlock, not real authentication.
+        // For cross-device persistence, set your Firebase Realtime
+        // Database URL below. Example:
+        // https://your-project-default-rtdb.firebaseio.com
+        const CLOUD_DB_URL = "https://final-exam-44e01-default-rtdb.firebaseio.com"; // Firebase Realtime Database
+        const CLOUD_DB_PATH = "final-exam-vocabulary";
+
+        const ADMIN_TRIGGER = "ADMIN";
+        const ADMIN_CODE = "Alex Jake";
+        const LOCAL_VOCAB_KEY = "finalExamVocabularyOverrides_v1";
+
+        let adminArmed = false;
+        let adminBuffer = "";
+        let adminUnlocked = false;
+        let adminEditingRef = null;
+        let cloudReady = false;
+
+        const SUBJECT_LABELS = {
+            language: "Language",
+            phonics: "Phonics",
+            science: "Science",
+            socialStudies: "Social Studies",
+            mathematics: "Mathematics",
+            healthEducation: "Health Education"
+        };
+
+        function cloneVocabularyData(data) {
+            return JSON.parse(JSON.stringify(data));
+        }
+
+        function normaliseVocabulary(data) {
+            const subjects = Object.keys(SUBJECT_LABELS);
+            const result = {};
+            subjects.forEach(subject => {
+                result[subject] = Array.isArray(data?.[subject])
+                    ? data[subject]
+                    : [];
+            });
+            return result;
+        }
+
+        function applyScienceVocabularyUpdate() {
+            const currentScience = Array.isArray(vocabularyData.science)
+                ? vocabularyData.science
+                : [];
+            const blockedWords = new Set(["solar cell"]);
+            const existing = new Map();
+
+            currentScience.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!blockedWords.has(key)) existing.set(key, item);
+            });
+
+            DEFAULT_SCIENCE_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!blockedWords.has(key) && !existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.science = Array.from(existing.values());
+        }
+
+        function applyMathematicsVocabularyUpdate() {
+            const currentMath = Array.isArray(vocabularyData.mathematics)
+                ? vocabularyData.mathematics
+                : [];
+            const existing = new Map();
+
+            currentMath.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_MATHEMATICS_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.mathematics = Array.from(existing.values());
+        }
+
+        function applyLanguageVocabularyUpdate() {
+            const currentLang = Array.isArray(vocabularyData.language)
+                ? vocabularyData.language
+                : [];
+            
+            // If the old format (grouped) is detected, override it completely
+            if (currentLang.length > 0 && (currentLang[0].groupTitle || currentLang[0].story)) {
+                vocabularyData.language = JSON.parse(JSON.stringify(DEFAULT_LANGUAGE_VOCABULARY));
+                return;
+            }
+
+            const existing = new Map();
+            currentLang.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_LANGUAGE_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.language = Array.from(existing.values());
+        }
+
+        function applySocialStudiesVocabularyUpdate() {
+            const currentSoc = Array.isArray(vocabularyData.socialStudies)
+                ? vocabularyData.socialStudies
+                : [];
+            
+            const existing = new Map();
+            currentSoc.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_SOCIALSTUDIES_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.socialStudies = Array.from(existing.values());
+        }
+
+        function applyHealthEducationVocabularyUpdate() {
+            const currentHE = Array.isArray(vocabularyData.healthEducation)
+                ? vocabularyData.healthEducation
+                : [];
+            
+            const existing = new Map();
+            currentHE.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                existing.set(key, item);
+            });
+
+            DEFAULT_HE_VOCABULARY.forEach(item => {
+                if (!item?.word) return;
+                const key = item.word.trim().toLowerCase();
+                if (!existing.has(key)) {
+                    existing.set(key, item);
+                }
+            });
+
+            vocabularyData.healthEducation = Array.from(existing.values());
+        }
+
+        function applyPhonicsVocabularyUpdate() {
+            const current = vocabularyData.phonics || [];
+            // If the old format (the specific old group titles) is detected, override completely
+            if (current.length > 0 && current[0].groupTitle && current[0].groupTitle.includes("Blends & Digraphs")) {
+                vocabularyData.phonics = JSON.parse(JSON.stringify(DEFAULT_PHONICS_VOCABULARY));
+            } else if (current.length === 0) {
+                vocabularyData.phonics = JSON.parse(JSON.stringify(DEFAULT_PHONICS_VOCABULARY));
+            }
+            // Otherwise, we leave the custom edits alone
+        }
+
+        async function loadVocabularyFromCloud() {
+            if (!CLOUD_DB_URL.trim()) return null;
+
+            try {
+                const response = await fetch(
+                    `${CLOUD_DB_URL.replace(/\/$/, "")}/${CLOUD_DB_PATH}.json`,
+                    { cache: "no-store" }
+                );
+                if (!response.ok) throw new Error(`Cloud read failed (${response.status})`);
+                const data = await response.json();
+                if (!data) return null;
+                cloudReady = true;
+                return normaliseVocabulary(data);
+            } catch (error) {
+                console.warn("Cloud vocabulary unavailable:", error);
+                cloudReady = false;
+                return null;
+            }
+        }
+
+        async function saveVocabularyToCloud() {
+            if (!CLOUD_DB_URL.trim()) return false;
+
+            try {
+                const response = await fetch(
+                    `${CLOUD_DB_URL.replace(/\/$/, "")}/${CLOUD_DB_PATH}.json`,
+                    {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(vocabularyData)
+                    }
+                );
+                if (!response.ok) throw new Error(`Cloud write failed (${response.status})`);
+                cloudReady = true;
+                return true;
+            } catch (error) {
+                console.error("Cloud vocabulary save failed:", error);
+                cloudReady = false;
+                return false;
+            }
+        }
+
+        function saveVocabularyLocal() {
+            localStorage.setItem(LOCAL_VOCAB_KEY, JSON.stringify(vocabularyData));
+        }
+
+        function loadVocabularyLocal() {
+            try {
+                const saved = localStorage.getItem(LOCAL_VOCAB_KEY);
+                return saved ? normaliseVocabulary(JSON.parse(saved)) : null;
+            } catch {
+                return null;
+            }
+        }
+
+        async function initialiseVocabularyStorage() {
+            const cloudData = await loadVocabularyFromCloud();
+
+            if (cloudData) {
+                Object.keys(SUBJECT_LABELS).forEach(subject => {
+                    vocabularyData[subject] = cloudData[subject];
+                });
+                applyScienceVocabularyUpdate();
+                applyMathematicsVocabularyUpdate();
+                applyLanguageVocabularyUpdate();
+                applySocialStudiesVocabularyUpdate();
+                applyHealthEducationVocabularyUpdate();
+                applyPhonicsVocabularyUpdate();
+                saveVocabularyLocal();
+                if (CLOUD_DB_URL.trim()) await saveVocabularyToCloud();
+                return;
+            }
+
+            const localData = loadVocabularyLocal();
+            if (localData) {
+                Object.keys(SUBJECT_LABELS).forEach(subject => {
+                    vocabularyData[subject] = localData[subject];
+                });
+                applyScienceVocabularyUpdate();
+                applyMathematicsVocabularyUpdate();
+                applyLanguageVocabularyUpdate();
+                applySocialStudiesVocabularyUpdate();
+                applyHealthEducationVocabularyUpdate();
+                applyPhonicsVocabularyUpdate();
+            }
+
+            // If the cloud database is configured but empty, seed it with the
+            // existing vocabulary so every device starts from the same data.
+            if (CLOUD_DB_URL.trim()) {
+                await saveVocabularyToCloud();
+            }
+        }
+
+        function armAdminSecret() {
+            adminArmed = true;
+            adminBuffer = "";
+            clearTimeout(window.__adminArmTimer);
+            window.__adminArmTimer = setTimeout(() => {
+                adminArmed = false;
+                adminBuffer = "";
+            }, 15000);
+        }
+
+        document.getElementById("exam-title").addEventListener("click", armAdminSecret);
+
+        document.addEventListener("keydown", (event) => {
+            if (!adminArmed || adminUnlocked) return;
+
+            if (event.key.length === 1) {
+                adminBuffer += event.key;
+                if (adminBuffer.length > ADMIN_TRIGGER.length) {
+                    adminBuffer = adminBuffer.slice(-ADMIN_TRIGGER.length);
+                }
+
+                if (adminBuffer === ADMIN_TRIGGER) {
+                    adminArmed = false;
+                    adminBuffer = "";
+                    openAdminCode();
+                }
+            }
+        });
+
+        function openAdminCode() {
+            document.getElementById("admin-code-modal").classList.add("active");
+            const input = document.getElementById("admin-code-input");
+            input.value = "";
+            document.getElementById("admin-login-status").textContent =
+                "Enter the admin code. Admin access will not survive a refresh.";
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closeAdminCode() {
+            document.getElementById("admin-code-modal").classList.remove("active");
+        }
+
+        function verifyAdminCode() {
+            const input = document.getElementById("admin-code-input");
+            const status = document.getElementById("admin-login-status");
+
+            if (input.value === ADMIN_CODE) {
+                adminUnlocked = true;
+                closeAdminCode();
+                openAdminPanel();
+            } else {
+                status.textContent = "Incorrect admin code.";
+                input.value = "";
+                input.focus();
+            }
+        }
+
+        document.getElementById("admin-code-input").addEventListener("keydown", (event) => {
+            if (event.key === "Enter") verifyAdminCode();
+        });
+
+        let adminIntroTimer = null;
+        function startAdminIntroSequence() {
+            clearInterval(adminIntroTimer);
+            const status = document.getElementById('admin-intro-status');
+            if (!status) return;
+            const messages = [
+                'Authenticating command sequence',
+                'Loading vocabulary database',
+                'Mounting subject modules',
+                'Synchronizing admin controls',
+                'Access granted — launching console'
+            ];
+            let index = 0;
+            status.textContent = messages[0];
+            status.classList.remove('admin-status-cycle');
+            void status.offsetWidth;
+            status.classList.add('admin-status-cycle');
+            adminIntroTimer = setInterval(() => {
+                index++;
+                if (index >= messages.length) { clearInterval(adminIntroTimer); return; }
+                status.classList.remove('admin-status-cycle');
+                void status.offsetWidth;
+                status.textContent = messages[index];
+                status.classList.add('admin-status-cycle');
+            }, 430);
+        }
+
+        function openAdminPanel() {
+            if (!adminUnlocked) return;
+
+            const panel = document.getElementById("admin-panel");
+            const intro = document.getElementById("admin-intro");
+
+            panel.classList.remove("closing");
+            populateAdminSubjects();
+            updateAdminGroupOptions();
+            renderAdminVocabList();
+            updateAdminStatus();
+
+            // Fortnite-style cinematic console boot: intro first, panel reveals after.
+            clearInterval(adminIntroTimer);
+            if (intro) {
+                intro.classList.remove("active");
+                void intro.offsetWidth;
+                intro.classList.add("active");
+                intro.setAttribute("aria-hidden", "false");
+                startAdminIntroSequence();
+            }
+
+            window.setTimeout(() => {
+                if (!adminUnlocked) return;
+                panel.classList.add("active");
+            }, 2350);
+        }
+
+        function closeAdminPanel() {
+            const panel = document.getElementById("admin-panel");
+            const intro = document.getElementById("admin-intro");
+            if (intro) {
+                intro.classList.remove("active");
+                intro.setAttribute("aria-hidden", "true");
+            }
+            panel.classList.add("closing");
+
+            // Closing the panel also ends this admin session.
+            // The title -> ADMIN -> code sequence must be completed again.
+            adminUnlocked = false;
+            adminArmed = false;
+            adminBuffer = "";
+            clearTimeout(window.__adminArmTimer);
+
+            adminEditingRef = null;
+            clearAdminForm();
+
+            window.setTimeout(() => {
+                panel.classList.remove("active", "closing");
+            }, 360);
+        }
+
+        function populateAdminSubjects() {
+            const select = document.getElementById("admin-subject");
+            if (select.dataset.ready === "true") return;
+
+            Object.entries(SUBJECT_LABELS).forEach(([key, label]) => {
+                const option = document.createElement("option");
+                option.value = key;
+                option.textContent = label;
+                select.appendChild(option);
+            });
+
+            select.dataset.ready = "true";
+            select.addEventListener("change", () => {
+                adminEditingRef = null;
+                clearAdminForm();
+                updateAdminGroupOptions();
+                renderAdminVocabList();
+            });
+        }
+
+        function updateAdminGroupOptions(preserveValue = true) {
+            const subject = document.getElementById("admin-subject").value;
+            const select = document.getElementById("admin-group");
+            const previousValue = preserveValue ? select.value : "";
+            select.innerHTML = "";
+
+            const data = vocabularyData[subject] || [];
+            const grouped = data.length > 0 && (data[0].groupTitle || data[0].story);
+
+            if (grouped) {
+                data.forEach((group, index) => {
+                    const option = document.createElement("option");
+                    option.value = String(index);
+                    option.textContent = group.groupTitle || group.story || `Unit ${index + 1}`;
+                    select.appendChild(option);
+                });
+            } else {
+                const option = document.createElement("option");
+                option.value = "flat";
+                option.textContent = "General Vocabulary";
+                select.appendChild(option);
+            }
+
+            if ([...select.options].some(o => o.value === previousValue)) {
+                select.value = previousValue;
+            }
+
+            if (!select.dataset.ready) {
+                select.dataset.ready = "true";
+                select.addEventListener("change", () => {
+                    adminEditingRef = null;
+                    clearAdminForm();
+                    renderAdminVocabList();
+                });
+            }
+        }
+
+        function getAdminTargetWords() {
+            const subject = document.getElementById("admin-subject").value;
+            const groupValue = document.getElementById("admin-group").value;
+            const data = vocabularyData[subject] || [];
+
+            if (groupValue === "flat" || !data.length) {
+                if (!data.length) vocabularyData[subject] = [];
+                return vocabularyData[subject];
+            }
+
+            return Array.isArray(data[Number(groupValue)]?.words)
+                ? data[Number(groupValue)].words
+                : (data[Number(groupValue)].words = []);
+        }
+
+        function clearAdminForm() {
+            document.getElementById("admin-word").value = "";
+            document.getElementById("admin-definition").value = "";
+            document.getElementById("admin-sentence").value = "";
+            adminEditingRef = null;
+            const saveBtn = document.getElementById("admin-save-btn");
+            if (saveBtn) saveBtn.textContent = "➕ Add Word";
+            document.querySelectorAll(".admin-item.selected").forEach(el => el.classList.remove("selected"));
+        }
+
+        function editAdminVocab(index) {
+            const words = getAdminTargetWords();
+            const item = words[index];
+            if (!item) return;
+
+            adminEditingRef = index;
+            document.getElementById("admin-word").value = item.word || "";
+            document.getElementById("admin-definition").value = item.definition || "";
+            document.getElementById("admin-sentence").value = item.sentence || "";
+
+            const saveBtn = document.getElementById("admin-save-btn");
+            if (saveBtn) saveBtn.textContent = "💾 Save Changes";
+
+            renderAdminVocabList();
+            requestAnimationFrame(() => {
+                const selected = document.querySelector(`[data-admin-index="${index}"]`);
+                if (selected) selected.classList.add("selected");
+            });
+        }
+
+        async function persistVocabularyChanges() {
+            saveVocabularyLocal();
+            const synced = await saveVocabularyToCloud();
+
+            updateAdminStatus(
+                synced
+                    ? "✓ Changes saved."
+                    : "⚠ Changes saved locally, but could not be synced.",
+                synced ? "success" : "error"
+            );
+
+            renderAdminVocabList();
+
+            const activeTab = document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language";
+            renderTab(activeTab);
+            updateAdminGroupOptions();
+            renderAdminVocabList();
+        }
+
+        async function saveAdminVocab() {
+            const subject = document.getElementById("admin-subject").value;
+            const groupValue = document.getElementById("admin-group").value;
+            const word = document.getElementById("admin-word").value.trim();
+            const definition = document.getElementById("admin-definition").value.trim();
+            const sentence = document.getElementById("admin-sentence").value.trim();
+
+            if (!word || !definition) {
+                updateAdminStatus("Word and definition are required.", "error");
+                return;
+            }
+
+            const item = { word, definition, sentence };
+            const data = vocabularyData[subject] || [];
+            const grouped = data.length > 0 && (data[0].groupTitle || data[0].story);
+
+            if (grouped && groupValue !== "flat") {
+                const group = data[Number(groupValue)];
+                if (!group) return;
+
+                if (!Array.isArray(group.words)) group.words = [];
+                if (adminEditingRef === null) group.words.push(item);
+                else group.words[adminEditingRef] = item;
+            } else {
+                if (!Array.isArray(vocabularyData[subject])) vocabularyData[subject] = [];
+                if (adminEditingRef === null) vocabularyData[subject].push(item);
+                else vocabularyData[subject][adminEditingRef] = item;
+            }
+
+            clearAdminForm();
+            await persistVocabularyChanges();
+        }
+
+        async function deleteSelectedAdminVocab(index = adminEditingRef) {
+            if (index === null || index === undefined) {
+                updateAdminStatus("Select a word first, then use Remove.", "error");
+                return;
+            }
+
+            const words = getAdminTargetWords();
+            const item = words[index];
+            if (!item) return;
+
+            if (!confirm(`Remove "${item.word}" from this unit?`)) return;
+
+            words.splice(index, 1);
+            clearAdminForm();
+            await persistVocabularyChanges();
+        }
+
+        function renderAdminVocabList() {
+            const list = document.getElementById("admin-vocab-list");
+            const count = document.getElementById("admin-count");
+            if (!list) return;
+
+            const words = getAdminTargetWords();
+            list.innerHTML = "";
+
+            if (count) count.textContent = `${words.length} ${words.length === 1 ? "word" : "words"}`;
+
+            if (!words.length) {
+                list.innerHTML = '<div class="admin-empty">No vocabulary in this unit yet.<br><br>Add the first word using the editor.</div>';
+                return;
+            }
+
+            words.forEach((item, index) => {
+                const row = document.createElement("div");
+                row.className = `admin-item${adminEditingRef === index ? " selected" : ""}`;
+                row.dataset.adminIndex = index;
+                row.innerHTML = `
+                    <div style="min-width:0">
+                        <strong>${escapeHTML(item.word || "")}</strong>
+                        <small>${escapeHTML(item.definition || "")}</small>
+                    </div>
+                    <div class="admin-item-actions">
+                        <button class="admin-mini-btn" onclick="editAdminVocab(${index})">Edit</button>
+                        <button class="admin-mini-btn delete" onclick="deleteSelectedAdminVocab(${index})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        async function refreshAdminFromCloud() {
+            updateAdminStatus("Refreshing...");
+            const cloudData = await loadVocabularyFromCloud();
+
+            if (!cloudData) {
+                updateAdminStatus("Could not refresh right now.", "error");
+                return;
+            }
+
+            Object.keys(SUBJECT_LABELS).forEach(subject => {
+                vocabularyData[subject] = cloudData[subject];
+            });
+
+            saveVocabularyLocal();
+            adminEditingRef = null;
+            clearAdminForm();
+            updateAdminGroupOptions(false);
+            renderAdminVocabList();
+
+            const activeTab = document.querySelector(".tab-btn.active")?.getAttribute("data-tab") || "language";
+            renderTab(activeTab);
+            updateAdminStatus("✓ Refreshed.");
+        }
+
+        function updateAdminStatus(message, type = "") {
+            const status = document.getElementById("admin-status");
+            if (!status) return;
+
+            status.className = `admin-status${type ? ` ${type}` : ""}`;
+            status.textContent = message || "Ready.";
+        }
+
+        function escapeHTML(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        const grid = document.getElementById('words-grid');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const companionPet = document.getElementById('companion-pet');
+        const motivationBubble = companionPet.querySelector('.motivation-bubble');
+
+        const motivationalPhrases = [
+            "Whooo's studying hard? You!",
+            "You're a wise owl, keep it up!",
+            "Just a little bit more!",
+            "Knowledge is power!",
+            "You're doing great!",
+            "Let's keep going!",
+            "Every card makes you smarter!",
+            "Don't stop, you're on a roll!",
+            "Ace that final!"
+        ];
+
+        let speechPlaying = false;
+        let currentUtterance = null;
+        let currentActiveCardStopBtn = null;
+        let roamInterval;
+        let isSleeping = false;
+
+        // Flashcard specific variables
+        let currentFlashcards = [];
+        let currentFcIndex = 0;
+        let flashcardResults = []; // Store results { item, knewIt }
+
+        // Modal Logic
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    if (modal.id === 'flashcard-modal') {
+                        stopSpecificAudio();
+                    }
+                }
+            });
+        });
+
+        // Helper to Create Vocabulary Card HTML Elements
+        function createCardElement(item, index, theme) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = `${(index % 15) * 0.08}s`;
+            
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="word-title">${item.word}</span>
+                    <div style="display: flex; align-items: center;">
+                        <button class="audio-btn play-btn" title="Listen to pronunciation" onclick="event.stopPropagation(); playSpecificVoice('${item.word.replace(/'/g, "\\'")}', '${item.definition.replace(/'/g, "\\'")}', '${item.sentence.replace(/'/g, "\\'")}', this)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        <button class="audio-btn stop-btn" title="Stop playing" onclick="event.stopPropagation(); stopSpecificAudio()">
+                            <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="card-details-inner">
+                        <p class="definition">${item.definition}</p>
+                        <p class="sentence">"${item.sentence}"</p>
+                    </div>
+                </div>
+                <span class="word-num">${index + 1}</span>
+            `;
+
+            card.addEventListener('click', () => card.classList.toggle('expanded'));
+            return card;
+        }
+
+        // --- FLASHCARD LOGIC ---
+        function startFlashcards(tabName, groupIndex) {
+            if (groupIndex !== null && groupIndex !== undefined) {
+                const group = vocabularyData[tabName][groupIndex];
+                currentFlashcards = group.words;
+                document.getElementById('fc-modal-title').innerText = group.groupTitle || group.story || "Flashcards";
+            } else {
+                currentFlashcards = vocabularyData[tabName];
+                let formattedTitle = tabName === 'socialStudies' ? 'Social Studies' : 
+                                     tabName === 'healthEducation' ? 'Health Education' :
+                                     tabName.charAt(0).toUpperCase() + tabName.slice(1);
+                document.getElementById('fc-modal-title').innerText = formattedTitle + " Vocabulary";
+            }
+            
+            currentFcIndex = 0;
+            flashcardResults = [];
+            
+            // Ensure flashcard container is visible, hide stats
+            document.getElementById('fc-container').style.display = 'flex';
+            document.getElementById('fc-stats').style.display = 'none';
+            
+            updateFlashcardUI();
+            openModal('flashcard-modal');
+        }
+
+        function updateFlashcardUI() {
+            const cardEl = document.getElementById('fc-card');
+            const cardInner = document.getElementById('fc-inner');
+            
+            cardEl.classList.remove('is-flipped');
+            cardInner.classList.remove('flash-success', 'flash-error');
+            
+            if (currentFlashcards.length === 0) return;
+            
+            const item = currentFlashcards[currentFcIndex];
+            
+            // Stop audio if it was playing for the previous card
+            stopSpecificAudio();
+            
+            setTimeout(() => {
+                document.getElementById('fc-word').innerText = item.word;
+                document.getElementById('fc-def').innerText = item.definition;
+                document.getElementById('fc-sent').innerText = item.sentence ? `"${item.sentence}"` : "";
+                
+                document.getElementById('fc-counter').innerText = `${currentFcIndex + 1} / ${currentFlashcards.length}`;
+                
+                document.getElementById('fc-prev').disabled = currentFcIndex === 0;
+                document.getElementById('fc-next').disabled = currentFcIndex === currentFlashcards.length - 1;
+            }, 150);
+        }
+
+        function prevCard() {
+            if (currentFcIndex > 0) {
+                stopSpecificAudio();
+                currentFcIndex--;
+                updateFlashcardUI();
+            }
+        }
+
+        function nextCard() {
+            if (currentFcIndex < currentFlashcards.length - 1) {
+                stopSpecificAudio();
+                currentFcIndex++;
+                updateFlashcardUI();
+            }
+        }
+        
+        function markFlashcard(knewIt) {
+            const cardInner = document.getElementById('fc-inner');
+            
+            // Record result
+            flashcardResults[currentFcIndex] = { knewIt: knewIt };
+
+            // Add appropriate animation class
+            if (knewIt) {
+                cardInner.classList.add('flash-success');
+            } else {
+                cardInner.classList.add('flash-error');
+            }
+
+            // Wait for brief visual feedback, then move to next card or show stats
+            setTimeout(() => {
+                cardInner.classList.remove('flash-success', 'flash-error');
+                
+                if (currentFcIndex < currentFlashcards.length - 1) {
+                    stopSpecificAudio();
+                    currentFcIndex++;
+                    updateFlashcardUI();
+                } else {
+                    showFlashcardStats();
+                }
+            }, 400); 
+        }
+
+        function showFlashcardStats() {
+            stopSpecificAudio();
+            document.getElementById('fc-container').style.display = 'none';
+            document.getElementById('fc-stats').style.display = 'flex';
+            
+            let correctCount = 0;
+            let wrongItems = [];
+            
+            // Loop through the entire deck to properly check skipped cards
+            currentFlashcards.forEach((item, index) => {
+                const result = flashcardResults[index];
+                
+                // Only count as correct if the user explicitly clicked the tick button
+                if (result && result.knewIt === true) {
+                    correctCount++;
+                } else {
+                    // If it was marked wrong, or skipped entirely, add it to review list
+                    wrongItems.push(item);
+                }
+            });
+            
+            document.getElementById('fc-score-title').innerText = `You scored ${correctCount} / ${currentFlashcards.length}!`;
+            
+            let listHTML = '';
+            if (wrongItems.length === 0) {
+                listHTML = '<li style="text-align:center; color: var(--accent-sci); font-weight:700; margin-top: 2rem;">Perfect score! You know all the words! 🥳</li>';
+            } else {
+                wrongItems.forEach(w => {
+                    listHTML += `
+                        <li class="fc-wrong-item">
+                            <div class="fc-wrong-word">${w.word}</div>
+                            <div class="fc-wrong-def">${w.definition}</div>
+                        </li>
+                    `;
+                });
+            }
+            document.getElementById('fc-wrong-list').innerHTML = listHTML;
+        }
+
+        function redoFlashcards() {
+            currentFcIndex = 0;
+            flashcardResults = [];
+            document.getElementById('fc-stats').style.display = 'none';
+            document.getElementById('fc-container').style.display = 'flex';
+            updateFlashcardUI();
+        }
+
+        function quitFlashcards() {
+            closeModal('flashcard-modal');
+            stopSpecificAudio();
+        }
+
+        function playFlashcardAudio() {
+            stopSpecificAudio();
+            const item = currentFlashcards[currentFcIndex];
+            const fullText = item.sentence !== '' 
+                ? `${item.word}. ${item.definition}. Example: ${item.sentence}` 
+                : `${item.word}. Answer: ${item.definition}`;
+                
+            currentUtterance = new SpeechSynthesisUtterance(fullText);
+            
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(v => v.lang.includes('en-US') && v.name.includes('Natural')) 
+                                || voices.find(v => v.lang.startsWith('en'));
+
+            if (preferredVoice) currentUtterance.voice = preferredVoice;
+            currentUtterance.rate = 0.95;
+            currentUtterance.pitch = 1.0;
+            
+            currentActiveCardStopBtn = document.getElementById('fc-stop-btn');
+
+            currentUtterance.onstart = () => {
+                speechPlaying = true;
+                if(currentActiveCardStopBtn) currentActiveCardStopBtn.style.display = 'flex';
+            };
+
+            currentUtterance.onend = () => resetAudioState();
+            currentUtterance.onerror = () => resetAudioState();
+
+            window.speechSynthesis.speak(currentUtterance);
+        }
+
+        // Render Tabs Function
+        let renderAnimationTimer = null;
+        function renderTab(tabName, animate = true) {
+            if (renderAnimationTimer) clearTimeout(renderAnimationTimer);
+            const wasRendered = grid.children.length > 0;
+            if (animate && wasRendered) {
+                grid.classList.remove('vocab-entering');
+                grid.classList.add('vocab-switching');
+                renderAnimationTimer = setTimeout(() => {
+                    grid.innerHTML = '';
+                    grid.className = `words-grid theme-${tabName} vocab-entering`;
+                    buildTabContent(tabName);
+                    requestAnimationFrame(() => {
+                        grid.querySelectorAll(':scope > *').forEach((el, i) => { el.style.animationDelay = `${Math.min(i, 18) * 0.035}s`; });
+                    });
+                    setTimeout(() => grid.classList.remove('vocab-entering'), 700);
+                }, 190);
+                return;
+            }
+            grid.innerHTML = '';
+            grid.className = `words-grid theme-${tabName}`;
+            buildTabContent(tabName);
+        }
+
+        function buildTabContent(tabName) {
+
+            // Generate Questions to Study Section Header
+            const qaHeaderWrapper = document.createElement('div');
+            qaHeaderWrapper.className = 'section-header-wrapper';
+            qaHeaderWrapper.innerHTML = `<h2 class="section-title">Questions to Study</h2>`;
+            grid.appendChild(qaHeaderWrapper);
+            
+            // Generate Question Cards
+            if (studyQuestions[tabName] && studyQuestions[tabName].length > 0) {
+                studyQuestions[tabName].forEach((item, index) => {
+                    const qaCard = document.createElement('div');
+                    qaCard.className = 'qa-card';
+                    qaCard.style.animationDelay = `${index * 0.08}s`;
+                    qaCard.innerHTML = `
+                        <div class="qa-actions">
+                            <button class="audio-btn play-btn" title="Listen" onclick="event.stopPropagation(); playSpecificVoice('${item.q.replace(/'/g, "\\'")}', '${item.a.replace(/'/g, "\\'")}', '', this)">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <button class="audio-btn stop-btn" title="Stop playing" onclick="event.stopPropagation(); stopSpecificAudio()">
+                                <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+                            </button>
+                        </div>
+                        <div class="qa-q">Q: ${item.q}</div>
+                        <div class="qa-a"><strong>A:</strong> ${item.a}</div>
+                    `;
+                    grid.appendChild(qaCard);
+                });
+            } else {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'qa-card placeholder';
+                placeholder.innerHTML = `Study others first, we're working on this now!`;
+                grid.appendChild(placeholder);
+            }
+
+            // Generate Vocabulary Section Header
+            const vocabHeaderWrapper = document.createElement('div');
+            vocabHeaderWrapper.className = 'section-header-wrapper';
+            vocabHeaderWrapper.style.marginTop = '1.5rem';
+            
+            const hasData = vocabularyData[tabName] && vocabularyData[tabName].length > 0;
+            const isGrouped = hasData && (vocabularyData[tabName][0].groupTitle || vocabularyData[tabName][0].story);
+            
+            if (hasData && !isGrouped) {
+                vocabHeaderWrapper.innerHTML = `
+                    <div class="story-title-container" style="border-bottom: none; padding-bottom: 0;">
+                        <h2 class="section-title" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">Vocabulary</h2>
+                        <button class="play-fc-btn" onclick="startFlashcards('${tabName}', null)">
+                            🗂️ Flashcards
+                        </button>
+                    </div>
+                    <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-top: 0.5rem;"></div>
+                `;
+            } else {
+                vocabHeaderWrapper.innerHTML = `<h2 class="section-title">Vocabulary</h2>`;
+            }
+            grid.appendChild(vocabHeaderWrapper);
+
+            // Generate Vocabulary Cards
+            if(vocabularyData[tabName]) {
+                // If the data is grouped
+                if (vocabularyData[tabName].length > 0 && (vocabularyData[tabName][0].groupTitle || vocabularyData[tabName][0].story)) {
+                    let globalCardIndex = 0;
+                    vocabularyData[tabName].forEach((group, groupIndex) => {
+                        const titleText = group.groupTitle || group.story;
+                        
+                        const groupTitleEl = document.createElement('div');
+                        groupTitleEl.className = 'section-header-wrapper';
+                        
+                        // Modified to include Flashcards button inside the title row
+                        groupTitleEl.innerHTML = `
+                            <div class="story-title-container">
+                                <h3 class="story-title">📖 ${titleText}</h3>
+                                <button class="play-fc-btn" onclick="startFlashcards('${tabName}', ${groupIndex})">
+                                    🗂️ Flashcards
+                                </button>
+                            </div>
+                        `;
+                        grid.appendChild(groupTitleEl);
+
+                        group.words.forEach((item) => {
+                            const card = createCardElement(item, globalCardIndex, tabName);
+                            grid.appendChild(card);
+                            globalCardIndex++;
+                        });
+                    });
+                } else if (vocabularyData[tabName].length > 0) {
+                    // Standard flat rendering for other subjects
+                    vocabularyData[tabName].forEach((item, index) => {
+                        const card = createCardElement(item, index, tabName);
+                        grid.appendChild(card);
+                    });
+                } else {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'qa-card placeholder';
+                    placeholder.innerHTML = `Coming Soon!`;
+                    grid.appendChild(placeholder);
+                }
+            }
+        }
+
+        // Voice Engine
+        function playSpecificVoice(word, definition, sentence, playButton) {
+            stopSpecificAudio();
+
+            const container = playButton.closest('.card, .qa-card');
+            const stopBtn = container.querySelector('.stop-btn');
+            currentActiveCardStopBtn = stopBtn;
+
+            const fullText = sentence !== '' 
+                ? `${word}. ${definition}. Example: ${sentence}` 
+                : `${word}. Answer: ${definition}`;
+                
+            currentUtterance = new SpeechSynthesisUtterance(fullText);
+            
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(v => v.lang.includes('en-US') && v.name.includes('Natural')) 
+                                || voices.find(v => v.lang.startsWith('en'));
+
+            if (preferredVoice) currentUtterance.voice = preferredVoice;
+            currentUtterance.rate = 0.95;
+            currentUtterance.pitch = 1.0;
+
+            currentUtterance.onstart = () => {
+                speechPlaying = true;
+                stopBtn.style.display = 'flex';
+                showMotivation();
+            };
+
+            currentUtterance.onend = () => resetAudioState();
+            currentUtterance.onerror = () => resetAudioState();
+
+            window.speechSynthesis.speak(currentUtterance);
+        }
+
+        function stopSpecificAudio() {
+            window.speechSynthesis.cancel();
+            resetAudioState();
+        }
+
+        function resetAudioState() {
+            if(currentActiveCardStopBtn) {
+                currentActiveCardStopBtn.style.display = 'none';
+                currentActiveCardStopBtn = null;
+            }
+            speechPlaying = false;
+            currentUtterance = null;
+        }
+
+        // Companion Pet Logic
+        function showMotivation() {
+            if (isSleeping) return; 
+
+            const phrase = motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+            motivationBubble.textContent = phrase;
+            motivationBubble.classList.add('show');
+            setTimeout(() => {
+                motivationBubble.classList.remove('show');
+            }, 3500);
+        }
+
+        function roamPet() {
+            if (isDraggingPet || isSleeping) return;
+            
+            if (!motivationBubble.classList.contains('show') && Math.random() < 0.25) {
+                showMotivation();
+            }
+
+            const padding = 100;
+            const maxX = window.innerWidth - padding;
+            const maxY = window.innerHeight - padding;
+
+            const targetX = Math.max(20, Math.floor(Math.random() * maxX));
+            const targetY = Math.max(20, Math.floor(Math.random() * maxY));
+
+            companionPet.style.left = `${targetX}px`;
+            companionPet.style.top = `${targetY}px`;
+        }
+
+        // Sleeping logic
+        function toggleSleep() {
+            isSleeping = !isSleeping;
+            
+            if (isSleeping) {
+                const rect = companionPet.getBoundingClientRect();
+                
+                companionPet.style.transition = 'none';
+                companionPet.style.position = 'absolute';
+                companionPet.style.top = (rect.top + window.scrollY) + 'px';
+                
+                companionPet.offsetHeight;
+                
+                companionPet.classList.add('sleeping');
+                motivationBubble.classList.remove('show');
+                
+                companionPet.style.transition = 'left 4s cubic-bezier(0.34, 1.56, 0.64, 1), top 4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                companionPet.style.left = '30px';
+                companionPet.style.top = (window.scrollY + 30) + 'px';
+            } else {
+                const rect = companionPet.getBoundingClientRect();
+                
+                companionPet.style.transition = 'none';
+                companionPet.style.position = 'fixed';
+                companionPet.style.top = (rect.top - window.scrollY) + 'px';
+                companionPet.style.left = rect.left + 'px';
+                
+                companionPet.offsetHeight;
+                
+                companionPet.classList.remove('sleeping');
+                companionPet.style.transition = 'left 5s ease-in-out, top 5s ease-in-out';
+                
+                roamPet();
+            }
+        }
+
+        // Dragging & Click Distinction Logic
+        let isDraggingPet = false;
+        let petX, petY, dragStartX, dragStartY;
+
+        companionPet.addEventListener('mousedown', (e) => {
+            isDraggingPet = true;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            
+            if (isSleeping) {
+                toggleSleep(); 
+            }
+            
+            companionPet.classList.add('grabbing');
+            petX = e.clientX - companionPet.getBoundingClientRect().left;
+            petY = e.clientY - companionPet.getBoundingClientRect().top;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDraggingPet) {
+                e.preventDefault();
+                let left = e.clientX - petX;
+                let top = e.clientY - petY;
+
+                if (isSleeping) {
+                    top += window.scrollY;
+                }
+
+                left = Math.max(0, Math.min(left, window.innerWidth - companionPet.offsetWidth));
+
+                companionPet.style.left = `${left}px`;
+                companionPet.style.top = `${top}px`;
+            }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (isDraggingPet) {
+                isDraggingPet = false;
+                companionPet.classList.remove('grabbing');
+                
+                let dx = Math.abs(e.clientX - dragStartX);
+                let dy = Math.abs(e.clientY - dragStartY);
+                
+                if (dx < 5 && dy < 5) {
+                    toggleSleep();
+                }
+            }
+        });
+
+        // Tabs change logic
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                stopSpecificAudio(); 
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                renderTab(button.getAttribute('data-tab'));
+            });
+        });
+
+        window.speechSynthesis.onvoiceschanged = () => {};
+
+        // Initial Setup
+        (async function initApp() {
+            // Render immediately so user doesn't wait for cloud fetch
+            renderTab('language', false);
+            
+            await initialiseVocabularyStorage();
+            
+            // Re-render in case cloud data changed anything
+            const activeTab = document.querySelector('.tab-btn.active').getAttribute('data-tab');
+            renderTab(activeTab, false);
+
+            setTimeout(() => {
+                companionPet.classList.add('visible');
+                roamPet(); 
+                roamInterval = setInterval(roamPet, 5000); 
+            }, 1000); 
+        })();
+
+    </script>
+</body>
+</html>
